@@ -6,14 +6,10 @@ namespace OpenSonos.LocalMusicServer
     {
         static void Main(string[] args)
         {
-            var uri = new Uri("http://localhost:8000");
-            var path = "sonos-api";
-
             Server.ImplementedBy<LanMusicServer>()
-                  .HostedAt(uri, path)
+                  .HostedAt(new Uri("http://localhost:8000"))
                   .Open();
-
-            Console.WriteLine("Hosting Sonos API at {0}{1}", uri, path);
+            
             Console.ReadLine();
         }
     }
