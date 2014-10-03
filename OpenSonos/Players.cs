@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -10,7 +11,7 @@ namespace OpenSonos
     public static class Players
     {
 
-        public async static Task<List<SonosPlayer>> DiscoverPlayers()
+        public async static Task<List<SonosPlayer>> Discover()
         {
             var host = Dns.GetHostEntry(Dns.GetHostName());
             var serverIp = host.AddressList.First(x => x.AddressFamily == AddressFamily.InterNetwork);
@@ -18,18 +19,34 @@ namespace OpenSonos
 
             var sonosPlayers = new List<SonosPlayer>();
 
-            var http = new HttpClient();
             for (var ipPart = 1; ipPart < 256; ipPart++)
             {
                 var ip = subnet + "." + ipPart;
-                var response = await http.GetAsync(string.Format("http://{0}:1400/customsd.htm", ip));
-                if (response.StatusCode == HttpStatusCode.OK)
+
+                var request = new HttpRequestMessage(HttpMethod.Head, string.Format("http://{0}:1400/customsd.htm", ip));
+                var response = await TrySend(request);
+                
+                if (response != null && response.StatusCode == HttpStatusCode.OK)
                 {
                     sonosPlayers.Add(new SonosPlayer(ip));
                 }
             }
 
             return sonosPlayers;
+        }
+
+        public static async Task<HttpResponseMessage> TrySend(HttpRequestMessage request)
+        {
+            var http = new HttpClient { Timeout = new TimeSpan(0, 0, 0, 0, 150) };
+
+            try
+            {
+                return await http.SendAsync(request);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

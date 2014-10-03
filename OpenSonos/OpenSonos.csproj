@@ -59,7 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Players.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SonosPlayer.cs" />
     <Compile Include="SonosServer\ISonosMetadataApi.cs" />
     <Compile Include="SonosServer\Metadata\Presentation.cs" />
     <Compile Include="SonosServer\Metadata\PresentationMap.cs" />
