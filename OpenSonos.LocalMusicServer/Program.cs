@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Threading.Tasks;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 
@@ -8,11 +9,14 @@ namespace OpenSonos.LocalMusicServer
     {
         public static void Main(string[] args)
         {
-            var singleRepository = new FlatFileMusicCatalogue("\\\\redqueen\\music\\");
+            var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
+            var musicShare = ConfigurationManager.AppSettings["musicShare"];
+
+            var singleRepository = new FlatFileMusicCatalogue(musicShare);
             SmbMusicServer.MusicRepository = () => singleRepository;
 
             Server.ImplementedBy<SmbMusicServer>()
-                  .HostedAt(new Uri("http://localhost:8000"))
+                  .HostedAt(new Uri(baseUrl))
                   .Open();
 
             Task.Run(() => { Players.Discover(); });

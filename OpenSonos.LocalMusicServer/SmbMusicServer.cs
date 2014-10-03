@@ -39,7 +39,13 @@ namespace OpenSonos.LocalMusicServer
 
         public override getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
         {
-            return PhysicalResource.FromId(request.id).ToMetaDataResponse();
+            return new getExtendedMetadataResponse
+            {
+                getExtendedMetadataResult = new extendedMetadata
+                {
+                    Item = PhysicalResource.FromId(request.id).ToMediaMetadata()
+                }
+            };
         }
 
         public override getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)

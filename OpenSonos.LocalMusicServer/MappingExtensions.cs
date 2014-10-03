@@ -7,17 +7,6 @@ namespace OpenSonos.LocalMusicServer
 {
     public static class MappingExtensions
     {
-        public static getExtendedMetadataResponse ToMetaDataResponse(this IRepresentAResource entry)
-        {
-            return new getExtendedMetadataResponse
-            {
-                getExtendedMetadataResult = new extendedMetadata
-                {
-                    Item = entry.ToMediaMetadata()
-                }
-            };
-        }
-
         public static mediaMetadata ToMediaMetadata(this IRepresentAResource entry)
         {
             return new mediaMetadata
