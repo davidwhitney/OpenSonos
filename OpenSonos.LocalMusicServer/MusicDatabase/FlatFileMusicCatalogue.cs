@@ -7,17 +7,32 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
 {
     public class FlatFileMusicCatalogue
     {
+        public string Root = "\\\\redqueen\\music\\";
+
         public List<DirectoryEntry> GetCollection(SonosId id)
         {
-            var dr = new List<DirectoryEntry>();
-
-            if (id.IsDirectory)
+            if (!id.IsDirectory)
             {
-                dr.AddRange(Directory.GetDirectories(id.RequestedPath).Select(subdir => new DirectoryEntry { IsDirectory = true, Path = subdir }));
-                dr.AddRange(Directory.GetFiles(id.RequestedPath).Select(subdir => new DirectoryEntry { Path = subdir }));
+                return new List<DirectoryEntry>();
             }
 
-            return dr;
+            var directoryEntries = new List<DirectoryEntry>();
+            var path = Root + id.RequestedPath;
+            directoryEntries.AddRange(Directory.GetDirectories(path).Select(subdir => new DirectoryEntry(subdir.Replace(Root, ""), true)));
+            directoryEntries.AddRange(Directory.GetFiles(path, "*.mp3", SearchOption.TopDirectoryOnly).Select(subdir => new DirectoryEntry(subdir.Replace(Root, ""))));
+            return directoryEntries;
         }
+
+        public List<DirectoryEntry> Search(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+            {
+                return new List<DirectoryEntry>();
+            }
+
+            var directoryEntries = new List<DirectoryEntry>();
+            directoryEntries.AddRange(Directory.GetFiles(Root, "*"+query+"*", SearchOption.TopDirectoryOnly).Select(subdir => new DirectoryEntry(subdir.Replace(Root, ""))));
+            return directoryEntries;
+        } 
     }
 }

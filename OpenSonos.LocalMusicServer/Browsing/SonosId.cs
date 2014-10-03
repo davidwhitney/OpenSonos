@@ -15,11 +15,12 @@ namespace OpenSonos.LocalMusicServer.Browsing
 
             if (requestedId == "root")
             {
-                RequestedId = Gzip.CompressString("\\\\redqueen\\music");
-                RequestedPath = "\\\\redqueen\\music";
+                RequestedId = Gzip.CompressString("");
+                RequestedPath = "";
+                IsDirectory = true;
             }
 
-            if (!RequestedPath.EndsWith(".mp3"))
+            if (RequestedPath == null || !RequestedPath.EndsWith(".mp3"))
             {
                 IsDirectory = true;
             }
