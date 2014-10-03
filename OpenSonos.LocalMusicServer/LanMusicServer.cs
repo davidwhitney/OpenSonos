@@ -1,55 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using OpenSonos.LocalMusicServer.Browsing;
+using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.SonosServer;
 using OpenSonos.SonosServer.Metadata;
 
 namespace OpenSonos.LocalMusicServer
 {
-    public class SonosId
-    {
-        public string RequestedId { get; private set; }
-        public bool IsDirectory { get; private set; }
-
-        public SonosId(string requestedId)
-        {
-            RequestedId = requestedId;
-            if (!requestedId.EndsWith(".mp3"))
-            {
-                IsDirectory = true;
-            }
-
-            if (requestedId == "root")
-            {
-                RequestedId = "\\\\redqueen\\music";
-            }
-        }
-    }
-
-    public class FlatFileMusicCatalogue
-    {
-        public List<DirectoryEntry> GetCollection(SonosId id)
-        {
-            var dr = new List<DirectoryEntry>();
-
-            if (id.IsDirectory)
-            {
-                dr.AddRange(Directory.GetDirectories(id.RequestedId).Select(subdir => new DirectoryEntry {IsDirectory = true, Path = subdir}));
-                dr.AddRange(Directory.GetFiles(id.RequestedId).Select(subdir => new DirectoryEntry {IsDirectory = true, Path = subdir}));
-            }
-
-            return dr;
-        }
-    }
-
-
-    public class DirectoryEntry
-    {
-        public bool IsDirectory { get; set; }
-        public string Path { get; set; }
-    }
-
     public class LanMusicServer : ServerBase
     {
         public override Presentation GetPresentationMaps()
@@ -74,8 +32,7 @@ namespace OpenSonos.LocalMusicServer
             var catalogue = new FlatFileMusicCatalogue();
             var directoryReference = catalogue.GetCollection(id);
             
-           
-            var collections = new List<mediaCollection>();
+            var collections = new List<AbstractMedia>();
             var slice = directoryReference.Skip(request.index).Take(request.count);
             foreach (var subdirectory in slice.Where(x => x.IsDirectory))
             {
@@ -84,7 +41,7 @@ namespace OpenSonos.LocalMusicServer
                 {
                     artist = parts.Last(),
                     canPlay = false,
-                    id = subdirectory.Path,
+                    id = subdirectory.Id,
                     itemType = itemType.collection,
                     title = parts.Last()
                 });
@@ -93,13 +50,15 @@ namespace OpenSonos.LocalMusicServer
             foreach (var entry in slice.Where(x => !x.IsDirectory))
             {
                 var parts = entry.Path.Split('\\');
-                collections.Add(new mediaCollection
+                collections.Add(new mediaMetadata
                 {
-                    artist = parts.Last(),
-                    canPlay = true,
-                    id = entry.Path,
-                    itemType = itemType.track,
-                    title = parts.Last()
+                    itemType =  itemType.track,
+                    id = entry.Id,
+                    title = parts.Last(),
+                    Item = new trackMetadata
+                    {
+                        canPlay = true
+                    }
                 });
             }
             

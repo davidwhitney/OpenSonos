@@ -43,9 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MusicDatabase\DirectoryEntry.cs" />
+    <Compile Include="Compression\Gzip.cs" />
+    <Compile Include="MusicDatabase\FlatFileMusicCatalogue.cs" />
     <Compile Include="LanMusicServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Browsing\SonosId.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
