@@ -5,27 +5,19 @@ using OpenSonos.SonosServer.Metadata;
 namespace OpenSonos.SonosServer
 {
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
-    public class ServerBase : ISonosApi, ISonosMetadataApi
+    public abstract class ServerBase : ISonosApi, ISonosMetadataApi
     {
         public virtual Presentation GetPresentationMaps()
         {
             throw new NotImplementedException();
         }
 
-        public virtual getSessionIdResponse GetSessionId(getSessionIdRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual getMetadataResponse GetMetadata(getMetadataRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
-        {
-            throw new NotImplementedException();
-        }
+        // Bare minimum implementation
+        public abstract getSessionIdResponse GetSessionId(getSessionIdRequest request);
+        public abstract getMetadataResponse GetMetadata(getMetadataRequest request);
+        public abstract getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request);
+        public abstract getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request);
+        public abstract getMediaURIResponse GetMediaUri(getMediaURIRequest request);
 
         public virtual getExtendedMetadataTextResponse GetExtendedMetadataText(getExtendedMetadataTextRequest request)
         {
@@ -38,16 +30,6 @@ namespace OpenSonos.SonosServer
         }
 
         public virtual searchResponse Search(searchRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual getMediaURIResponse GetMediaUri(getMediaURIRequest request)
         {
             throw new NotImplementedException();
         }

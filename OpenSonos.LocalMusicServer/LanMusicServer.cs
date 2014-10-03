@@ -23,6 +23,26 @@ namespace OpenSonos.LocalMusicServer
             return new getSessionIdResponse("1");
         }
 
+        public override getMetadataResponse GetMetadata(getMetadataRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override getMediaURIResponse GetMediaUri(getMediaURIRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         public override searchResponse Search(searchRequest request)
         {
             throw new NotImplementedException();

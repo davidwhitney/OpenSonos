@@ -11,21 +11,9 @@ namespace OpenSonos.LocalMusicServer
                   .HostedAt(new Uri("http://localhost:8000"))
                   .Open();
 
-            Task.Run(() => RegisterServer());
+            Task.Run(() => { Players.Discover(); });
             
             Console.ReadLine();
-        }
-
-        public static async void RegisterServer()
-        {
-            var players = await Players.Discover();
-
-            Console.WriteLine("Discovered Sonos Players:" + Environment.NewLine);
-            foreach (var player in players)
-            {
-                Console.WriteLine("\t" + player.Address);
-            }
-            
         }
     }
 }
