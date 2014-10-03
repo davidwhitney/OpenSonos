@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ServiceModel;
 using OpenSonos.SonosContract;
 
 namespace OpenSonos.SonosServer
 {
-    public class Server : SonosSoap
+    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
+    public class Server : ISonosApi
     {
         public getSessionIdResponse getSessionId(getSessionIdRequest request)
         {
@@ -32,7 +31,7 @@ namespace OpenSonos.SonosServer
         {
             throw new NotImplementedException();
         }
-
+        
         public searchResponse search(searchRequest request)
         {
             throw new NotImplementedException();
