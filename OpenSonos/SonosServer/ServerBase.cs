@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ServiceModel;
+using OpenSonos.SonosServer.Metadata;
 
 namespace OpenSonos.SonosServer
 {
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
     public class ServerBase : ISonosApi, ISonosMetadataApi
     {
-        public virtual PresentationMap GetPresentationMaps()
+        public virtual Presentation GetPresentationMaps()
         {
             throw new NotImplementedException();
         }

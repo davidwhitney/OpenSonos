@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.ServiceModel.Web;
-using System.Text;
+using OpenSonos.SonosServer.Metadata;
 
 namespace OpenSonos.SonosServer
 {
@@ -14,6 +11,6 @@ namespace OpenSonos.SonosServer
         [OperationContract]
         [WebGet(UriTemplate = "presentation-maps", BodyStyle = WebMessageBodyStyle.Bare)]
         [ServiceKnownType(typeof(PresentationMap))]
-        PresentationMap GetPresentationMaps();
+        Presentation GetPresentationMaps();
     }
 }

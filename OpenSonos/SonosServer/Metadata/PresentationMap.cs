@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace OpenSonos.SonosServer
+namespace OpenSonos.SonosServer.Metadata
 {
     [Serializable]
     public class PresentationMap
