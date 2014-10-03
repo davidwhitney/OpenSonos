@@ -5,7 +5,7 @@ using OpenSonos.SonosServer;
 
 namespace OpenSonos.LocalMusicServer
 {
-    public static class ResourceRepresentationMappingExtensions
+    public static class MappingExtensions
     {
         public static getExtendedMetadataResponse ToMetaDataResponse(this IRepresentAResource entry)
         {
