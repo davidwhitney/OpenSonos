@@ -43,14 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MusicDatabase\DirectoryEntry.cs" />
+    <Compile Include="MusicDatabase\Container.cs" />
     <Compile Include="Compression\Gzip.cs" />
     <Compile Include="MusicDatabase\FlatFileMusicCatalogue.cs" />
-    <Compile Include="LanMusicServer.cs" />
+    <Compile Include="SmbMusicServer.cs" />
+    <Compile Include="MusicDatabase\IMusicRepository.cs" />
+    <Compile Include="MusicDatabase\IRepresentAResource.cs" />
+    <Compile Include="MusicDatabase\MusicFile.cs" />
+    <Compile Include="MusicDatabase\PhysicalResource.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Browsing\SonosId.cs" />
-    <Compile Include="DirectoryEntryExtensions.cs" />
+    <Compile Include="ResourceRepresentationMappingExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

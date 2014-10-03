@@ -5,9 +5,9 @@ using OpenSonos.SonosServer;
 
 namespace OpenSonos.LocalMusicServer
 {
-    public static class DirectoryEntryExtensions
+    public static class ResourceRepresentationMappingExtensions
     {
-        public static getExtendedMetadataResponse ToMetaDataResponse(this DirectoryEntry entry)
+        public static getExtendedMetadataResponse ToMetaDataResponse(this IRepresentAResource entry)
         {
             return new getExtendedMetadataResponse
             {
@@ -18,13 +18,13 @@ namespace OpenSonos.LocalMusicServer
             };
         }
 
-        public static mediaMetadata ToMediaMetadata(this DirectoryEntry entry)
+        public static mediaMetadata ToMediaMetadata(this IRepresentAResource entry)
         {
             return new mediaMetadata
             {
                 itemType = itemType.track,
                 id = entry.Id,
-                title = entry.Parts.Last(),
+                title = entry.DisplayName,
                 onDemand = true,
                 onDemandSpecified = true,
                 mimeType = "audio/mpeg3",
@@ -37,20 +37,20 @@ namespace OpenSonos.LocalMusicServer
             };
         }
 
-        public static mediaList DirectoryToSonosResponse(this List<DirectoryEntry> directoryEntries, int index, int count)
+        public static mediaList DirectoryToSonosResponse(this List<IRepresentAResource> directoryEntries, int index, int count)
         {
             var requestedPage = directoryEntries.Skip(index).Take(count).ToList();
 
             var collections = new List<AbstractMedia>();
-            foreach (var subdirectory in requestedPage.Where(x => x.IsDirectory))
+            foreach (var subdirectory in requestedPage.Where(x => x is Container))
             {
                 collections.Add(new mediaCollection
                 {
-                    artist = subdirectory.Parts.Last(),
+                    artist = subdirectory.DisplayName,
                     canPlay = false,
                     id = subdirectory.Id,
                     itemType = itemType.album,
-                    title = subdirectory.Parts.Last(),
+                    title = subdirectory.DisplayName,
                     readOnly = true,
                     userContent = true,
                     homogeneous = true,
@@ -58,7 +58,7 @@ namespace OpenSonos.LocalMusicServer
                 });
             }
 
-            foreach (var entry in requestedPage.Where(x => !x.IsDirectory))
+            foreach (var entry in requestedPage.Where(x => x is MusicFile))
             {
                 collections.Add(entry.ToMediaMetadata());
             }

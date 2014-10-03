@@ -7,14 +7,9 @@ using OpenSonos.SonosServer.Metadata;
 
 namespace OpenSonos.LocalMusicServer
 {
-    public class LanMusicServer : ServerBase
+    public class SmbMusicServer : ServerBase
     {
-        private readonly FlatFileMusicCatalogue _catalogue;
-
-        public LanMusicServer()
-        {
-            _catalogue = new FlatFileMusicCatalogue();
-        }
+        public static Func<IMusicRepository> MusicRepository { get; set; }
 
         public override Presentation GetPresentationMaps()
         {
@@ -34,8 +29,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMetadataResponse GetMetadata(getMetadataRequest request)
         {
-            var id = new SonosId(request.id);
-            var results = _catalogue.GetCollection(id);
+            var results = MusicRepository().GetResources(new SonosId(request.id));
 
             return new getMetadataResponse
             {
@@ -45,21 +39,19 @@ namespace OpenSonos.LocalMusicServer
 
         public override getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
         {
-            var id = new SonosId(request.id);
-            var entry = new DirectoryEntry(id.RequestedPath);
-            return entry.ToMetaDataResponse();
+            return PhysicalResource.FromId(request.id).ToMetaDataResponse();
         }
 
         public override getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)
         {
-            var id = new SonosId(request.id);
-            var entry = new DirectoryEntry(id.RequestedPath);
-
             return new getMediaMetadataResponse
             {
                 getMediaMetadataResult = new getMediaMetadataResponseGetMediaMetadataResult
                 {
-                    Items = new object[]{entry.ToMediaMetadata()},
+                    Items = new object[]
+                    {
+                        PhysicalResource.FromId(request.id).ToMediaMetadata()
+                    },
                     ItemsElementName = new []
                     {
                         ItemsChoiceType.mediaMetadata, 
@@ -70,12 +62,10 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMediaURIResponse GetMediaUri(getMediaURIRequest request)
         {
-            var id = new SonosId(request.id);
-            var resp = new getMediaURIResponse
+            return new getMediaURIResponse
             {
-                getMediaURIResult = "x-file-cifs:" + "//redqueen/music/" + id.RequestedPath.Replace("\\", "/"),
+                getMediaURIResult = MusicRepository().BuildUriForId(new SonosId(request.id))
             };
-            return resp;
         }
 
         public override getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request)
@@ -92,7 +82,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override searchResponse Search(searchRequest request)
         {
-            var results = _catalogue.Search(request.term);
+            var results = MusicRepository().Search(request.term);
             return new searchResponse
             {
                 searchResult = results.DirectoryToSonosResponse(request.index, request.count)
