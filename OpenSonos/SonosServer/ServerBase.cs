@@ -18,6 +18,7 @@ namespace OpenSonos.SonosServer
         public abstract getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request);
         public abstract getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request);
         public abstract getMediaURIResponse GetMediaUri(getMediaURIRequest request);
+        public abstract getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request);
 
         public virtual getExtendedMetadataTextResponse GetExtendedMetadataText(getExtendedMetadataTextRequest request)
         {
@@ -48,12 +49,7 @@ namespace OpenSonos.SonosServer
         {
             throw new NotImplementedException();
         }
-
-        public virtual getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public virtual reportStatusResponse ReportStatus(reportStatusRequest request)
         {
             throw new NotImplementedException();
