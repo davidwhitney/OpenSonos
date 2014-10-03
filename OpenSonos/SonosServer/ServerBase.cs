@@ -11,137 +11,137 @@ namespace OpenSonos.SonosServer
             throw new NotImplementedException();
         }
 
-        public virtual getSessionIdResponse getSessionId(getSessionIdRequest request)
+        public virtual getSessionIdResponse GetSessionId(getSessionIdRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getMetadataResponse getMetadata(getMetadataRequest request)
+        public virtual getMetadataResponse GetMetadata(getMetadataRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getExtendedMetadataResponse getExtendedMetadata(getExtendedMetadataRequest request)
+        public virtual getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getExtendedMetadataTextResponse getExtendedMetadataText(getExtendedMetadataTextRequest request)
+        public virtual getExtendedMetadataTextResponse GetExtendedMetadataText(getExtendedMetadataTextRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual rateItemResponse rateItem(rateItemRequest request)
+        public virtual rateItemResponse RateItem(rateItemRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual searchResponse search(searchRequest request)
+        public virtual searchResponse Search(searchRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getMediaMetadataResponse getMediaMetadata(getMediaMetadataRequest request)
+        public virtual getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getMediaURIResponse getMediaURI(getMediaURIRequest request)
+        public virtual getMediaURIResponse GetMediaUri(getMediaURIRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual createItemResponse createItem(createItemRequest request)
+        public virtual createItemResponse CreateItem(createItemRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual deleteItemResponse deleteItem(deleteItemRequest request)
+        public virtual deleteItemResponse DeleteItem(deleteItemRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getScrollIndicesResponse getScrollIndices(getScrollIndicesRequest request)
+        public virtual getScrollIndicesResponse GetScrollIndices(getScrollIndicesRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getLastUpdateResponse getLastUpdate(getLastUpdateRequest request)
+        public virtual getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual reportStatusResponse reportStatus(reportStatusRequest request)
+        public virtual reportStatusResponse ReportStatus(reportStatusRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual setPlayedSecondsResponse setPlayedSeconds(setPlayedSecondsRequest request)
+        public virtual setPlayedSecondsResponse SetPlayedSeconds(setPlayedSecondsRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual reportPlaySecondsResponse reportPlaySeconds(reportPlaySecondsRequest request)
+        public virtual reportPlaySecondsResponse ReportPlaySeconds(reportPlaySecondsRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual reportPlayStatusResponse reportPlayStatus(reportPlayStatusRequest request)
+        public virtual reportPlayStatusResponse ReportPlayStatus(reportPlayStatusRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual reportAccountActionResponse reportAccountAction(reportAccountActionRequest request)
+        public virtual reportAccountActionResponse ReportAccountAction(reportAccountActionRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getDeviceLinkCodeResponse getDeviceLinkCode(getDeviceLinkCodeRequest request)
+        public virtual getDeviceLinkCodeResponse GetDeviceLinkCode(getDeviceLinkCodeRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getDeviceAuthTokenResponse getDeviceAuthToken(getDeviceAuthTokenRequest request)
+        public virtual getDeviceAuthTokenResponse GetDeviceAuthToken(getDeviceAuthTokenRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getStreamingMetadataResponse getStreamingMetadata(getStreamingMetadataRequest request)
+        public virtual getStreamingMetadataResponse GetStreamingMetadata(getStreamingMetadataRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual getContentKeyResponse getContentKey(getContentKeyRequest request)
+        public virtual getContentKeyResponse GetContentKey(getContentKeyRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual createContainerResponse createContainer(createContainerRequest request)
+        public virtual createContainerResponse CreateContainer(createContainerRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual addToContainerResponse addToContainer(addToContainerRequest request)
+        public virtual addToContainerResponse AddToContainer(addToContainerRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual renameContainerResponse renameContainer(renameContainerRequest request)
+        public virtual renameContainerResponse RenameContainer(renameContainerRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual deleteContainerResponse deleteContainer(deleteContainerRequest request)
+        public virtual deleteContainerResponse DeleteContainer(deleteContainerRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual removeFromContainerResponse removeFromContainer(removeFromContainerRequest request)
+        public virtual removeFromContainerResponse RemoveFromContainer(removeFromContainerRequest request)
         {
             throw new NotImplementedException();
         }
 
-        public virtual reorderContainerResponse reorderContainer(reorderContainerRequest request)
+        public virtual reorderContainerResponse ReorderContainer(reorderContainerRequest request)
         {
             throw new NotImplementedException();
         }

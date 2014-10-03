@@ -10,12 +10,12 @@ namespace OpenSonos.LocalMusicServer
             return PresentationMap.DefaultSonosSearch();
         }
 
-        public override getSessionIdResponse getSessionId(getSessionIdRequest request)
+        public override getSessionIdResponse GetSessionId(getSessionIdRequest request)
         {
             return new getSessionIdResponse("1");
         }
 
-        public override searchResponse search(searchRequest request)
+        public override searchResponse Search(searchRequest request)
         {
             throw new NotImplementedException();
         }

@@ -8,6 +8,7 @@ using System.Text;
 namespace OpenSonos.SonosServer
 {
     [ServiceContract]
+    [XmlSerializerFormat]
     public interface ISonosMetadataApi
     {
         [OperationContract]

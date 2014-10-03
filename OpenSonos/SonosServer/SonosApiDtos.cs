@@ -4158,8 +4158,8 @@ namespace OpenSonos.SonosServer
         }
 
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getSessionIdResponse OpenSonos.SonosServer.ISonosApi.getSessionId(OpenSonos.SonosServer.getSessionIdRequest request) {
-            return base.Channel.getSessionId(request);
+        OpenSonos.SonosServer.getSessionIdResponse OpenSonos.SonosServer.ISonosApi.GetSessionId(OpenSonos.SonosServer.getSessionIdRequest request) {
+            return base.Channel.GetSessionId(request);
         }
         
         public string getSessionId(OpenSonos.SonosServer.credentials credentials, string username, string password) {
@@ -4167,13 +4167,13 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.username = username;
             inValue.password = password;
-            OpenSonos.SonosServer.getSessionIdResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getSessionId(inValue);
+            OpenSonos.SonosServer.getSessionIdResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetSessionId(inValue);
             return retVal.getSessionIdResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getMetadataResponse OpenSonos.SonosServer.ISonosApi.getMetadata(OpenSonos.SonosServer.getMetadataRequest request) {
-            return base.Channel.getMetadata(request);
+        OpenSonos.SonosServer.getMetadataResponse OpenSonos.SonosServer.ISonosApi.GetMetadata(OpenSonos.SonosServer.getMetadataRequest request) {
+            return base.Channel.GetMetadata(request);
         }
         
         public OpenSonos.SonosServer.mediaList getMetadata(OpenSonos.SonosServer.credentials credentials, string id, int index, int count, bool recursive) {
@@ -4183,26 +4183,26 @@ namespace OpenSonos.SonosServer
             inValue.index = index;
             inValue.count = count;
             inValue.recursive = recursive;
-            OpenSonos.SonosServer.getMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getMetadata(inValue);
+            OpenSonos.SonosServer.getMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetMetadata(inValue);
             return retVal.getMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getExtendedMetadataResponse OpenSonos.SonosServer.ISonosApi.getExtendedMetadata(OpenSonos.SonosServer.getExtendedMetadataRequest request) {
-            return base.Channel.getExtendedMetadata(request);
+        OpenSonos.SonosServer.getExtendedMetadataResponse OpenSonos.SonosServer.ISonosApi.GetExtendedMetadata(OpenSonos.SonosServer.getExtendedMetadataRequest request) {
+            return base.Channel.GetExtendedMetadata(request);
         }
         
         public OpenSonos.SonosServer.extendedMetadata getExtendedMetadata(OpenSonos.SonosServer.credentials credentials, string id) {
             OpenSonos.SonosServer.getExtendedMetadataRequest inValue = new OpenSonos.SonosServer.getExtendedMetadataRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosServer.getExtendedMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getExtendedMetadata(inValue);
+            OpenSonos.SonosServer.getExtendedMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetExtendedMetadata(inValue);
             return retVal.getExtendedMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getExtendedMetadataTextResponse OpenSonos.SonosServer.ISonosApi.getExtendedMetadataText(OpenSonos.SonosServer.getExtendedMetadataTextRequest request) {
-            return base.Channel.getExtendedMetadataText(request);
+        OpenSonos.SonosServer.getExtendedMetadataTextResponse OpenSonos.SonosServer.ISonosApi.GetExtendedMetadataText(OpenSonos.SonosServer.getExtendedMetadataTextRequest request) {
+            return base.Channel.GetExtendedMetadataText(request);
         }
         
         public string getExtendedMetadataText(OpenSonos.SonosServer.credentials credentials, string id, string type) {
@@ -4210,13 +4210,13 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.type = type;
-            OpenSonos.SonosServer.getExtendedMetadataTextResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getExtendedMetadataText(inValue);
+            OpenSonos.SonosServer.getExtendedMetadataTextResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetExtendedMetadataText(inValue);
             return retVal.getExtendedMetadataTextResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.rateItemResponse OpenSonos.SonosServer.ISonosApi.rateItem(OpenSonos.SonosServer.rateItemRequest request) {
-            return base.Channel.rateItem(request);
+        OpenSonos.SonosServer.rateItemResponse OpenSonos.SonosServer.ISonosApi.RateItem(OpenSonos.SonosServer.rateItemRequest request) {
+            return base.Channel.RateItem(request);
         }
         
         public OpenSonos.SonosServer.itemRating rateItem(OpenSonos.SonosServer.credentials credentials, string id, int rating) {
@@ -4224,13 +4224,13 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.rating = rating;
-            OpenSonos.SonosServer.rateItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).rateItem(inValue);
+            OpenSonos.SonosServer.rateItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).RateItem(inValue);
             return retVal.rateItemResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.searchResponse OpenSonos.SonosServer.ISonosApi.search(OpenSonos.SonosServer.searchRequest request) {
-            return base.Channel.search(request);
+        OpenSonos.SonosServer.searchResponse OpenSonos.SonosServer.ISonosApi.Search(OpenSonos.SonosServer.searchRequest request) {
+            return base.Channel.Search(request);
         }
         
         public OpenSonos.SonosServer.mediaList search(OpenSonos.SonosServer.credentials credentials, string id, string term, int index, int count) {
@@ -4240,91 +4240,91 @@ namespace OpenSonos.SonosServer
             inValue.term = term;
             inValue.index = index;
             inValue.count = count;
-            OpenSonos.SonosServer.searchResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).search(inValue);
+            OpenSonos.SonosServer.searchResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).Search(inValue);
             return retVal.searchResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getMediaMetadataResponse OpenSonos.SonosServer.ISonosApi.getMediaMetadata(OpenSonos.SonosServer.getMediaMetadataRequest request) {
-            return base.Channel.getMediaMetadata(request);
+        OpenSonos.SonosServer.getMediaMetadataResponse OpenSonos.SonosServer.ISonosApi.GetMediaMetadata(OpenSonos.SonosServer.getMediaMetadataRequest request) {
+            return base.Channel.GetMediaMetadata(request);
         }
         
         public OpenSonos.SonosServer.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadata(OpenSonos.SonosServer.credentials credentials, string id) {
             OpenSonos.SonosServer.getMediaMetadataRequest inValue = new OpenSonos.SonosServer.getMediaMetadataRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosServer.getMediaMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getMediaMetadata(inValue);
+            OpenSonos.SonosServer.getMediaMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetMediaMetadata(inValue);
             return retVal.getMediaMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getMediaURIResponse OpenSonos.SonosServer.ISonosApi.getMediaURI(OpenSonos.SonosServer.getMediaURIRequest request) {
-            return base.Channel.getMediaURI(request);
+        OpenSonos.SonosServer.getMediaURIResponse OpenSonos.SonosServer.ISonosApi.GetMediaUri(OpenSonos.SonosServer.getMediaURIRequest request) {
+            return base.Channel.GetMediaUri(request);
         }
         
         public string getMediaURI(OpenSonos.SonosServer.credentials credentials, string id, out OpenSonos.SonosServer.httpHeader[] httpHeaders, out int uriTimeout) {
             OpenSonos.SonosServer.getMediaURIRequest inValue = new OpenSonos.SonosServer.getMediaURIRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosServer.getMediaURIResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getMediaURI(inValue);
+            OpenSonos.SonosServer.getMediaURIResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetMediaUri(inValue);
             httpHeaders = retVal.httpHeaders;
             uriTimeout = retVal.uriTimeout;
             return retVal.getMediaURIResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.createItemResponse OpenSonos.SonosServer.ISonosApi.createItem(OpenSonos.SonosServer.createItemRequest request) {
-            return base.Channel.createItem(request);
+        OpenSonos.SonosServer.createItemResponse OpenSonos.SonosServer.ISonosApi.CreateItem(OpenSonos.SonosServer.createItemRequest request) {
+            return base.Channel.CreateItem(request);
         }
         
         public string createItem(OpenSonos.SonosServer.credentials credentials, string favorite) {
             OpenSonos.SonosServer.createItemRequest inValue = new OpenSonos.SonosServer.createItemRequest();
             inValue.credentials = credentials;
             inValue.favorite = favorite;
-            OpenSonos.SonosServer.createItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).createItem(inValue);
+            OpenSonos.SonosServer.createItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).CreateItem(inValue);
             return retVal.createItemResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.deleteItemResponse OpenSonos.SonosServer.ISonosApi.deleteItem(OpenSonos.SonosServer.deleteItemRequest request) {
-            return base.Channel.deleteItem(request);
+        OpenSonos.SonosServer.deleteItemResponse OpenSonos.SonosServer.ISonosApi.DeleteItem(OpenSonos.SonosServer.deleteItemRequest request) {
+            return base.Channel.DeleteItem(request);
         }
         
         public void deleteItem(OpenSonos.SonosServer.credentials credentials, string favorite) {
             OpenSonos.SonosServer.deleteItemRequest inValue = new OpenSonos.SonosServer.deleteItemRequest();
             inValue.credentials = credentials;
             inValue.favorite = favorite;
-            OpenSonos.SonosServer.deleteItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).deleteItem(inValue);
+            OpenSonos.SonosServer.deleteItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).DeleteItem(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getScrollIndicesResponse OpenSonos.SonosServer.ISonosApi.getScrollIndices(OpenSonos.SonosServer.getScrollIndicesRequest request) {
-            return base.Channel.getScrollIndices(request);
+        OpenSonos.SonosServer.getScrollIndicesResponse OpenSonos.SonosServer.ISonosApi.GetScrollIndices(OpenSonos.SonosServer.getScrollIndicesRequest request) {
+            return base.Channel.GetScrollIndices(request);
         }
         
         public string getScrollIndices(OpenSonos.SonosServer.credentials credentials, string id) {
             OpenSonos.SonosServer.getScrollIndicesRequest inValue = new OpenSonos.SonosServer.getScrollIndicesRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosServer.getScrollIndicesResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getScrollIndices(inValue);
+            OpenSonos.SonosServer.getScrollIndicesResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetScrollIndices(inValue);
             return retVal.getScrollIndicesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getLastUpdateResponse OpenSonos.SonosServer.ISonosApi.getLastUpdate(OpenSonos.SonosServer.getLastUpdateRequest request) {
-            return base.Channel.getLastUpdate(request);
+        OpenSonos.SonosServer.getLastUpdateResponse OpenSonos.SonosServer.ISonosApi.GetLastUpdate(OpenSonos.SonosServer.getLastUpdateRequest request) {
+            return base.Channel.GetLastUpdate(request);
         }
         
         public OpenSonos.SonosServer.lastUpdate getLastUpdate(OpenSonos.SonosServer.credentials credentials) {
             OpenSonos.SonosServer.getLastUpdateRequest inValue = new OpenSonos.SonosServer.getLastUpdateRequest();
             inValue.credentials = credentials;
-            OpenSonos.SonosServer.getLastUpdateResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getLastUpdate(inValue);
+            OpenSonos.SonosServer.getLastUpdateResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetLastUpdate(inValue);
             return retVal.getLastUpdateResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.reportStatusResponse OpenSonos.SonosServer.ISonosApi.reportStatus(OpenSonos.SonosServer.reportStatusRequest request) {
-            return base.Channel.reportStatus(request);
+        OpenSonos.SonosServer.reportStatusResponse OpenSonos.SonosServer.ISonosApi.ReportStatus(OpenSonos.SonosServer.reportStatusRequest request) {
+            return base.Channel.ReportStatus(request);
         }
         
         public void reportStatus(OpenSonos.SonosServer.credentials credentials, string id, int errorCode, string message) {
@@ -4333,12 +4333,12 @@ namespace OpenSonos.SonosServer
             inValue.id = id;
             inValue.errorCode = errorCode;
             inValue.message = message;
-            OpenSonos.SonosServer.reportStatusResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportStatus(inValue);
+            OpenSonos.SonosServer.reportStatusResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).ReportStatus(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.setPlayedSecondsResponse OpenSonos.SonosServer.ISonosApi.setPlayedSeconds(OpenSonos.SonosServer.setPlayedSecondsRequest request) {
-            return base.Channel.setPlayedSeconds(request);
+        OpenSonos.SonosServer.setPlayedSecondsResponse OpenSonos.SonosServer.ISonosApi.SetPlayedSeconds(OpenSonos.SonosServer.setPlayedSecondsRequest request) {
+            return base.Channel.SetPlayedSeconds(request);
         }
         
         public void setPlayedSeconds(OpenSonos.SonosServer.credentials credentials, string id, int seconds) {
@@ -4346,12 +4346,12 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.seconds = seconds;
-            OpenSonos.SonosServer.setPlayedSecondsResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).setPlayedSeconds(inValue);
+            OpenSonos.SonosServer.setPlayedSecondsResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).SetPlayedSeconds(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.reportPlaySecondsResponse OpenSonos.SonosServer.ISonosApi.reportPlaySeconds(OpenSonos.SonosServer.reportPlaySecondsRequest request) {
-            return base.Channel.reportPlaySeconds(request);
+        OpenSonos.SonosServer.reportPlaySecondsResponse OpenSonos.SonosServer.ISonosApi.ReportPlaySeconds(OpenSonos.SonosServer.reportPlaySecondsRequest request) {
+            return base.Channel.ReportPlaySeconds(request);
         }
         
         public OpenSonos.SonosServer.reportPlaySecondsResult reportPlaySeconds(OpenSonos.SonosServer.credentials credentials, string id, int seconds) {
@@ -4359,13 +4359,13 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.seconds = seconds;
-            OpenSonos.SonosServer.reportPlaySecondsResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportPlaySeconds(inValue);
+            OpenSonos.SonosServer.reportPlaySecondsResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).ReportPlaySeconds(inValue);
             return retVal.reportPlaySecondsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.reportPlayStatusResponse OpenSonos.SonosServer.ISonosApi.reportPlayStatus(OpenSonos.SonosServer.reportPlayStatusRequest request) {
-            return base.Channel.reportPlayStatus(request);
+        OpenSonos.SonosServer.reportPlayStatusResponse OpenSonos.SonosServer.ISonosApi.ReportPlayStatus(OpenSonos.SonosServer.reportPlayStatusRequest request) {
+            return base.Channel.ReportPlayStatus(request);
         }
         
         public void reportPlayStatus(OpenSonos.SonosServer.credentials credentials, string id, string status) {
@@ -4373,37 +4373,37 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.status = status;
-            OpenSonos.SonosServer.reportPlayStatusResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportPlayStatus(inValue);
+            OpenSonos.SonosServer.reportPlayStatusResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).ReportPlayStatus(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.reportAccountActionResponse OpenSonos.SonosServer.ISonosApi.reportAccountAction(OpenSonos.SonosServer.reportAccountActionRequest request) {
-            return base.Channel.reportAccountAction(request);
+        OpenSonos.SonosServer.reportAccountActionResponse OpenSonos.SonosServer.ISonosApi.ReportAccountAction(OpenSonos.SonosServer.reportAccountActionRequest request) {
+            return base.Channel.ReportAccountAction(request);
         }
         
         public void reportAccountAction(OpenSonos.SonosServer.credentials credentials, string type) {
             OpenSonos.SonosServer.reportAccountActionRequest inValue = new OpenSonos.SonosServer.reportAccountActionRequest();
             inValue.credentials = credentials;
             inValue.type = type;
-            OpenSonos.SonosServer.reportAccountActionResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportAccountAction(inValue);
+            OpenSonos.SonosServer.reportAccountActionResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).ReportAccountAction(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getDeviceLinkCodeResponse OpenSonos.SonosServer.ISonosApi.getDeviceLinkCode(OpenSonos.SonosServer.getDeviceLinkCodeRequest request) {
-            return base.Channel.getDeviceLinkCode(request);
+        OpenSonos.SonosServer.getDeviceLinkCodeResponse OpenSonos.SonosServer.ISonosApi.GetDeviceLinkCode(OpenSonos.SonosServer.getDeviceLinkCodeRequest request) {
+            return base.Channel.GetDeviceLinkCode(request);
         }
         
         public OpenSonos.SonosServer.deviceLinkCodeResult getDeviceLinkCode(OpenSonos.SonosServer.credentials credentials, string householdId) {
             OpenSonos.SonosServer.getDeviceLinkCodeRequest inValue = new OpenSonos.SonosServer.getDeviceLinkCodeRequest();
             inValue.credentials = credentials;
             inValue.householdId = householdId;
-            OpenSonos.SonosServer.getDeviceLinkCodeResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getDeviceLinkCode(inValue);
+            OpenSonos.SonosServer.getDeviceLinkCodeResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetDeviceLinkCode(inValue);
             return retVal.getDeviceLinkCodeResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getDeviceAuthTokenResponse OpenSonos.SonosServer.ISonosApi.getDeviceAuthToken(OpenSonos.SonosServer.getDeviceAuthTokenRequest request) {
-            return base.Channel.getDeviceAuthToken(request);
+        OpenSonos.SonosServer.getDeviceAuthTokenResponse OpenSonos.SonosServer.ISonosApi.GetDeviceAuthToken(OpenSonos.SonosServer.getDeviceAuthTokenRequest request) {
+            return base.Channel.GetDeviceAuthToken(request);
         }
         
         public OpenSonos.SonosServer.deviceAuthTokenResult getDeviceAuthToken(OpenSonos.SonosServer.credentials credentials, string householdId, string linkCode, string linkDeviceId) {
@@ -4412,13 +4412,13 @@ namespace OpenSonos.SonosServer
             inValue.householdId = householdId;
             inValue.linkCode = linkCode;
             inValue.linkDeviceId = linkDeviceId;
-            OpenSonos.SonosServer.getDeviceAuthTokenResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getDeviceAuthToken(inValue);
+            OpenSonos.SonosServer.getDeviceAuthTokenResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetDeviceAuthToken(inValue);
             return retVal.getDeviceAuthTokenResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getStreamingMetadataResponse OpenSonos.SonosServer.ISonosApi.getStreamingMetadata(OpenSonos.SonosServer.getStreamingMetadataRequest request) {
-            return base.Channel.getStreamingMetadata(request);
+        OpenSonos.SonosServer.getStreamingMetadataResponse OpenSonos.SonosServer.ISonosApi.GetStreamingMetadata(OpenSonos.SonosServer.getStreamingMetadataRequest request) {
+            return base.Channel.GetStreamingMetadata(request);
         }
         
         public OpenSonos.SonosServer.segmentMetadataList getStreamingMetadata(OpenSonos.SonosServer.credentials credentials, string id, System.DateTime startTime, int duration) {
@@ -4427,13 +4427,13 @@ namespace OpenSonos.SonosServer
             inValue.id = id;
             inValue.startTime = startTime;
             inValue.duration = duration;
-            OpenSonos.SonosServer.getStreamingMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getStreamingMetadata(inValue);
+            OpenSonos.SonosServer.getStreamingMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetStreamingMetadata(inValue);
             return retVal.getStreamingMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.getContentKeyResponse OpenSonos.SonosServer.ISonosApi.getContentKey(OpenSonos.SonosServer.getContentKeyRequest request) {
-            return base.Channel.getContentKey(request);
+        OpenSonos.SonosServer.getContentKeyResponse OpenSonos.SonosServer.ISonosApi.GetContentKey(OpenSonos.SonosServer.getContentKeyRequest request) {
+            return base.Channel.GetContentKey(request);
         }
         
         public OpenSonos.SonosServer.contentKey getContentKey(OpenSonos.SonosServer.credentials credentials, string id, string uri) {
@@ -4441,13 +4441,13 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.uri = uri;
-            OpenSonos.SonosServer.getContentKeyResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getContentKey(inValue);
+            OpenSonos.SonosServer.getContentKeyResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).GetContentKey(inValue);
             return retVal.contentKey;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.createContainerResponse OpenSonos.SonosServer.ISonosApi.createContainer(OpenSonos.SonosServer.createContainerRequest request) {
-            return base.Channel.createContainer(request);
+        OpenSonos.SonosServer.createContainerResponse OpenSonos.SonosServer.ISonosApi.CreateContainer(OpenSonos.SonosServer.createContainerRequest request) {
+            return base.Channel.CreateContainer(request);
         }
         
         public OpenSonos.SonosServer.createContainerResult createContainer(OpenSonos.SonosServer.credentials credentials, string containerType, string title, string parentId, string seedId) {
@@ -4457,13 +4457,13 @@ namespace OpenSonos.SonosServer
             inValue.title = title;
             inValue.parentId = parentId;
             inValue.seedId = seedId;
-            OpenSonos.SonosServer.createContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).createContainer(inValue);
+            OpenSonos.SonosServer.createContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).CreateContainer(inValue);
             return retVal.createContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.addToContainerResponse OpenSonos.SonosServer.ISonosApi.addToContainer(OpenSonos.SonosServer.addToContainerRequest request) {
-            return base.Channel.addToContainer(request);
+        OpenSonos.SonosServer.addToContainerResponse OpenSonos.SonosServer.ISonosApi.AddToContainer(OpenSonos.SonosServer.addToContainerRequest request) {
+            return base.Channel.AddToContainer(request);
         }
         
         public OpenSonos.SonosServer.addToContainerResult addToContainer(OpenSonos.SonosServer.credentials credentials, string id, string parentId, int index, string updateId) {
@@ -4473,13 +4473,13 @@ namespace OpenSonos.SonosServer
             inValue.parentId = parentId;
             inValue.index = index;
             inValue.updateId = updateId;
-            OpenSonos.SonosServer.addToContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).addToContainer(inValue);
+            OpenSonos.SonosServer.addToContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).AddToContainer(inValue);
             return retVal.addToContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.renameContainerResponse OpenSonos.SonosServer.ISonosApi.renameContainer(OpenSonos.SonosServer.renameContainerRequest request) {
-            return base.Channel.renameContainer(request);
+        OpenSonos.SonosServer.renameContainerResponse OpenSonos.SonosServer.ISonosApi.RenameContainer(OpenSonos.SonosServer.renameContainerRequest request) {
+            return base.Channel.RenameContainer(request);
         }
         
         public OpenSonos.SonosServer.renameContainerResult renameContainer(OpenSonos.SonosServer.credentials credentials, string id, string title) {
@@ -4487,26 +4487,26 @@ namespace OpenSonos.SonosServer
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.title = title;
-            OpenSonos.SonosServer.renameContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).renameContainer(inValue);
+            OpenSonos.SonosServer.renameContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).RenameContainer(inValue);
             return retVal.renameContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.deleteContainerResponse OpenSonos.SonosServer.ISonosApi.deleteContainer(OpenSonos.SonosServer.deleteContainerRequest request) {
-            return base.Channel.deleteContainer(request);
+        OpenSonos.SonosServer.deleteContainerResponse OpenSonos.SonosServer.ISonosApi.DeleteContainer(OpenSonos.SonosServer.deleteContainerRequest request) {
+            return base.Channel.DeleteContainer(request);
         }
         
         public OpenSonos.SonosServer.deleteContainerResult deleteContainer(OpenSonos.SonosServer.credentials credentials, string id) {
             OpenSonos.SonosServer.deleteContainerRequest inValue = new OpenSonos.SonosServer.deleteContainerRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosServer.deleteContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).deleteContainer(inValue);
+            OpenSonos.SonosServer.deleteContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).DeleteContainer(inValue);
             return retVal.deleteContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.removeFromContainerResponse OpenSonos.SonosServer.ISonosApi.removeFromContainer(OpenSonos.SonosServer.removeFromContainerRequest request) {
-            return base.Channel.removeFromContainer(request);
+        OpenSonos.SonosServer.removeFromContainerResponse OpenSonos.SonosServer.ISonosApi.RemoveFromContainer(OpenSonos.SonosServer.removeFromContainerRequest request) {
+            return base.Channel.RemoveFromContainer(request);
         }
         
         public OpenSonos.SonosServer.removeFromContainerResult removeFromContainer(OpenSonos.SonosServer.credentials credentials, string id, string indices, string updateId) {
@@ -4515,13 +4515,13 @@ namespace OpenSonos.SonosServer
             inValue.id = id;
             inValue.indices = indices;
             inValue.updateId = updateId;
-            OpenSonos.SonosServer.removeFromContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).removeFromContainer(inValue);
+            OpenSonos.SonosServer.removeFromContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).RemoveFromContainer(inValue);
             return retVal.removeFromContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosServer.reorderContainerResponse OpenSonos.SonosServer.ISonosApi.reorderContainer(OpenSonos.SonosServer.reorderContainerRequest request) {
-            return base.Channel.reorderContainer(request);
+        OpenSonos.SonosServer.reorderContainerResponse OpenSonos.SonosServer.ISonosApi.ReorderContainer(OpenSonos.SonosServer.reorderContainerRequest request) {
+            return base.Channel.ReorderContainer(request);
         }
         
         public OpenSonos.SonosServer.reorderContainerResult reorderContainer(OpenSonos.SonosServer.credentials credentials, string id, string from, int to, string updateId) {
@@ -4531,7 +4531,7 @@ namespace OpenSonos.SonosServer
             inValue.from = from;
             inValue.to = to;
             inValue.updateId = updateId;
-            OpenSonos.SonosServer.reorderContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reorderContainer(inValue);
+            OpenSonos.SonosServer.reorderContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).ReorderContainer(inValue);
             return retVal.reorderContainerResult;
         }
     }

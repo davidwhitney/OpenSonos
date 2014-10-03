@@ -1,52 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Xml.Serialization;
 
 namespace OpenSonos.SonosServer
 {
+    [Serializable]
     public class PresentationMap
     {
-        public string type { get; set; }
-        public Match Match { get; set; }
+        [XmlAttribute("type")] 
+        public string type;
+
+        [XmlElement("Match")]  
+        public MatchContainer Match;
 
         public static PresentationMap DefaultSonosSearch()
         {
             return new PresentationMap
             {
                 type = "Search",
-                Match = new Match
+                Match = new MatchContainer
                 {
-                    SearchCategories = new Searchcategories
+                    SearchCategories = new SearchCategories
                     {
                         Category = new[]
                         {
-                            new Category{id = "artists", mappedId = "artists"},
-                            new Category{id = "albums", mappedId = "albums"},
-                            new Category{id = "tracks", mappedId = "tracks"},
-                            new Category{id = "playlists", mappedId = "playlists"},
-                            new Category{id = "people", mappedId = "people"},
+                            new Category {id = "artists", mappedId = "artists"},
+                            new Category {id = "albums", mappedId = "albums"},
+                            new Category {id = "tracks", mappedId = "tracks"},
+                            new Category {id = "playlists", mappedId = "playlists"},
+                            new Category {id = "people", mappedId = "people"},
                         }
                     }
                 }
             };
         }
-    }
 
-    public class Match
-    {
-        public Searchcategories SearchCategories { get; set; }
-    }
+        [Serializable]
+        public class MatchContainer
+        {
+            [XmlElement("SearchCategories")] public SearchCategories SearchCategories;
+        }
 
-    public class Searchcategories
-    {
-        public Category[] Category { get; set; }
-    }
+        [Serializable]
+        public class SearchCategories
+        {
+            [XmlElement("Category")] public Category[] Category;
+        }
 
-    public class Category
-    {
-        public string mappedId { get; set; }
-        public string id { get; set; }
+        [Serializable]
+        public class Category
+        {
+            [XmlAttribute("mappedId")] public string mappedId;
+            [XmlAttribute("id")] public string id;
+        }
     }
-
 }
