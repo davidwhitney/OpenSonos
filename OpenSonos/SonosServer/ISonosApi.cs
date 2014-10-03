@@ -1,6 +1,6 @@
 using System.ServiceModel;
 
-namespace OpenSonos.SonosContract
+namespace OpenSonos.SonosServer
 {
     [ServiceContract(Namespace = "http://www.sonos.com/Services/1.1", ConfigurationName = "SonosContract.ISonosApi")]
     public interface ISonosApi

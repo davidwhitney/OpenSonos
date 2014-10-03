@@ -8,7 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OpenSonos.SonosContract {
+namespace OpenSonos.SonosServer
+{
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.34209")]
     [System.SerializableAttribute()]
@@ -2900,7 +2901,7 @@ namespace OpenSonos.SonosContract {
     public partial class getSessionIdRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string username;
@@ -2911,7 +2912,7 @@ namespace OpenSonos.SonosContract {
         public getSessionIdRequest() {
         }
         
-        public getSessionIdRequest(OpenSonos.SonosContract.credentials credentials, string username, string password) {
+        public getSessionIdRequest(OpenSonos.SonosServer.credentials credentials, string username, string password) {
             this.credentials = credentials;
             this.username = username;
             this.password = password;
@@ -2942,7 +2943,7 @@ namespace OpenSonos.SonosContract {
     public partial class getMetadataRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -2959,7 +2960,7 @@ namespace OpenSonos.SonosContract {
         public getMetadataRequest() {
         }
         
-        public getMetadataRequest(OpenSonos.SonosContract.credentials credentials, string id, int index, int count, bool recursive) {
+        public getMetadataRequest(OpenSonos.SonosServer.credentials credentials, string id, int index, int count, bool recursive) {
             this.credentials = credentials;
             this.id = id;
             this.index = index;
@@ -2975,12 +2976,12 @@ namespace OpenSonos.SonosContract {
     public partial class getMetadataResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.mediaList getMetadataResult;
+        public OpenSonos.SonosServer.mediaList getMetadataResult;
         
         public getMetadataResponse() {
         }
         
-        public getMetadataResponse(OpenSonos.SonosContract.mediaList getMetadataResult) {
+        public getMetadataResponse(OpenSonos.SonosServer.mediaList getMetadataResult) {
             this.getMetadataResult = getMetadataResult;
         }
     }
@@ -2992,7 +2993,7 @@ namespace OpenSonos.SonosContract {
     public partial class getExtendedMetadataRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3000,7 +3001,7 @@ namespace OpenSonos.SonosContract {
         public getExtendedMetadataRequest() {
         }
         
-        public getExtendedMetadataRequest(OpenSonos.SonosContract.credentials credentials, string id) {
+        public getExtendedMetadataRequest(OpenSonos.SonosServer.credentials credentials, string id) {
             this.credentials = credentials;
             this.id = id;
         }
@@ -3013,12 +3014,12 @@ namespace OpenSonos.SonosContract {
     public partial class getExtendedMetadataResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.extendedMetadata getExtendedMetadataResult;
+        public OpenSonos.SonosServer.extendedMetadata getExtendedMetadataResult;
         
         public getExtendedMetadataResponse() {
         }
         
-        public getExtendedMetadataResponse(OpenSonos.SonosContract.extendedMetadata getExtendedMetadataResult) {
+        public getExtendedMetadataResponse(OpenSonos.SonosServer.extendedMetadata getExtendedMetadataResult) {
             this.getExtendedMetadataResult = getExtendedMetadataResult;
         }
     }
@@ -3030,7 +3031,7 @@ namespace OpenSonos.SonosContract {
     public partial class getExtendedMetadataTextRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3041,7 +3042,7 @@ namespace OpenSonos.SonosContract {
         public getExtendedMetadataTextRequest() {
         }
         
-        public getExtendedMetadataTextRequest(OpenSonos.SonosContract.credentials credentials, string id, string type) {
+        public getExtendedMetadataTextRequest(OpenSonos.SonosServer.credentials credentials, string id, string type) {
             this.credentials = credentials;
             this.id = id;
             this.type = type;
@@ -3072,7 +3073,7 @@ namespace OpenSonos.SonosContract {
     public partial class rateItemRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3083,7 +3084,7 @@ namespace OpenSonos.SonosContract {
         public rateItemRequest() {
         }
         
-        public rateItemRequest(OpenSonos.SonosContract.credentials credentials, string id, int rating) {
+        public rateItemRequest(OpenSonos.SonosServer.credentials credentials, string id, int rating) {
             this.credentials = credentials;
             this.id = id;
             this.rating = rating;
@@ -3097,12 +3098,12 @@ namespace OpenSonos.SonosContract {
     public partial class rateItemResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.itemRating rateItemResult;
+        public OpenSonos.SonosServer.itemRating rateItemResult;
         
         public rateItemResponse() {
         }
         
-        public rateItemResponse(OpenSonos.SonosContract.itemRating rateItemResult) {
+        public rateItemResponse(OpenSonos.SonosServer.itemRating rateItemResult) {
             this.rateItemResult = rateItemResult;
         }
     }
@@ -3114,7 +3115,7 @@ namespace OpenSonos.SonosContract {
     public partial class searchRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3131,7 +3132,7 @@ namespace OpenSonos.SonosContract {
         public searchRequest() {
         }
         
-        public searchRequest(OpenSonos.SonosContract.credentials credentials, string id, string term, int index, int count) {
+        public searchRequest(OpenSonos.SonosServer.credentials credentials, string id, string term, int index, int count) {
             this.credentials = credentials;
             this.id = id;
             this.term = term;
@@ -3147,12 +3148,12 @@ namespace OpenSonos.SonosContract {
     public partial class searchResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.mediaList searchResult;
+        public OpenSonos.SonosServer.mediaList searchResult;
         
         public searchResponse() {
         }
         
-        public searchResponse(OpenSonos.SonosContract.mediaList searchResult) {
+        public searchResponse(OpenSonos.SonosServer.mediaList searchResult) {
             this.searchResult = searchResult;
         }
     }
@@ -3278,7 +3279,7 @@ namespace OpenSonos.SonosContract {
     public partial class getMediaMetadataRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3286,7 +3287,7 @@ namespace OpenSonos.SonosContract {
         public getMediaMetadataRequest() {
         }
         
-        public getMediaMetadataRequest(OpenSonos.SonosContract.credentials credentials, string id) {
+        public getMediaMetadataRequest(OpenSonos.SonosServer.credentials credentials, string id) {
             this.credentials = credentials;
             this.id = id;
         }
@@ -3299,12 +3300,12 @@ namespace OpenSonos.SonosContract {
     public partial class getMediaMetadataResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadataResult;
+        public OpenSonos.SonosServer.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadataResult;
         
         public getMediaMetadataResponse() {
         }
         
-        public getMediaMetadataResponse(OpenSonos.SonosContract.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadataResult) {
+        public getMediaMetadataResponse(OpenSonos.SonosServer.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadataResult) {
             this.getMediaMetadataResult = getMediaMetadataResult;
         }
     }
@@ -3316,7 +3317,7 @@ namespace OpenSonos.SonosContract {
     public partial class getMediaURIRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3324,7 +3325,7 @@ namespace OpenSonos.SonosContract {
         public getMediaURIRequest() {
         }
         
-        public getMediaURIRequest(OpenSonos.SonosContract.credentials credentials, string id) {
+        public getMediaURIRequest(OpenSonos.SonosServer.credentials credentials, string id) {
             this.credentials = credentials;
             this.id = id;
         }
@@ -3342,7 +3343,7 @@ namespace OpenSonos.SonosContract {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=1)]
         [System.Xml.Serialization.XmlArrayItemAttribute(IsNullable=false)]
-        public OpenSonos.SonosContract.httpHeader[] httpHeaders;
+        public OpenSonos.SonosServer.httpHeader[] httpHeaders;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=2)]
         public int uriTimeout;
@@ -3350,7 +3351,7 @@ namespace OpenSonos.SonosContract {
         public getMediaURIResponse() {
         }
         
-        public getMediaURIResponse(string getMediaURIResult, OpenSonos.SonosContract.httpHeader[] httpHeaders, int uriTimeout) {
+        public getMediaURIResponse(string getMediaURIResult, OpenSonos.SonosServer.httpHeader[] httpHeaders, int uriTimeout) {
             this.getMediaURIResult = getMediaURIResult;
             this.httpHeaders = httpHeaders;
             this.uriTimeout = uriTimeout;
@@ -3364,7 +3365,7 @@ namespace OpenSonos.SonosContract {
     public partial class createItemRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string favorite;
@@ -3372,7 +3373,7 @@ namespace OpenSonos.SonosContract {
         public createItemRequest() {
         }
         
-        public createItemRequest(OpenSonos.SonosContract.credentials credentials, string favorite) {
+        public createItemRequest(OpenSonos.SonosServer.credentials credentials, string favorite) {
             this.credentials = credentials;
             this.favorite = favorite;
         }
@@ -3402,7 +3403,7 @@ namespace OpenSonos.SonosContract {
     public partial class deleteItemRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string favorite;
@@ -3410,7 +3411,7 @@ namespace OpenSonos.SonosContract {
         public deleteItemRequest() {
         }
         
-        public deleteItemRequest(OpenSonos.SonosContract.credentials credentials, string favorite) {
+        public deleteItemRequest(OpenSonos.SonosServer.credentials credentials, string favorite) {
             this.credentials = credentials;
             this.favorite = favorite;
         }
@@ -3433,7 +3434,7 @@ namespace OpenSonos.SonosContract {
     public partial class getScrollIndicesRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3441,7 +3442,7 @@ namespace OpenSonos.SonosContract {
         public getScrollIndicesRequest() {
         }
         
-        public getScrollIndicesRequest(OpenSonos.SonosContract.credentials credentials, string id) {
+        public getScrollIndicesRequest(OpenSonos.SonosServer.credentials credentials, string id) {
             this.credentials = credentials;
             this.id = id;
         }
@@ -3471,12 +3472,12 @@ namespace OpenSonos.SonosContract {
     public partial class getLastUpdateRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         public getLastUpdateRequest() {
         }
         
-        public getLastUpdateRequest(OpenSonos.SonosContract.credentials credentials) {
+        public getLastUpdateRequest(OpenSonos.SonosServer.credentials credentials) {
             this.credentials = credentials;
         }
     }
@@ -3488,12 +3489,12 @@ namespace OpenSonos.SonosContract {
     public partial class getLastUpdateResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.lastUpdate getLastUpdateResult;
+        public OpenSonos.SonosServer.lastUpdate getLastUpdateResult;
         
         public getLastUpdateResponse() {
         }
         
-        public getLastUpdateResponse(OpenSonos.SonosContract.lastUpdate getLastUpdateResult) {
+        public getLastUpdateResponse(OpenSonos.SonosServer.lastUpdate getLastUpdateResult) {
             this.getLastUpdateResult = getLastUpdateResult;
         }
     }
@@ -3505,7 +3506,7 @@ namespace OpenSonos.SonosContract {
     public partial class reportStatusRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3519,7 +3520,7 @@ namespace OpenSonos.SonosContract {
         public reportStatusRequest() {
         }
         
-        public reportStatusRequest(OpenSonos.SonosContract.credentials credentials, string id, int errorCode, string message) {
+        public reportStatusRequest(OpenSonos.SonosServer.credentials credentials, string id, int errorCode, string message) {
             this.credentials = credentials;
             this.id = id;
             this.errorCode = errorCode;
@@ -3544,7 +3545,7 @@ namespace OpenSonos.SonosContract {
     public partial class setPlayedSecondsRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3555,7 +3556,7 @@ namespace OpenSonos.SonosContract {
         public setPlayedSecondsRequest() {
         }
         
-        public setPlayedSecondsRequest(OpenSonos.SonosContract.credentials credentials, string id, int seconds) {
+        public setPlayedSecondsRequest(OpenSonos.SonosServer.credentials credentials, string id, int seconds) {
             this.credentials = credentials;
             this.id = id;
             this.seconds = seconds;
@@ -3579,7 +3580,7 @@ namespace OpenSonos.SonosContract {
     public partial class reportPlaySecondsRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3590,7 +3591,7 @@ namespace OpenSonos.SonosContract {
         public reportPlaySecondsRequest() {
         }
         
-        public reportPlaySecondsRequest(OpenSonos.SonosContract.credentials credentials, string id, int seconds) {
+        public reportPlaySecondsRequest(OpenSonos.SonosServer.credentials credentials, string id, int seconds) {
             this.credentials = credentials;
             this.id = id;
             this.seconds = seconds;
@@ -3604,12 +3605,12 @@ namespace OpenSonos.SonosContract {
     public partial class reportPlaySecondsResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.reportPlaySecondsResult reportPlaySecondsResult;
+        public OpenSonos.SonosServer.reportPlaySecondsResult reportPlaySecondsResult;
         
         public reportPlaySecondsResponse() {
         }
         
-        public reportPlaySecondsResponse(OpenSonos.SonosContract.reportPlaySecondsResult reportPlaySecondsResult) {
+        public reportPlaySecondsResponse(OpenSonos.SonosServer.reportPlaySecondsResult reportPlaySecondsResult) {
             this.reportPlaySecondsResult = reportPlaySecondsResult;
         }
     }
@@ -3621,7 +3622,7 @@ namespace OpenSonos.SonosContract {
     public partial class reportPlayStatusRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3632,7 +3633,7 @@ namespace OpenSonos.SonosContract {
         public reportPlayStatusRequest() {
         }
         
-        public reportPlayStatusRequest(OpenSonos.SonosContract.credentials credentials, string id, string status) {
+        public reportPlayStatusRequest(OpenSonos.SonosServer.credentials credentials, string id, string status) {
             this.credentials = credentials;
             this.id = id;
             this.status = status;
@@ -3656,7 +3657,7 @@ namespace OpenSonos.SonosContract {
     public partial class reportAccountActionRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string type;
@@ -3664,7 +3665,7 @@ namespace OpenSonos.SonosContract {
         public reportAccountActionRequest() {
         }
         
-        public reportAccountActionRequest(OpenSonos.SonosContract.credentials credentials, string type) {
+        public reportAccountActionRequest(OpenSonos.SonosServer.credentials credentials, string type) {
             this.credentials = credentials;
             this.type = type;
         }
@@ -3687,7 +3688,7 @@ namespace OpenSonos.SonosContract {
     public partial class getDeviceLinkCodeRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string householdId;
@@ -3695,7 +3696,7 @@ namespace OpenSonos.SonosContract {
         public getDeviceLinkCodeRequest() {
         }
         
-        public getDeviceLinkCodeRequest(OpenSonos.SonosContract.credentials credentials, string householdId) {
+        public getDeviceLinkCodeRequest(OpenSonos.SonosServer.credentials credentials, string householdId) {
             this.credentials = credentials;
             this.householdId = householdId;
         }
@@ -3708,12 +3709,12 @@ namespace OpenSonos.SonosContract {
     public partial class getDeviceLinkCodeResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.deviceLinkCodeResult getDeviceLinkCodeResult;
+        public OpenSonos.SonosServer.deviceLinkCodeResult getDeviceLinkCodeResult;
         
         public getDeviceLinkCodeResponse() {
         }
         
-        public getDeviceLinkCodeResponse(OpenSonos.SonosContract.deviceLinkCodeResult getDeviceLinkCodeResult) {
+        public getDeviceLinkCodeResponse(OpenSonos.SonosServer.deviceLinkCodeResult getDeviceLinkCodeResult) {
             this.getDeviceLinkCodeResult = getDeviceLinkCodeResult;
         }
     }
@@ -3725,7 +3726,7 @@ namespace OpenSonos.SonosContract {
     public partial class getDeviceAuthTokenRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string householdId;
@@ -3739,7 +3740,7 @@ namespace OpenSonos.SonosContract {
         public getDeviceAuthTokenRequest() {
         }
         
-        public getDeviceAuthTokenRequest(OpenSonos.SonosContract.credentials credentials, string householdId, string linkCode, string linkDeviceId) {
+        public getDeviceAuthTokenRequest(OpenSonos.SonosServer.credentials credentials, string householdId, string linkCode, string linkDeviceId) {
             this.credentials = credentials;
             this.householdId = householdId;
             this.linkCode = linkCode;
@@ -3754,12 +3755,12 @@ namespace OpenSonos.SonosContract {
     public partial class getDeviceAuthTokenResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.deviceAuthTokenResult getDeviceAuthTokenResult;
+        public OpenSonos.SonosServer.deviceAuthTokenResult getDeviceAuthTokenResult;
         
         public getDeviceAuthTokenResponse() {
         }
         
-        public getDeviceAuthTokenResponse(OpenSonos.SonosContract.deviceAuthTokenResult getDeviceAuthTokenResult) {
+        public getDeviceAuthTokenResponse(OpenSonos.SonosServer.deviceAuthTokenResult getDeviceAuthTokenResult) {
             this.getDeviceAuthTokenResult = getDeviceAuthTokenResult;
         }
     }
@@ -3771,7 +3772,7 @@ namespace OpenSonos.SonosContract {
     public partial class getStreamingMetadataRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3785,7 +3786,7 @@ namespace OpenSonos.SonosContract {
         public getStreamingMetadataRequest() {
         }
         
-        public getStreamingMetadataRequest(OpenSonos.SonosContract.credentials credentials, string id, System.DateTime startTime, int duration) {
+        public getStreamingMetadataRequest(OpenSonos.SonosServer.credentials credentials, string id, System.DateTime startTime, int duration) {
             this.credentials = credentials;
             this.id = id;
             this.startTime = startTime;
@@ -3800,12 +3801,12 @@ namespace OpenSonos.SonosContract {
     public partial class getStreamingMetadataResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.segmentMetadataList getStreamingMetadataResult;
+        public OpenSonos.SonosServer.segmentMetadataList getStreamingMetadataResult;
         
         public getStreamingMetadataResponse() {
         }
         
-        public getStreamingMetadataResponse(OpenSonos.SonosContract.segmentMetadataList getStreamingMetadataResult) {
+        public getStreamingMetadataResponse(OpenSonos.SonosServer.segmentMetadataList getStreamingMetadataResult) {
             this.getStreamingMetadataResult = getStreamingMetadataResult;
         }
     }
@@ -3817,7 +3818,7 @@ namespace OpenSonos.SonosContract {
     public partial class getContentKeyRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3829,7 +3830,7 @@ namespace OpenSonos.SonosContract {
         public getContentKeyRequest() {
         }
         
-        public getContentKeyRequest(OpenSonos.SonosContract.credentials credentials, string id, string uri) {
+        public getContentKeyRequest(OpenSonos.SonosServer.credentials credentials, string id, string uri) {
             this.credentials = credentials;
             this.id = id;
             this.uri = uri;
@@ -3843,12 +3844,12 @@ namespace OpenSonos.SonosContract {
     public partial class getContentKeyResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.contentKey contentKey;
+        public OpenSonos.SonosServer.contentKey contentKey;
         
         public getContentKeyResponse() {
         }
         
-        public getContentKeyResponse(OpenSonos.SonosContract.contentKey contentKey) {
+        public getContentKeyResponse(OpenSonos.SonosServer.contentKey contentKey) {
             this.contentKey = contentKey;
         }
     }
@@ -3860,7 +3861,7 @@ namespace OpenSonos.SonosContract {
     public partial class createContainerRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string containerType;
@@ -3877,7 +3878,7 @@ namespace OpenSonos.SonosContract {
         public createContainerRequest() {
         }
         
-        public createContainerRequest(OpenSonos.SonosContract.credentials credentials, string containerType, string title, string parentId, string seedId) {
+        public createContainerRequest(OpenSonos.SonosServer.credentials credentials, string containerType, string title, string parentId, string seedId) {
             this.credentials = credentials;
             this.containerType = containerType;
             this.title = title;
@@ -3893,12 +3894,12 @@ namespace OpenSonos.SonosContract {
     public partial class createContainerResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.createContainerResult createContainerResult;
+        public OpenSonos.SonosServer.createContainerResult createContainerResult;
         
         public createContainerResponse() {
         }
         
-        public createContainerResponse(OpenSonos.SonosContract.createContainerResult createContainerResult) {
+        public createContainerResponse(OpenSonos.SonosServer.createContainerResult createContainerResult) {
             this.createContainerResult = createContainerResult;
         }
     }
@@ -3910,7 +3911,7 @@ namespace OpenSonos.SonosContract {
     public partial class addToContainerRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3927,7 +3928,7 @@ namespace OpenSonos.SonosContract {
         public addToContainerRequest() {
         }
         
-        public addToContainerRequest(OpenSonos.SonosContract.credentials credentials, string id, string parentId, int index, string updateId) {
+        public addToContainerRequest(OpenSonos.SonosServer.credentials credentials, string id, string parentId, int index, string updateId) {
             this.credentials = credentials;
             this.id = id;
             this.parentId = parentId;
@@ -3943,12 +3944,12 @@ namespace OpenSonos.SonosContract {
     public partial class addToContainerResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.addToContainerResult addToContainerResult;
+        public OpenSonos.SonosServer.addToContainerResult addToContainerResult;
         
         public addToContainerResponse() {
         }
         
-        public addToContainerResponse(OpenSonos.SonosContract.addToContainerResult addToContainerResult) {
+        public addToContainerResponse(OpenSonos.SonosServer.addToContainerResult addToContainerResult) {
             this.addToContainerResult = addToContainerResult;
         }
     }
@@ -3960,7 +3961,7 @@ namespace OpenSonos.SonosContract {
     public partial class renameContainerRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -3971,7 +3972,7 @@ namespace OpenSonos.SonosContract {
         public renameContainerRequest() {
         }
         
-        public renameContainerRequest(OpenSonos.SonosContract.credentials credentials, string id, string title) {
+        public renameContainerRequest(OpenSonos.SonosServer.credentials credentials, string id, string title) {
             this.credentials = credentials;
             this.id = id;
             this.title = title;
@@ -3985,12 +3986,12 @@ namespace OpenSonos.SonosContract {
     public partial class renameContainerResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.renameContainerResult renameContainerResult;
+        public OpenSonos.SonosServer.renameContainerResult renameContainerResult;
         
         public renameContainerResponse() {
         }
         
-        public renameContainerResponse(OpenSonos.SonosContract.renameContainerResult renameContainerResult) {
+        public renameContainerResponse(OpenSonos.SonosServer.renameContainerResult renameContainerResult) {
             this.renameContainerResult = renameContainerResult;
         }
     }
@@ -4002,7 +4003,7 @@ namespace OpenSonos.SonosContract {
     public partial class deleteContainerRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -4010,7 +4011,7 @@ namespace OpenSonos.SonosContract {
         public deleteContainerRequest() {
         }
         
-        public deleteContainerRequest(OpenSonos.SonosContract.credentials credentials, string id) {
+        public deleteContainerRequest(OpenSonos.SonosServer.credentials credentials, string id) {
             this.credentials = credentials;
             this.id = id;
         }
@@ -4023,12 +4024,12 @@ namespace OpenSonos.SonosContract {
     public partial class deleteContainerResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.deleteContainerResult deleteContainerResult;
+        public OpenSonos.SonosServer.deleteContainerResult deleteContainerResult;
         
         public deleteContainerResponse() {
         }
         
-        public deleteContainerResponse(OpenSonos.SonosContract.deleteContainerResult deleteContainerResult) {
+        public deleteContainerResponse(OpenSonos.SonosServer.deleteContainerResult deleteContainerResult) {
             this.deleteContainerResult = deleteContainerResult;
         }
     }
@@ -4040,7 +4041,7 @@ namespace OpenSonos.SonosContract {
     public partial class removeFromContainerRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -4054,7 +4055,7 @@ namespace OpenSonos.SonosContract {
         public removeFromContainerRequest() {
         }
         
-        public removeFromContainerRequest(OpenSonos.SonosContract.credentials credentials, string id, string indices, string updateId) {
+        public removeFromContainerRequest(OpenSonos.SonosServer.credentials credentials, string id, string indices, string updateId) {
             this.credentials = credentials;
             this.id = id;
             this.indices = indices;
@@ -4069,12 +4070,12 @@ namespace OpenSonos.SonosContract {
     public partial class removeFromContainerResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.removeFromContainerResult removeFromContainerResult;
+        public OpenSonos.SonosServer.removeFromContainerResult removeFromContainerResult;
         
         public removeFromContainerResponse() {
         }
         
-        public removeFromContainerResponse(OpenSonos.SonosContract.removeFromContainerResult removeFromContainerResult) {
+        public removeFromContainerResponse(OpenSonos.SonosServer.removeFromContainerResult removeFromContainerResult) {
             this.removeFromContainerResult = removeFromContainerResult;
         }
     }
@@ -4086,7 +4087,7 @@ namespace OpenSonos.SonosContract {
     public partial class reorderContainerRequest {
         
         [System.ServiceModel.MessageHeaderAttribute(Namespace="http://www.sonos.com/Services/1.1")]
-        public OpenSonos.SonosContract.credentials credentials;
+        public OpenSonos.SonosServer.credentials credentials;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
         public string id;
@@ -4103,7 +4104,7 @@ namespace OpenSonos.SonosContract {
         public reorderContainerRequest() {
         }
         
-        public reorderContainerRequest(OpenSonos.SonosContract.credentials credentials, string id, string from, int to, string updateId) {
+        public reorderContainerRequest(OpenSonos.SonosServer.credentials credentials, string id, string from, int to, string updateId) {
             this.credentials = credentials;
             this.id = id;
             this.from = from;
@@ -4119,23 +4120,23 @@ namespace OpenSonos.SonosContract {
     public partial class reorderContainerResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://www.sonos.com/Services/1.1", Order=0)]
-        public OpenSonos.SonosContract.reorderContainerResult reorderContainerResult;
+        public OpenSonos.SonosServer.reorderContainerResult reorderContainerResult;
         
         public reorderContainerResponse() {
         }
         
-        public reorderContainerResponse(OpenSonos.SonosContract.reorderContainerResult reorderContainerResult) {
+        public reorderContainerResponse(OpenSonos.SonosServer.reorderContainerResult reorderContainerResult) {
             this.reorderContainerResult = reorderContainerResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ISonosApiChannel : OpenSonos.SonosContract.ISonosApi, System.ServiceModel.IClientChannel {
+    public interface ISonosApiChannel : OpenSonos.SonosServer.ISonosApi, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class SonosApiClient : System.ServiceModel.ClientBase<OpenSonos.SonosContract.ISonosApi>, OpenSonos.SonosContract.ISonosApi {
+    public partial class SonosApiClient : System.ServiceModel.ClientBase<OpenSonos.SonosServer.ISonosApi>, OpenSonos.SonosServer.ISonosApi {
         
         public SonosApiClient() {
         }
@@ -4157,380 +4158,380 @@ namespace OpenSonos.SonosContract {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getSessionIdResponse OpenSonos.SonosContract.ISonosApi.getSessionId(OpenSonos.SonosContract.getSessionIdRequest request) {
+        OpenSonos.SonosServer.getSessionIdResponse OpenSonos.SonosServer.ISonosApi.getSessionId(OpenSonos.SonosServer.getSessionIdRequest request) {
             return base.Channel.getSessionId(request);
         }
         
-        public string getSessionId(OpenSonos.SonosContract.credentials credentials, string username, string password) {
-            OpenSonos.SonosContract.getSessionIdRequest inValue = new OpenSonos.SonosContract.getSessionIdRequest();
+        public string getSessionId(OpenSonos.SonosServer.credentials credentials, string username, string password) {
+            OpenSonos.SonosServer.getSessionIdRequest inValue = new OpenSonos.SonosServer.getSessionIdRequest();
             inValue.credentials = credentials;
             inValue.username = username;
             inValue.password = password;
-            OpenSonos.SonosContract.getSessionIdResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getSessionId(inValue);
+            OpenSonos.SonosServer.getSessionIdResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getSessionId(inValue);
             return retVal.getSessionIdResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getMetadataResponse OpenSonos.SonosContract.ISonosApi.getMetadata(OpenSonos.SonosContract.getMetadataRequest request) {
+        OpenSonos.SonosServer.getMetadataResponse OpenSonos.SonosServer.ISonosApi.getMetadata(OpenSonos.SonosServer.getMetadataRequest request) {
             return base.Channel.getMetadata(request);
         }
         
-        public OpenSonos.SonosContract.mediaList getMetadata(OpenSonos.SonosContract.credentials credentials, string id, int index, int count, bool recursive) {
-            OpenSonos.SonosContract.getMetadataRequest inValue = new OpenSonos.SonosContract.getMetadataRequest();
+        public OpenSonos.SonosServer.mediaList getMetadata(OpenSonos.SonosServer.credentials credentials, string id, int index, int count, bool recursive) {
+            OpenSonos.SonosServer.getMetadataRequest inValue = new OpenSonos.SonosServer.getMetadataRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.index = index;
             inValue.count = count;
             inValue.recursive = recursive;
-            OpenSonos.SonosContract.getMetadataResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getMetadata(inValue);
+            OpenSonos.SonosServer.getMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getMetadata(inValue);
             return retVal.getMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getExtendedMetadataResponse OpenSonos.SonosContract.ISonosApi.getExtendedMetadata(OpenSonos.SonosContract.getExtendedMetadataRequest request) {
+        OpenSonos.SonosServer.getExtendedMetadataResponse OpenSonos.SonosServer.ISonosApi.getExtendedMetadata(OpenSonos.SonosServer.getExtendedMetadataRequest request) {
             return base.Channel.getExtendedMetadata(request);
         }
         
-        public OpenSonos.SonosContract.extendedMetadata getExtendedMetadata(OpenSonos.SonosContract.credentials credentials, string id) {
-            OpenSonos.SonosContract.getExtendedMetadataRequest inValue = new OpenSonos.SonosContract.getExtendedMetadataRequest();
+        public OpenSonos.SonosServer.extendedMetadata getExtendedMetadata(OpenSonos.SonosServer.credentials credentials, string id) {
+            OpenSonos.SonosServer.getExtendedMetadataRequest inValue = new OpenSonos.SonosServer.getExtendedMetadataRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosContract.getExtendedMetadataResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getExtendedMetadata(inValue);
+            OpenSonos.SonosServer.getExtendedMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getExtendedMetadata(inValue);
             return retVal.getExtendedMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getExtendedMetadataTextResponse OpenSonos.SonosContract.ISonosApi.getExtendedMetadataText(OpenSonos.SonosContract.getExtendedMetadataTextRequest request) {
+        OpenSonos.SonosServer.getExtendedMetadataTextResponse OpenSonos.SonosServer.ISonosApi.getExtendedMetadataText(OpenSonos.SonosServer.getExtendedMetadataTextRequest request) {
             return base.Channel.getExtendedMetadataText(request);
         }
         
-        public string getExtendedMetadataText(OpenSonos.SonosContract.credentials credentials, string id, string type) {
-            OpenSonos.SonosContract.getExtendedMetadataTextRequest inValue = new OpenSonos.SonosContract.getExtendedMetadataTextRequest();
+        public string getExtendedMetadataText(OpenSonos.SonosServer.credentials credentials, string id, string type) {
+            OpenSonos.SonosServer.getExtendedMetadataTextRequest inValue = new OpenSonos.SonosServer.getExtendedMetadataTextRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.type = type;
-            OpenSonos.SonosContract.getExtendedMetadataTextResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getExtendedMetadataText(inValue);
+            OpenSonos.SonosServer.getExtendedMetadataTextResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getExtendedMetadataText(inValue);
             return retVal.getExtendedMetadataTextResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.rateItemResponse OpenSonos.SonosContract.ISonosApi.rateItem(OpenSonos.SonosContract.rateItemRequest request) {
+        OpenSonos.SonosServer.rateItemResponse OpenSonos.SonosServer.ISonosApi.rateItem(OpenSonos.SonosServer.rateItemRequest request) {
             return base.Channel.rateItem(request);
         }
         
-        public OpenSonos.SonosContract.itemRating rateItem(OpenSonos.SonosContract.credentials credentials, string id, int rating) {
-            OpenSonos.SonosContract.rateItemRequest inValue = new OpenSonos.SonosContract.rateItemRequest();
+        public OpenSonos.SonosServer.itemRating rateItem(OpenSonos.SonosServer.credentials credentials, string id, int rating) {
+            OpenSonos.SonosServer.rateItemRequest inValue = new OpenSonos.SonosServer.rateItemRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.rating = rating;
-            OpenSonos.SonosContract.rateItemResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).rateItem(inValue);
+            OpenSonos.SonosServer.rateItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).rateItem(inValue);
             return retVal.rateItemResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.searchResponse OpenSonos.SonosContract.ISonosApi.search(OpenSonos.SonosContract.searchRequest request) {
+        OpenSonos.SonosServer.searchResponse OpenSonos.SonosServer.ISonosApi.search(OpenSonos.SonosServer.searchRequest request) {
             return base.Channel.search(request);
         }
         
-        public OpenSonos.SonosContract.mediaList search(OpenSonos.SonosContract.credentials credentials, string id, string term, int index, int count) {
-            OpenSonos.SonosContract.searchRequest inValue = new OpenSonos.SonosContract.searchRequest();
+        public OpenSonos.SonosServer.mediaList search(OpenSonos.SonosServer.credentials credentials, string id, string term, int index, int count) {
+            OpenSonos.SonosServer.searchRequest inValue = new OpenSonos.SonosServer.searchRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.term = term;
             inValue.index = index;
             inValue.count = count;
-            OpenSonos.SonosContract.searchResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).search(inValue);
+            OpenSonos.SonosServer.searchResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).search(inValue);
             return retVal.searchResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getMediaMetadataResponse OpenSonos.SonosContract.ISonosApi.getMediaMetadata(OpenSonos.SonosContract.getMediaMetadataRequest request) {
+        OpenSonos.SonosServer.getMediaMetadataResponse OpenSonos.SonosServer.ISonosApi.getMediaMetadata(OpenSonos.SonosServer.getMediaMetadataRequest request) {
             return base.Channel.getMediaMetadata(request);
         }
         
-        public OpenSonos.SonosContract.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadata(OpenSonos.SonosContract.credentials credentials, string id) {
-            OpenSonos.SonosContract.getMediaMetadataRequest inValue = new OpenSonos.SonosContract.getMediaMetadataRequest();
+        public OpenSonos.SonosServer.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadata(OpenSonos.SonosServer.credentials credentials, string id) {
+            OpenSonos.SonosServer.getMediaMetadataRequest inValue = new OpenSonos.SonosServer.getMediaMetadataRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosContract.getMediaMetadataResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getMediaMetadata(inValue);
+            OpenSonos.SonosServer.getMediaMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getMediaMetadata(inValue);
             return retVal.getMediaMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getMediaURIResponse OpenSonos.SonosContract.ISonosApi.getMediaURI(OpenSonos.SonosContract.getMediaURIRequest request) {
+        OpenSonos.SonosServer.getMediaURIResponse OpenSonos.SonosServer.ISonosApi.getMediaURI(OpenSonos.SonosServer.getMediaURIRequest request) {
             return base.Channel.getMediaURI(request);
         }
         
-        public string getMediaURI(OpenSonos.SonosContract.credentials credentials, string id, out OpenSonos.SonosContract.httpHeader[] httpHeaders, out int uriTimeout) {
-            OpenSonos.SonosContract.getMediaURIRequest inValue = new OpenSonos.SonosContract.getMediaURIRequest();
+        public string getMediaURI(OpenSonos.SonosServer.credentials credentials, string id, out OpenSonos.SonosServer.httpHeader[] httpHeaders, out int uriTimeout) {
+            OpenSonos.SonosServer.getMediaURIRequest inValue = new OpenSonos.SonosServer.getMediaURIRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosContract.getMediaURIResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getMediaURI(inValue);
+            OpenSonos.SonosServer.getMediaURIResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getMediaURI(inValue);
             httpHeaders = retVal.httpHeaders;
             uriTimeout = retVal.uriTimeout;
             return retVal.getMediaURIResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.createItemResponse OpenSonos.SonosContract.ISonosApi.createItem(OpenSonos.SonosContract.createItemRequest request) {
+        OpenSonos.SonosServer.createItemResponse OpenSonos.SonosServer.ISonosApi.createItem(OpenSonos.SonosServer.createItemRequest request) {
             return base.Channel.createItem(request);
         }
         
-        public string createItem(OpenSonos.SonosContract.credentials credentials, string favorite) {
-            OpenSonos.SonosContract.createItemRequest inValue = new OpenSonos.SonosContract.createItemRequest();
+        public string createItem(OpenSonos.SonosServer.credentials credentials, string favorite) {
+            OpenSonos.SonosServer.createItemRequest inValue = new OpenSonos.SonosServer.createItemRequest();
             inValue.credentials = credentials;
             inValue.favorite = favorite;
-            OpenSonos.SonosContract.createItemResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).createItem(inValue);
+            OpenSonos.SonosServer.createItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).createItem(inValue);
             return retVal.createItemResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.deleteItemResponse OpenSonos.SonosContract.ISonosApi.deleteItem(OpenSonos.SonosContract.deleteItemRequest request) {
+        OpenSonos.SonosServer.deleteItemResponse OpenSonos.SonosServer.ISonosApi.deleteItem(OpenSonos.SonosServer.deleteItemRequest request) {
             return base.Channel.deleteItem(request);
         }
         
-        public void deleteItem(OpenSonos.SonosContract.credentials credentials, string favorite) {
-            OpenSonos.SonosContract.deleteItemRequest inValue = new OpenSonos.SonosContract.deleteItemRequest();
+        public void deleteItem(OpenSonos.SonosServer.credentials credentials, string favorite) {
+            OpenSonos.SonosServer.deleteItemRequest inValue = new OpenSonos.SonosServer.deleteItemRequest();
             inValue.credentials = credentials;
             inValue.favorite = favorite;
-            OpenSonos.SonosContract.deleteItemResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).deleteItem(inValue);
+            OpenSonos.SonosServer.deleteItemResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).deleteItem(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getScrollIndicesResponse OpenSonos.SonosContract.ISonosApi.getScrollIndices(OpenSonos.SonosContract.getScrollIndicesRequest request) {
+        OpenSonos.SonosServer.getScrollIndicesResponse OpenSonos.SonosServer.ISonosApi.getScrollIndices(OpenSonos.SonosServer.getScrollIndicesRequest request) {
             return base.Channel.getScrollIndices(request);
         }
         
-        public string getScrollIndices(OpenSonos.SonosContract.credentials credentials, string id) {
-            OpenSonos.SonosContract.getScrollIndicesRequest inValue = new OpenSonos.SonosContract.getScrollIndicesRequest();
+        public string getScrollIndices(OpenSonos.SonosServer.credentials credentials, string id) {
+            OpenSonos.SonosServer.getScrollIndicesRequest inValue = new OpenSonos.SonosServer.getScrollIndicesRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosContract.getScrollIndicesResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getScrollIndices(inValue);
+            OpenSonos.SonosServer.getScrollIndicesResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getScrollIndices(inValue);
             return retVal.getScrollIndicesResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getLastUpdateResponse OpenSonos.SonosContract.ISonosApi.getLastUpdate(OpenSonos.SonosContract.getLastUpdateRequest request) {
+        OpenSonos.SonosServer.getLastUpdateResponse OpenSonos.SonosServer.ISonosApi.getLastUpdate(OpenSonos.SonosServer.getLastUpdateRequest request) {
             return base.Channel.getLastUpdate(request);
         }
         
-        public OpenSonos.SonosContract.lastUpdate getLastUpdate(OpenSonos.SonosContract.credentials credentials) {
-            OpenSonos.SonosContract.getLastUpdateRequest inValue = new OpenSonos.SonosContract.getLastUpdateRequest();
+        public OpenSonos.SonosServer.lastUpdate getLastUpdate(OpenSonos.SonosServer.credentials credentials) {
+            OpenSonos.SonosServer.getLastUpdateRequest inValue = new OpenSonos.SonosServer.getLastUpdateRequest();
             inValue.credentials = credentials;
-            OpenSonos.SonosContract.getLastUpdateResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getLastUpdate(inValue);
+            OpenSonos.SonosServer.getLastUpdateResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getLastUpdate(inValue);
             return retVal.getLastUpdateResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.reportStatusResponse OpenSonos.SonosContract.ISonosApi.reportStatus(OpenSonos.SonosContract.reportStatusRequest request) {
+        OpenSonos.SonosServer.reportStatusResponse OpenSonos.SonosServer.ISonosApi.reportStatus(OpenSonos.SonosServer.reportStatusRequest request) {
             return base.Channel.reportStatus(request);
         }
         
-        public void reportStatus(OpenSonos.SonosContract.credentials credentials, string id, int errorCode, string message) {
-            OpenSonos.SonosContract.reportStatusRequest inValue = new OpenSonos.SonosContract.reportStatusRequest();
+        public void reportStatus(OpenSonos.SonosServer.credentials credentials, string id, int errorCode, string message) {
+            OpenSonos.SonosServer.reportStatusRequest inValue = new OpenSonos.SonosServer.reportStatusRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.errorCode = errorCode;
             inValue.message = message;
-            OpenSonos.SonosContract.reportStatusResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).reportStatus(inValue);
+            OpenSonos.SonosServer.reportStatusResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportStatus(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.setPlayedSecondsResponse OpenSonos.SonosContract.ISonosApi.setPlayedSeconds(OpenSonos.SonosContract.setPlayedSecondsRequest request) {
+        OpenSonos.SonosServer.setPlayedSecondsResponse OpenSonos.SonosServer.ISonosApi.setPlayedSeconds(OpenSonos.SonosServer.setPlayedSecondsRequest request) {
             return base.Channel.setPlayedSeconds(request);
         }
         
-        public void setPlayedSeconds(OpenSonos.SonosContract.credentials credentials, string id, int seconds) {
-            OpenSonos.SonosContract.setPlayedSecondsRequest inValue = new OpenSonos.SonosContract.setPlayedSecondsRequest();
+        public void setPlayedSeconds(OpenSonos.SonosServer.credentials credentials, string id, int seconds) {
+            OpenSonos.SonosServer.setPlayedSecondsRequest inValue = new OpenSonos.SonosServer.setPlayedSecondsRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.seconds = seconds;
-            OpenSonos.SonosContract.setPlayedSecondsResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).setPlayedSeconds(inValue);
+            OpenSonos.SonosServer.setPlayedSecondsResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).setPlayedSeconds(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.reportPlaySecondsResponse OpenSonos.SonosContract.ISonosApi.reportPlaySeconds(OpenSonos.SonosContract.reportPlaySecondsRequest request) {
+        OpenSonos.SonosServer.reportPlaySecondsResponse OpenSonos.SonosServer.ISonosApi.reportPlaySeconds(OpenSonos.SonosServer.reportPlaySecondsRequest request) {
             return base.Channel.reportPlaySeconds(request);
         }
         
-        public OpenSonos.SonosContract.reportPlaySecondsResult reportPlaySeconds(OpenSonos.SonosContract.credentials credentials, string id, int seconds) {
-            OpenSonos.SonosContract.reportPlaySecondsRequest inValue = new OpenSonos.SonosContract.reportPlaySecondsRequest();
+        public OpenSonos.SonosServer.reportPlaySecondsResult reportPlaySeconds(OpenSonos.SonosServer.credentials credentials, string id, int seconds) {
+            OpenSonos.SonosServer.reportPlaySecondsRequest inValue = new OpenSonos.SonosServer.reportPlaySecondsRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.seconds = seconds;
-            OpenSonos.SonosContract.reportPlaySecondsResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).reportPlaySeconds(inValue);
+            OpenSonos.SonosServer.reportPlaySecondsResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportPlaySeconds(inValue);
             return retVal.reportPlaySecondsResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.reportPlayStatusResponse OpenSonos.SonosContract.ISonosApi.reportPlayStatus(OpenSonos.SonosContract.reportPlayStatusRequest request) {
+        OpenSonos.SonosServer.reportPlayStatusResponse OpenSonos.SonosServer.ISonosApi.reportPlayStatus(OpenSonos.SonosServer.reportPlayStatusRequest request) {
             return base.Channel.reportPlayStatus(request);
         }
         
-        public void reportPlayStatus(OpenSonos.SonosContract.credentials credentials, string id, string status) {
-            OpenSonos.SonosContract.reportPlayStatusRequest inValue = new OpenSonos.SonosContract.reportPlayStatusRequest();
+        public void reportPlayStatus(OpenSonos.SonosServer.credentials credentials, string id, string status) {
+            OpenSonos.SonosServer.reportPlayStatusRequest inValue = new OpenSonos.SonosServer.reportPlayStatusRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.status = status;
-            OpenSonos.SonosContract.reportPlayStatusResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).reportPlayStatus(inValue);
+            OpenSonos.SonosServer.reportPlayStatusResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportPlayStatus(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.reportAccountActionResponse OpenSonos.SonosContract.ISonosApi.reportAccountAction(OpenSonos.SonosContract.reportAccountActionRequest request) {
+        OpenSonos.SonosServer.reportAccountActionResponse OpenSonos.SonosServer.ISonosApi.reportAccountAction(OpenSonos.SonosServer.reportAccountActionRequest request) {
             return base.Channel.reportAccountAction(request);
         }
         
-        public void reportAccountAction(OpenSonos.SonosContract.credentials credentials, string type) {
-            OpenSonos.SonosContract.reportAccountActionRequest inValue = new OpenSonos.SonosContract.reportAccountActionRequest();
+        public void reportAccountAction(OpenSonos.SonosServer.credentials credentials, string type) {
+            OpenSonos.SonosServer.reportAccountActionRequest inValue = new OpenSonos.SonosServer.reportAccountActionRequest();
             inValue.credentials = credentials;
             inValue.type = type;
-            OpenSonos.SonosContract.reportAccountActionResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).reportAccountAction(inValue);
+            OpenSonos.SonosServer.reportAccountActionResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reportAccountAction(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getDeviceLinkCodeResponse OpenSonos.SonosContract.ISonosApi.getDeviceLinkCode(OpenSonos.SonosContract.getDeviceLinkCodeRequest request) {
+        OpenSonos.SonosServer.getDeviceLinkCodeResponse OpenSonos.SonosServer.ISonosApi.getDeviceLinkCode(OpenSonos.SonosServer.getDeviceLinkCodeRequest request) {
             return base.Channel.getDeviceLinkCode(request);
         }
         
-        public OpenSonos.SonosContract.deviceLinkCodeResult getDeviceLinkCode(OpenSonos.SonosContract.credentials credentials, string householdId) {
-            OpenSonos.SonosContract.getDeviceLinkCodeRequest inValue = new OpenSonos.SonosContract.getDeviceLinkCodeRequest();
+        public OpenSonos.SonosServer.deviceLinkCodeResult getDeviceLinkCode(OpenSonos.SonosServer.credentials credentials, string householdId) {
+            OpenSonos.SonosServer.getDeviceLinkCodeRequest inValue = new OpenSonos.SonosServer.getDeviceLinkCodeRequest();
             inValue.credentials = credentials;
             inValue.householdId = householdId;
-            OpenSonos.SonosContract.getDeviceLinkCodeResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getDeviceLinkCode(inValue);
+            OpenSonos.SonosServer.getDeviceLinkCodeResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getDeviceLinkCode(inValue);
             return retVal.getDeviceLinkCodeResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getDeviceAuthTokenResponse OpenSonos.SonosContract.ISonosApi.getDeviceAuthToken(OpenSonos.SonosContract.getDeviceAuthTokenRequest request) {
+        OpenSonos.SonosServer.getDeviceAuthTokenResponse OpenSonos.SonosServer.ISonosApi.getDeviceAuthToken(OpenSonos.SonosServer.getDeviceAuthTokenRequest request) {
             return base.Channel.getDeviceAuthToken(request);
         }
         
-        public OpenSonos.SonosContract.deviceAuthTokenResult getDeviceAuthToken(OpenSonos.SonosContract.credentials credentials, string householdId, string linkCode, string linkDeviceId) {
-            OpenSonos.SonosContract.getDeviceAuthTokenRequest inValue = new OpenSonos.SonosContract.getDeviceAuthTokenRequest();
+        public OpenSonos.SonosServer.deviceAuthTokenResult getDeviceAuthToken(OpenSonos.SonosServer.credentials credentials, string householdId, string linkCode, string linkDeviceId) {
+            OpenSonos.SonosServer.getDeviceAuthTokenRequest inValue = new OpenSonos.SonosServer.getDeviceAuthTokenRequest();
             inValue.credentials = credentials;
             inValue.householdId = householdId;
             inValue.linkCode = linkCode;
             inValue.linkDeviceId = linkDeviceId;
-            OpenSonos.SonosContract.getDeviceAuthTokenResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getDeviceAuthToken(inValue);
+            OpenSonos.SonosServer.getDeviceAuthTokenResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getDeviceAuthToken(inValue);
             return retVal.getDeviceAuthTokenResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getStreamingMetadataResponse OpenSonos.SonosContract.ISonosApi.getStreamingMetadata(OpenSonos.SonosContract.getStreamingMetadataRequest request) {
+        OpenSonos.SonosServer.getStreamingMetadataResponse OpenSonos.SonosServer.ISonosApi.getStreamingMetadata(OpenSonos.SonosServer.getStreamingMetadataRequest request) {
             return base.Channel.getStreamingMetadata(request);
         }
         
-        public OpenSonos.SonosContract.segmentMetadataList getStreamingMetadata(OpenSonos.SonosContract.credentials credentials, string id, System.DateTime startTime, int duration) {
-            OpenSonos.SonosContract.getStreamingMetadataRequest inValue = new OpenSonos.SonosContract.getStreamingMetadataRequest();
+        public OpenSonos.SonosServer.segmentMetadataList getStreamingMetadata(OpenSonos.SonosServer.credentials credentials, string id, System.DateTime startTime, int duration) {
+            OpenSonos.SonosServer.getStreamingMetadataRequest inValue = new OpenSonos.SonosServer.getStreamingMetadataRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.startTime = startTime;
             inValue.duration = duration;
-            OpenSonos.SonosContract.getStreamingMetadataResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getStreamingMetadata(inValue);
+            OpenSonos.SonosServer.getStreamingMetadataResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getStreamingMetadata(inValue);
             return retVal.getStreamingMetadataResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.getContentKeyResponse OpenSonos.SonosContract.ISonosApi.getContentKey(OpenSonos.SonosContract.getContentKeyRequest request) {
+        OpenSonos.SonosServer.getContentKeyResponse OpenSonos.SonosServer.ISonosApi.getContentKey(OpenSonos.SonosServer.getContentKeyRequest request) {
             return base.Channel.getContentKey(request);
         }
         
-        public OpenSonos.SonosContract.contentKey getContentKey(OpenSonos.SonosContract.credentials credentials, string id, string uri) {
-            OpenSonos.SonosContract.getContentKeyRequest inValue = new OpenSonos.SonosContract.getContentKeyRequest();
+        public OpenSonos.SonosServer.contentKey getContentKey(OpenSonos.SonosServer.credentials credentials, string id, string uri) {
+            OpenSonos.SonosServer.getContentKeyRequest inValue = new OpenSonos.SonosServer.getContentKeyRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.uri = uri;
-            OpenSonos.SonosContract.getContentKeyResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).getContentKey(inValue);
+            OpenSonos.SonosServer.getContentKeyResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).getContentKey(inValue);
             return retVal.contentKey;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.createContainerResponse OpenSonos.SonosContract.ISonosApi.createContainer(OpenSonos.SonosContract.createContainerRequest request) {
+        OpenSonos.SonosServer.createContainerResponse OpenSonos.SonosServer.ISonosApi.createContainer(OpenSonos.SonosServer.createContainerRequest request) {
             return base.Channel.createContainer(request);
         }
         
-        public OpenSonos.SonosContract.createContainerResult createContainer(OpenSonos.SonosContract.credentials credentials, string containerType, string title, string parentId, string seedId) {
-            OpenSonos.SonosContract.createContainerRequest inValue = new OpenSonos.SonosContract.createContainerRequest();
+        public OpenSonos.SonosServer.createContainerResult createContainer(OpenSonos.SonosServer.credentials credentials, string containerType, string title, string parentId, string seedId) {
+            OpenSonos.SonosServer.createContainerRequest inValue = new OpenSonos.SonosServer.createContainerRequest();
             inValue.credentials = credentials;
             inValue.containerType = containerType;
             inValue.title = title;
             inValue.parentId = parentId;
             inValue.seedId = seedId;
-            OpenSonos.SonosContract.createContainerResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).createContainer(inValue);
+            OpenSonos.SonosServer.createContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).createContainer(inValue);
             return retVal.createContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.addToContainerResponse OpenSonos.SonosContract.ISonosApi.addToContainer(OpenSonos.SonosContract.addToContainerRequest request) {
+        OpenSonos.SonosServer.addToContainerResponse OpenSonos.SonosServer.ISonosApi.addToContainer(OpenSonos.SonosServer.addToContainerRequest request) {
             return base.Channel.addToContainer(request);
         }
         
-        public OpenSonos.SonosContract.addToContainerResult addToContainer(OpenSonos.SonosContract.credentials credentials, string id, string parentId, int index, string updateId) {
-            OpenSonos.SonosContract.addToContainerRequest inValue = new OpenSonos.SonosContract.addToContainerRequest();
+        public OpenSonos.SonosServer.addToContainerResult addToContainer(OpenSonos.SonosServer.credentials credentials, string id, string parentId, int index, string updateId) {
+            OpenSonos.SonosServer.addToContainerRequest inValue = new OpenSonos.SonosServer.addToContainerRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.parentId = parentId;
             inValue.index = index;
             inValue.updateId = updateId;
-            OpenSonos.SonosContract.addToContainerResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).addToContainer(inValue);
+            OpenSonos.SonosServer.addToContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).addToContainer(inValue);
             return retVal.addToContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.renameContainerResponse OpenSonos.SonosContract.ISonosApi.renameContainer(OpenSonos.SonosContract.renameContainerRequest request) {
+        OpenSonos.SonosServer.renameContainerResponse OpenSonos.SonosServer.ISonosApi.renameContainer(OpenSonos.SonosServer.renameContainerRequest request) {
             return base.Channel.renameContainer(request);
         }
         
-        public OpenSonos.SonosContract.renameContainerResult renameContainer(OpenSonos.SonosContract.credentials credentials, string id, string title) {
-            OpenSonos.SonosContract.renameContainerRequest inValue = new OpenSonos.SonosContract.renameContainerRequest();
+        public OpenSonos.SonosServer.renameContainerResult renameContainer(OpenSonos.SonosServer.credentials credentials, string id, string title) {
+            OpenSonos.SonosServer.renameContainerRequest inValue = new OpenSonos.SonosServer.renameContainerRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.title = title;
-            OpenSonos.SonosContract.renameContainerResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).renameContainer(inValue);
+            OpenSonos.SonosServer.renameContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).renameContainer(inValue);
             return retVal.renameContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.deleteContainerResponse OpenSonos.SonosContract.ISonosApi.deleteContainer(OpenSonos.SonosContract.deleteContainerRequest request) {
+        OpenSonos.SonosServer.deleteContainerResponse OpenSonos.SonosServer.ISonosApi.deleteContainer(OpenSonos.SonosServer.deleteContainerRequest request) {
             return base.Channel.deleteContainer(request);
         }
         
-        public OpenSonos.SonosContract.deleteContainerResult deleteContainer(OpenSonos.SonosContract.credentials credentials, string id) {
-            OpenSonos.SonosContract.deleteContainerRequest inValue = new OpenSonos.SonosContract.deleteContainerRequest();
+        public OpenSonos.SonosServer.deleteContainerResult deleteContainer(OpenSonos.SonosServer.credentials credentials, string id) {
+            OpenSonos.SonosServer.deleteContainerRequest inValue = new OpenSonos.SonosServer.deleteContainerRequest();
             inValue.credentials = credentials;
             inValue.id = id;
-            OpenSonos.SonosContract.deleteContainerResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).deleteContainer(inValue);
+            OpenSonos.SonosServer.deleteContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).deleteContainer(inValue);
             return retVal.deleteContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.removeFromContainerResponse OpenSonos.SonosContract.ISonosApi.removeFromContainer(OpenSonos.SonosContract.removeFromContainerRequest request) {
+        OpenSonos.SonosServer.removeFromContainerResponse OpenSonos.SonosServer.ISonosApi.removeFromContainer(OpenSonos.SonosServer.removeFromContainerRequest request) {
             return base.Channel.removeFromContainer(request);
         }
         
-        public OpenSonos.SonosContract.removeFromContainerResult removeFromContainer(OpenSonos.SonosContract.credentials credentials, string id, string indices, string updateId) {
-            OpenSonos.SonosContract.removeFromContainerRequest inValue = new OpenSonos.SonosContract.removeFromContainerRequest();
+        public OpenSonos.SonosServer.removeFromContainerResult removeFromContainer(OpenSonos.SonosServer.credentials credentials, string id, string indices, string updateId) {
+            OpenSonos.SonosServer.removeFromContainerRequest inValue = new OpenSonos.SonosServer.removeFromContainerRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.indices = indices;
             inValue.updateId = updateId;
-            OpenSonos.SonosContract.removeFromContainerResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).removeFromContainer(inValue);
+            OpenSonos.SonosServer.removeFromContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).removeFromContainer(inValue);
             return retVal.removeFromContainerResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenSonos.SonosContract.reorderContainerResponse OpenSonos.SonosContract.ISonosApi.reorderContainer(OpenSonos.SonosContract.reorderContainerRequest request) {
+        OpenSonos.SonosServer.reorderContainerResponse OpenSonos.SonosServer.ISonosApi.reorderContainer(OpenSonos.SonosServer.reorderContainerRequest request) {
             return base.Channel.reorderContainer(request);
         }
         
-        public OpenSonos.SonosContract.reorderContainerResult reorderContainer(OpenSonos.SonosContract.credentials credentials, string id, string from, int to, string updateId) {
-            OpenSonos.SonosContract.reorderContainerRequest inValue = new OpenSonos.SonosContract.reorderContainerRequest();
+        public OpenSonos.SonosServer.reorderContainerResult reorderContainer(OpenSonos.SonosServer.credentials credentials, string id, string from, int to, string updateId) {
+            OpenSonos.SonosServer.reorderContainerRequest inValue = new OpenSonos.SonosServer.reorderContainerRequest();
             inValue.credentials = credentials;
             inValue.id = id;
             inValue.from = from;
             inValue.to = to;
             inValue.updateId = updateId;
-            OpenSonos.SonosContract.reorderContainerResponse retVal = ((OpenSonos.SonosContract.ISonosApi)(this)).reorderContainer(inValue);
+            OpenSonos.SonosServer.reorderContainerResponse retVal = ((OpenSonos.SonosServer.ISonosApi)(this)).reorderContainer(inValue);
             return retVal.reorderContainerResult;
         }
     }

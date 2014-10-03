@@ -3,7 +3,7 @@ using System.ServiceModel;
 using System.ServiceModel.Description;
 using OpenSonos.SonosServer;
 
-namespace OpenSonos
+namespace OpenSonos.LocalMusicServer
 {
     class Program
     {
@@ -12,10 +12,10 @@ namespace OpenSonos
             var uri = new Uri("http://localhost:8000");
             const string path = "sonos-api";
 
-            var host = new ServiceHost(typeof(Server), uri);
+            var host = new ServiceHost(typeof(ServerBase), uri);
             host.Description.Behaviors.Add(new ServiceMetadataBehavior {MetadataExporter = {PolicyVersion = PolicyVersion.Policy15}});
-            host.AddServiceEndpoint(typeof(SonosContract.ISonosApi), new BasicHttpBinding(), path);
-            host.AddServiceEndpoint(typeof(SonosContract.ISonosApi), new WSHttpBinding(), "");
+            host.AddServiceEndpoint(typeof(ISonosApi), new BasicHttpBinding(), path);
+            host.AddServiceEndpoint(typeof(ISonosApi), new WSHttpBinding(), "");
             host.AddServiceEndpoint(ServiceMetadataBehavior.MexContractName, MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
 
             host.Open();
