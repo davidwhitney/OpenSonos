@@ -4,8 +4,13 @@ using System.ServiceModel;
 namespace OpenSonos.SonosServer
 {
     [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
-    public class ServerBase : ISonosApi
+    public class ServerBase : ISonosApi, ISonosMetadataApi
     {
+        public virtual PresentationMap GetPresentationMaps()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual getSessionIdResponse getSessionId(getSessionIdRequest request)
         {
             throw new NotImplementedException();

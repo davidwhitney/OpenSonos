@@ -4156,7 +4156,7 @@ namespace OpenSonos.SonosServer
         public SonosApiClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
-        
+
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         OpenSonos.SonosServer.getSessionIdResponse OpenSonos.SonosServer.ISonosApi.getSessionId(OpenSonos.SonosServer.getSessionIdRequest request) {
             return base.Channel.getSessionId(request);

@@ -28,6 +28,11 @@ namespace OpenSonos
             host.Description.Behaviors.Add(new ServiceMetadataBehavior { MetadataExporter = { PolicyVersion = PolicyVersion.Policy15 } });
             host.AddServiceEndpoint(typeof(ISonosApi), new BasicHttpBinding(), path);
             host.AddServiceEndpoint(typeof(ISonosApi), new WSHttpBinding(), "");
+
+            var endpoint = host.AddServiceEndpoint(typeof(ISonosMetadataApi), new BasicHttpBinding(), "metadata");
+            endpoint.Binding = new WebHttpBinding();
+            endpoint.Behaviors.Add(new WebHttpBehavior());
+
             host.AddServiceEndpoint(ServiceMetadataBehavior.MexContractName, MetadataExchangeBindings.CreateMexHttpBinding(), "mex");
             return host;
         }
