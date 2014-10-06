@@ -3,7 +3,7 @@ using OpenSonos.LocalMusicServer.Compression;
 
 namespace OpenSonos.LocalMusicServer.Browsing
 {
-    public class IdentityProvider
+    public class IdentityProvider : IIdentityProvider
     {
         private readonly IIdentityCompressionStrategy _identityCompressionStrategy;
 

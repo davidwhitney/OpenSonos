@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Browsing\IdentityProvider.cs" />
+    <Compile Include="Browsing\IIdentityProvider.cs" />
     <Compile Include="Compression\IIdentityCompressionStrategy.cs" />
     <Compile Include="MusicDatabase\Container.cs" />
     <Compile Include="Compression\Gzip.cs" />

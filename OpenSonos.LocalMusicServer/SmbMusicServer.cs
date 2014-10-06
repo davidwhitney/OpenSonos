@@ -11,11 +11,14 @@ namespace OpenSonos.LocalMusicServer
     public class SmbMusicServer : ServerBase
     {
         public static Func<IMusicRepository> MusicRepository { get; set; }
-        private readonly IdentityProvider _identityProvider;
+        public static Func<IIdentityProvider> IdentityProvider { get; set; }
 
         public SmbMusicServer()
         {
-            _identityProvider = new IdentityProvider(new Gzip());
+            if (IdentityProvider == null)
+            {
+                IdentityProvider = () => new IdentityProvider(new Gzip());
+            }
         }
 
         public override Presentation GetPresentationMaps()
@@ -36,7 +39,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMetadataResponse GetMetadata(getMetadataRequest request)
         {
-            var id = _identityProvider.FromRequestId(request.id);
+            var id = IdentityProvider().FromRequestId(request.id);
             var results = MusicRepository().GetResources(id);
 
             return new getMetadataResponse
@@ -47,7 +50,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
         {
-            var id = _identityProvider.FromRequestId(request.id);
+            var id = IdentityProvider().FromRequestId(request.id);
             return new getExtendedMetadataResponse
             {
                 getExtendedMetadataResult = new extendedMetadata
@@ -59,7 +62,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)
         {
-            var id = _identityProvider.FromRequestId(request.id);
+            var id = IdentityProvider().FromRequestId(request.id);
             return new getMediaMetadataResponse
             {
                 getMediaMetadataResult = new getMediaMetadataResponseGetMediaMetadataResult
@@ -78,7 +81,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMediaURIResponse GetMediaUri(getMediaURIRequest request)
         {
-            var id = _identityProvider.FromRequestId(request.id);
+            var id = IdentityProvider().FromRequestId(request.id);
             return new getMediaURIResponse
             {
                 getMediaURIResult = MusicRepository().BuildUriForId(id)

@@ -16,7 +16,9 @@ namespace OpenSonos.LocalMusicServer
 
             var identityProvider = new IdentityProvider(new Gzip());
             var singleRepository = new FlatFileMusicCatalogue(musicShare, identityProvider);
+            
             SmbMusicServer.MusicRepository = () => singleRepository;
+            SmbMusicServer.IdentityProvider = () => identityProvider;
 
             Server.ImplementedBy<SmbMusicServer>()
                   .HostedAt(new Uri(baseUrl))
