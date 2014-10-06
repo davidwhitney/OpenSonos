@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.Compression;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.SonosServer;
 using OpenSonos.SonosServer.Metadata;
@@ -12,14 +11,6 @@ namespace OpenSonos.LocalMusicServer
     {
         public static Func<IMusicRepository> MusicRepository { get; set; }
         public static Func<IIdentityProvider> IdentityProvider { get; set; }
-
-        public SmbMusicServer()
-        {
-            if (IdentityProvider == null)
-            {
-                IdentityProvider = () => new CompressedStringIdentityProvider(new Gzip());
-            }
-        }
 
         public override Presentation GetPresentationMaps()
         {

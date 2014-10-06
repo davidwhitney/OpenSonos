@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.SonosServer;
@@ -14,11 +15,12 @@ namespace OpenSonos.LocalMusicServer
                 itemType = itemType.track,
                 id = entry.Identifier.Id,
                 title = entry.DisplayName,
-                onDemand = true,
-                onDemandSpecified = true,
                 mimeType = "audio/mpeg3",
                 Item = new trackMetadata
                 {
+                    canSkip = true,
+                    canAddToFavorites = true,
+                    canSkipSpecified = true,
                     canPlay = true,
                     canPlaySpecified = true,
                     albumId = entry.Identifier.Id
@@ -37,14 +39,12 @@ namespace OpenSonos.LocalMusicServer
                 {
                     id = subdirectory.Identifier.Id,
                     title = subdirectory.DisplayName,
-                    artist = subdirectory.DisplayName,
-                    itemType = itemType.album,
-                    canPlay = false,
-                    readOnly = true,
-                    canCache = true,
+                    itemType = itemType.artistTrackList,
+                    canEnumerate = true,
+                    canPlay = true
                 });
             }
-
+            
             foreach (var entry in requestedPage.Where(x => x is MusicFile))
             {
                 collections.Add(entry.ToMediaMetadata());

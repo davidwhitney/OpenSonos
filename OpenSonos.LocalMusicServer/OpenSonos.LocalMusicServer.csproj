@@ -44,12 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Browsing\CompressedStringIdentityProvider.cs" />
     <Compile Include="Browsing\GuidIdentityProvider.cs" />
     <Compile Include="Browsing\IIdentityProvider.cs" />
-    <Compile Include="Compression\IIdentityCompressionStrategy.cs" />
     <Compile Include="MusicDatabase\Container.cs" />
-    <Compile Include="Compression\Gzip.cs" />
     <Compile Include="MusicDatabase\FlatFileMusicCatalogue.cs" />
     <Compile Include="SmbMusicServer.cs" />
     <Compile Include="MusicDatabase\IMusicRepository.cs" />
