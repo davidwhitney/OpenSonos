@@ -30,11 +30,6 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
             return directoryEntries;
         }
 
-        private Container ToContainer(DirectoryInfo subdir)
-        {
-            return ToContainer(subdir.FullName);
-        }
-
         private Container ToContainer(string subdir)
         {
             var p = subdir.Replace(_root, "");
