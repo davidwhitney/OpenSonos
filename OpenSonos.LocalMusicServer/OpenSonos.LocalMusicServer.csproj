@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LZ4">
-      <HintPath>..\packages\lz4net.1.0.5.93\lib\net40-client\LZ4.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -47,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Browsing\IdentityProvider.cs" />
+    <Compile Include="Browsing\CompressedStringIdentityProvider.cs" />
+    <Compile Include="Browsing\GuidIdentityProvider.cs" />
     <Compile Include="Browsing\IIdentityProvider.cs" />
     <Compile Include="Compression\IIdentityCompressionStrategy.cs" />
     <Compile Include="MusicDatabase\Container.cs" />
@@ -65,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenSonos\OpenSonos.csproj">

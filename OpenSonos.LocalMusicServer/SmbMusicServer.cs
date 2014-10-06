@@ -17,7 +17,7 @@ namespace OpenSonos.LocalMusicServer
         {
             if (IdentityProvider == null)
             {
-                IdentityProvider = () => new IdentityProvider(new Gzip());
+                IdentityProvider = () => new CompressedStringIdentityProvider(new Gzip());
             }
         }
 

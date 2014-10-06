@@ -3,11 +3,11 @@ using OpenSonos.LocalMusicServer.Compression;
 
 namespace OpenSonos.LocalMusicServer.Browsing
 {
-    public class IdentityProvider : IIdentityProvider
+    public class CompressedStringIdentityProvider : IIdentityProvider
     {
         private readonly IIdentityCompressionStrategy _identityCompressionStrategy;
 
-        public IdentityProvider(IIdentityCompressionStrategy identityCompressionStrategy)
+        public CompressedStringIdentityProvider(IIdentityCompressionStrategy identityCompressionStrategy)
         {
             _identityCompressionStrategy = identityCompressionStrategy;
         }
@@ -40,12 +40,6 @@ namespace OpenSonos.LocalMusicServer.Browsing
             {
                 s.Id = _identityCompressionStrategy.CompressString("");
                 s.Path = "";
-                s.IsDirectory = true;
-            }
-
-            if (s.Path == null || !s.Path.EndsWith(".mp3"))
-            {
-                s.IsDirectory = true;
             }
 
             return s;

@@ -14,7 +14,7 @@ namespace OpenSonos.LocalMusicServer
             var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
             var musicShare = ConfigurationManager.AppSettings["musicShare"];
 
-            var identityProvider = new IdentityProvider(new Gzip());
+            var identityProvider = new CompressedStringIdentityProvider(new Gzip());
             var singleRepository = new FlatFileMusicCatalogue(musicShare, identityProvider);
             
             SmbMusicServer.MusicRepository = () => singleRepository;

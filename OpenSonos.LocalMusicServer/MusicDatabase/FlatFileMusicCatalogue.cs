@@ -8,9 +8,9 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
     public class FlatFileMusicCatalogue : IMusicRepository
     {
         private readonly string _root;
-        private readonly IdentityProvider _converter;
+        private readonly CompressedStringIdentityProvider _converter;
 
-        public FlatFileMusicCatalogue(string root, IdentityProvider converter)
+        public FlatFileMusicCatalogue(string root, CompressedStringIdentityProvider converter)
         {
             _root = root;
             _converter = converter;

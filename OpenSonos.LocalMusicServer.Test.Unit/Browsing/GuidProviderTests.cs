@@ -1,27 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.Compression;
 
 namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
 {
     [TestFixture]
-    public class IdentityProviderTests
+    public class GuidIdentityProviderTests
     {
         private string _uncompressedId;
         private string _compressedId;
-        private IdentityProvider _provider;
+        private IIdentityProvider _provider;
 
         [SetUp]
         public void SetUp()
         {
             _uncompressedId = "\\\\some\\smb\\path";
-            _compressedId = "DwAAAB+LCAAAAAAABACLiSnOz02NKc5NiilILMkAAAUyIC4PAAAA";
-            _provider = new IdentityProvider(new Gzip());
+            _compressedId = Guid.NewGuid().ToString();
+
+            var backing = new Dictionary<string, SonosIdentifier>
+            {
+                {_uncompressedId, new SonosIdentifier {Id = _compressedId, Path = "\\\\some\\smb\\path"}}
+            };
+
+            _provider = new GuidIdentityProvider(backing);
         }
 
         [Test]
-        public void Ctor_WithPath_IdAndPathSetCorrectly()
+        public void FromPath_WithPath_IdAndPathSetCorrectly()
         {
             var identifier = _provider.FromPath(_uncompressedId);
 
@@ -29,17 +35,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         }
 
         [Test]
-        public void Ctor_WithPathTooLongToBeRepresented_ThrowsException()
-        {
-            var ex =
-                Assert.Throws<Exception>(
-                    () => _provider.FromPath("\\\\smb\\really\\very\\stupidly\\special\\and\\really\\long\\long path\\that\\will\\totally\\exceed\\the compressed one hundred and twenty eight character limit"));
-
-            Assert.That(ex.Message, Is.EqualTo("Compressed path is too for Sonos systems."));
-        }
-
-        [Test]
-        public void Ctor_WithMaxWindowsPathLength_CanCreateCompressedId()
+        public void FromPath_WithMaxWindowsPathLength_CanCreateCompressedId()
         {
             var identifier = _provider.FromPath("\\abcdefghjklmnopqrstuvwxyz\\ABCDEFGHIJKLMNOPQRSTUVWXYZ\\AbCdEfGhIjLlMnoPqRsTuVwZyZ\\the quick brown fox jumped ov\\er the lazy dog and this i\\s strin  a long string th\\at should be very hard toc\\ompress reliably for gzip \\compression to handle well and q");
 
@@ -47,11 +43,21 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         }
 
         [Test]
-        public void Ctor_WhenPathHasLotsOfEntropy_CanCreateCompressedId()
+        public void FromPath_WhenPathHasLotsOfEntropy_CanCreateCompressedId()
         {
             var identifier = _provider.FromPath("Justin Timberlake - The 20-20 Experience (Deluxe Edition) 2013 Pop 320kbps CBR MP3 [VX]");
 
             Assert.That(identifier.Id, Is.Not.Null);
+        }
+
+        [Test]
+        public void FromPath_WhenPathIsProvidedTwice_SameIdReturned()
+        {
+            var identifier1 = _provider.FromPath("\\something\\here");
+            var identifier2 = _provider.FromPath("\\something\\here");
+
+            Assert.That(identifier1.Id, Is.EqualTo(identifier2.Id));
+            Assert.That(identifier1.Path, Is.EqualTo(identifier2.Path));
         }
 
         [Test]
@@ -68,7 +74,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
             var identifier = _provider.FromRequestId("");
 
             Assert.That(identifier.Path, Is.EqualTo(""));
-            Assert.That(identifier.Id, Is.EqualTo("AAAAAA=="));
+            Assert.That(identifier.Id, Is.EqualTo(""));
         }
 
         [Test]
@@ -77,7 +83,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
             var identifier = _provider.FromRequestId("root");
 
             Assert.That(identifier.Path, Is.EqualTo(""));
-            Assert.That(identifier.Id, Is.EqualTo("AAAAAA=="));
+            Assert.That(identifier.Id, Is.EqualTo(""));
         }
 
         [Test]

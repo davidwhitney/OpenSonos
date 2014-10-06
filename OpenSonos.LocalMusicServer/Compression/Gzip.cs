@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
-using OpenSonos.LocalMusicServer.Browsing;
 
 namespace OpenSonos.LocalMusicServer.Compression
 {
