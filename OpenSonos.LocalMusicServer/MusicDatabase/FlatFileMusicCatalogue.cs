@@ -57,7 +57,7 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
             }
 
             var directoryEntries = new List<IRepresentAResource>();
-            var @out = SearchDirectories(new DirectoryInfo(_root), query + "*");
+            var @out = Directory.GetDirectories(query + "*");
             directoryEntries.AddRange(@out.Select(ToContainer));
 
             return directoryEntries;
@@ -66,17 +66,6 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
         public string BuildUriForId(SonosIdentifier identifier)
         {
             return "x-file-cifs:" + (_root + identifier.Path).Replace("\\", "/");
-        }
-
-        private static List<DirectoryInfo> SearchDirectories(DirectoryInfo root, string searchPattern)
-        {
-            var folders = new List<DirectoryInfo>();
-            foreach (var d in root.GetDirectories(searchPattern))
-            {
-                folders.Add(d);
-                SearchDirectories(d, searchPattern);
-            }
-            return folders;
         }
     }
 }
