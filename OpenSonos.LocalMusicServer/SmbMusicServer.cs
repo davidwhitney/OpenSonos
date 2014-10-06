@@ -43,10 +43,7 @@ namespace OpenSonos.LocalMusicServer
         public override getMediaURIResponse GetMediaUri(getMediaURIRequest request)
         {
             var id = IdentityProvider().FromRequestId(request.id);
-            return new getMediaURIResponse
-            {
-                getMediaURIResult = MusicRepository().BuildUriForId(id)
-            };
+            return new getMediaURIResponse(MusicRepository().BuildUriForId(id));
         }
 
         public override getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request)

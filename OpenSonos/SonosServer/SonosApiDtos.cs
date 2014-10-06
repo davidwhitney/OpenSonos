@@ -3377,6 +3377,10 @@ namespace OpenSonos.SonosServer
             this.httpHeaders = httpHeaders;
             this.uriTimeout = uriTimeout;
         }
+
+        public getMediaURIResponse(string getMediaURIResult) {
+            this.getMediaURIResult = getMediaURIResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
