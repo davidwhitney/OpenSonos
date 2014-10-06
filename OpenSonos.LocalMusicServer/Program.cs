@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Threading.Tasks;
 using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.Compression;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 
 namespace OpenSonos.LocalMusicServer

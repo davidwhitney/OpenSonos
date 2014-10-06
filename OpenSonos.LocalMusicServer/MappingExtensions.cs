@@ -35,15 +35,13 @@ namespace OpenSonos.LocalMusicServer
             {
                 collections.Add(new mediaCollection
                 {
-                    artist = subdirectory.DisplayName,
-                    canPlay = false,
                     id = subdirectory.Identifier.Id,
-                    itemType = itemType.album,
                     title = subdirectory.DisplayName,
+                    artist = subdirectory.DisplayName,
+                    itemType = itemType.album,
+                    canPlay = false,
                     readOnly = true,
-                    userContent = true,
-                    homogeneous = true,
-                    canEnumerate = true
+                    canCache = true,
                 });
             }
 
