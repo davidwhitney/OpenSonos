@@ -38,7 +38,15 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         [Test]
         public void Ctor_WithMaxWindowsPathLength_CanCreateCompressedId()
         {
-            var identifier = new SonosIdentifier("\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdefghijklmnopqrstuvwxyz\\abcdef");
+            var identifier = new SonosIdentifier("\\abcdefghjklmnopqrstuvwxyz\\ABCDEFGHIJKLMNOPQRSTUVWXYZ\\AbCdEfGhIjLlMnoPqRsTuVwZyZ\\the quick brown fox jumped ov\\er the lazy dog and this i\\s strin  a long string th\\at should be very hard toc\\ompress reliably for gzip \\compression to handle well and q");
+
+            Assert.That(identifier.Id, Is.Not.Null);
+        }
+
+        [Test]
+        public void Ctor_WhenPathHasLotsOfEntropy_CanCreateCompressedId()
+        {
+            var identifier = new SonosIdentifier("Justin Timberlake - The 20-20 Experience (Deluxe Edition) 2013 Pop 320kbps CBR MP3 [VX]");
 
             Assert.That(identifier.Id, Is.Not.Null);
         }

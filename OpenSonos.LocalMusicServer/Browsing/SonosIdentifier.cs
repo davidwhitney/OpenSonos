@@ -18,7 +18,7 @@ namespace OpenSonos.LocalMusicServer.Browsing
             Path = path;
             Id = Gzip.CompressString(path);
 
-            if (path.Length > 128)
+            if (Id.Length > 128)
             {
                 throw new Exception("Compressed path is too for Sonos systems.");
             }
