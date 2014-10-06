@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace OpenSonos.SonosServer
 {
     /// <remarks/>
@@ -3018,6 +3020,10 @@ namespace OpenSonos.SonosServer
         
         public getExtendedMetadataResponse() {
         }
+
+        public getExtendedMetadataResponse(AbstractMedia item) {
+            getExtendedMetadataResult = new extendedMetadata { Item = item };
+        }
         
         public getExtendedMetadataResponse(OpenSonos.SonosServer.extendedMetadata getExtendedMetadataResult) {
             this.getExtendedMetadataResult = getExtendedMetadataResult;
@@ -3308,6 +3314,21 @@ namespace OpenSonos.SonosServer
         public getMediaMetadataResponse(OpenSonos.SonosServer.getMediaMetadataResponseGetMediaMetadataResult getMediaMetadataResult) {
             this.getMediaMetadataResult = getMediaMetadataResult;
         }
+
+        public getMediaMetadataResponse(mediaMetadata mediaMetadataResponse)
+        {
+            getMediaMetadataResult = new getMediaMetadataResponseGetMediaMetadataResult
+            {
+                Items = new object[]
+                {
+                    mediaMetadataResponse
+                },
+                ItemsElementName = new[]
+                {
+                    ItemsChoiceType.mediaMetadata
+                }
+            };
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3496,6 +3517,18 @@ namespace OpenSonos.SonosServer
         
         public getLastUpdateResponse(OpenSonos.SonosServer.lastUpdate getLastUpdateResult) {
             this.getLastUpdateResult = getLastUpdateResult;
+        }
+
+        public static getLastUpdateResponse ChangedRightNow()
+        {
+            return new getLastUpdateResponse
+            {
+                getLastUpdateResult = new lastUpdate
+                {
+                    catalog = DateTime.UtcNow.Ticks.ToString(),
+                    favorites = "1"
+                }
+            };
         }
     }
     

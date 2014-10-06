@@ -10,5 +10,17 @@ namespace OpenSonos.SonosServer.Metadata
     {
         [XmlElement("PresentationMap")] 
         public List<PresentationMap> PresentationMaps;
+
+        public Presentation()
+        {
+        }
+
+        public Presentation(PresentationMap singleMap)
+        {
+            PresentationMaps = new List<PresentationMap>
+            {
+                PresentationMap.DefaultSonosSearch()
+            };
+        }
     }
 }

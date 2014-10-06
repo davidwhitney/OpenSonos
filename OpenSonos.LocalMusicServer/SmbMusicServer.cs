@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using OpenSonos.LocalMusicServer.Browsing;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.SonosServer;
@@ -14,13 +13,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override Presentation GetPresentationMaps()
         {
-            return new Presentation
-            {
-                PresentationMaps = new List<PresentationMap>
-                {
-                    PresentationMap.DefaultSonosSearch()
-                }
-            };
+            return new Presentation(PresentationMap.DefaultSonosSearch());
         }
 
         public override getSessionIdResponse GetSessionId(getSessionIdRequest request)
@@ -32,42 +25,19 @@ namespace OpenSonos.LocalMusicServer
         {
             var id = IdentityProvider().FromRequestId(request.id);
             var results = MusicRepository().GetResources(id);
-
-            return new getMetadataResponse
-            {
-                getMetadataResult = results.DirectoryToSonosResponse(request.index, request.count)
-            };
+            return new getMetadataResponse(results.DirectoryToSonosResponse(request.index, request.count));
         }
 
         public override getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
         {
             var id = IdentityProvider().FromRequestId(request.id);
-            return new getExtendedMetadataResponse
-            {
-                getExtendedMetadataResult = new extendedMetadata
-                {
-                    Item = PhysicalResource.FromId(id).ToMediaMetadata()
-                }
-            };
+            return new getExtendedMetadataResponse(PhysicalResource.FromId(id).ToMediaMetadata());
         }
 
         public override getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)
         {
             var id = IdentityProvider().FromRequestId(request.id);
-            return new getMediaMetadataResponse
-            {
-                getMediaMetadataResult = new getMediaMetadataResponseGetMediaMetadataResult
-                {
-                    Items = new object[]
-                    {
-                        PhysicalResource.FromId(id).ToMediaMetadata()
-                    },
-                    ItemsElementName = new []
-                    {
-                        ItemsChoiceType.mediaMetadata, 
-                    }
-                }
-            };
+            return new getMediaMetadataResponse(PhysicalResource.FromId(id).ToMediaMetadata());
         }
 
         public override getMediaURIResponse GetMediaUri(getMediaURIRequest request)
@@ -81,23 +51,13 @@ namespace OpenSonos.LocalMusicServer
 
         public override getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request)
         {
-            return new getLastUpdateResponse
-            {
-                getLastUpdateResult = new lastUpdate
-                {
-                    catalog = DateTime.UtcNow.Ticks.ToString(),
-                    favorites = "1"
-                }
-            };
+            return getLastUpdateResponse.ChangedRightNow();
         }
 
         public override searchResponse Search(searchRequest request)
         {
             var results = MusicRepository().Search(request.term);
-            return new searchResponse
-            {
-                searchResult = results.DirectoryToSonosResponse(request.index, request.count)
-            };
+            return new searchResponse(results.DirectoryToSonosResponse(request.index, request.count));
         }
     }
 }
