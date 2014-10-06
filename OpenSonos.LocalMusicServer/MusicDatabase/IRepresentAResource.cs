@@ -1,8 +1,11 @@
+using OpenSonos.LocalMusicServer.Browsing;
+
 namespace OpenSonos.LocalMusicServer.MusicDatabase
 {
     public interface IRepresentAResource
     {
-        string Id { get; }
+        SonosIdentifier Identifier { get; }
+        //string Id { get; }
         string DisplayName { get; }
     }
 }

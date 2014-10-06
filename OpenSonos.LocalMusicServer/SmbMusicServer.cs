@@ -29,7 +29,7 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMetadataResponse GetMetadata(getMetadataRequest request)
         {
-            var results = MusicRepository().GetResources(new SonosId(request.id));
+            var results = MusicRepository().GetResources(SonosIdentifier.FromRequestId(request.id));
 
             return new getMetadataResponse
             {
@@ -70,7 +70,7 @@ namespace OpenSonos.LocalMusicServer
         {
             return new getMediaURIResponse
             {
-                getMediaURIResult = MusicRepository().BuildUriForId(new SonosId(request.id))
+                getMediaURIResult = MusicRepository().BuildUriForId(SonosIdentifier.FromRequestId(request.id))
             };
         }
 

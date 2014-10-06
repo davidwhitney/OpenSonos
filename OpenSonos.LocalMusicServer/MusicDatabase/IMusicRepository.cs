@@ -5,8 +5,8 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
 {
     public interface IMusicRepository
     {
-        string BuildUriForId(SonosId id);
-        List<IRepresentAResource> GetResources(SonosId id);
+        string BuildUriForId(SonosIdentifier identifier);
+        List<IRepresentAResource> GetResources(SonosIdentifier identifier);
         List<IRepresentAResource> Search(string query);
     }
 }

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSonos", "OpenSonos\Open
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSonos.LocalMusicServer", "OpenSonos.LocalMusicServer\OpenSonos.LocalMusicServer.csproj", "{A67F0125-7297-457B-AD0A-AC050A2D793D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSonos.Test.Unit", "OpenSonos.Test.Unit\OpenSonos.Test.Unit.csproj", "{A6E5A238-6FF8-4F71-996E-17F4374C1334}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenSonos.LocalMusicServer.Test.Unit", "OpenSonos.LocalMusicServer.Test.Unit\OpenSonos.LocalMusicServer.Test.Unit.csproj", "{B3FD6BCE-00B4-4D23-95C9-E4308F8FA544}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A67F0125-7297-457B-AD0A-AC050A2D793D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A67F0125-7297-457B-AD0A-AC050A2D793D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A67F0125-7297-457B-AD0A-AC050A2D793D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E5A238-6FF8-4F71-996E-17F4374C1334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E5A238-6FF8-4F71-996E-17F4374C1334}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E5A238-6FF8-4F71-996E-17F4374C1334}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E5A238-6FF8-4F71-996E-17F4374C1334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3FD6BCE-00B4-4D23-95C9-E4308F8FA544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3FD6BCE-00B4-4D23-95C9-E4308F8FA544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3FD6BCE-00B4-4D23-95C9-E4308F8FA544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3FD6BCE-00B4-4D23-95C9-E4308F8FA544}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

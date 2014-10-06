@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A67F0125-7297-457B-AD0A-AC050A2D793D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{A6E5A238-6FF8-4F71-996E-17F4374C1334}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenSonos.LocalMusicServer</RootNamespace>
-    <AssemblyName>OpenSonos.LocalMusicServer</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <RootNamespace>OpenSonos.Test.Unit</RootNamespace>
+    <AssemblyName>OpenSonos.Test.Unit</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,9 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,27 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MusicDatabase\Container.cs" />
-    <Compile Include="Compression\Gzip.cs" />
-    <Compile Include="MusicDatabase\FlatFileMusicCatalogue.cs" />
-    <Compile Include="SmbMusicServer.cs" />
-    <Compile Include="MusicDatabase\IMusicRepository.cs" />
-    <Compile Include="MusicDatabase\IRepresentAResource.cs" />
-    <Compile Include="MusicDatabase\MusicFile.cs" />
-    <Compile Include="MusicDatabase\PhysicalResource.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Browsing\SonosIdentifier.cs" />
-    <Compile Include="MappingExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OpenSonos\OpenSonos.csproj">
-      <Project>{4b7a83fb-1a9e-4c19-b1ad-ce8097a3aac7}</Project>
-      <Name>OpenSonos</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

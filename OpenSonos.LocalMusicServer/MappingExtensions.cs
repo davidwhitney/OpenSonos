@@ -12,7 +12,7 @@ namespace OpenSonos.LocalMusicServer
             return new mediaMetadata
             {
                 itemType = itemType.track,
-                id = entry.Id,
+                id = entry.Identifier.Id,
                 title = entry.DisplayName,
                 onDemand = true,
                 onDemandSpecified = true,
@@ -21,7 +21,7 @@ namespace OpenSonos.LocalMusicServer
                 {
                     canPlay = true,
                     canPlaySpecified = true,
-                    albumId = entry.Id
+                    albumId = entry.Identifier.Id
                 }
             };
         }
@@ -37,7 +37,7 @@ namespace OpenSonos.LocalMusicServer
                 {
                     artist = subdirectory.DisplayName,
                     canPlay = false,
-                    id = subdirectory.Id,
+                    id = subdirectory.Identifier.Id,
                     itemType = itemType.album,
                     title = subdirectory.DisplayName,
                     readOnly = true,

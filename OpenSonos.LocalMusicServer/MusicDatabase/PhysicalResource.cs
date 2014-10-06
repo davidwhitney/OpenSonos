@@ -6,26 +6,25 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
 {
     public abstract class PhysicalResource : IRepresentAResource
     {
-        public string Path { get; set; }
-        public string Id { get { return Gzip.CompressString(Path); } }
+        public SonosIdentifier Identifier { get; private set; }
         public string DisplayName { get { return Parts.Last(); } }
-        public string[] Parts { get { return Path.Split('\\'); } }
+        public string[] Parts { get { return Identifier.Path.Split('\\'); } }
 
         protected PhysicalResource(string path)
         {
-            Path = path;
+            Identifier = new SonosIdentifier(path);
         }
 
         public static PhysicalResource FromId(string id)
         {
-            return FromId(new SonosId(id));
+            return FromId(SonosIdentifier.FromRequestId(id));
         }
 
-        public static PhysicalResource FromId(SonosId id)
+        public static PhysicalResource FromId(SonosIdentifier identifier)
         {
-            return id.IsDirectory 
-                ? (PhysicalResource) new Container(id.RequestedPath) 
-                : new MusicFile(id.RequestedPath);
+            return identifier.IsDirectory 
+                ? (PhysicalResource) new Container(identifier.Path) 
+                : new MusicFile(identifier.Path);
         }
     }
 }
