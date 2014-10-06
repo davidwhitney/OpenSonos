@@ -57,7 +57,7 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
             }
 
             var directoryEntries = new List<IRepresentAResource>();
-            var @out = Directory.GetDirectories(query + "*");
+            var @out = Directory.GetDirectories(_root, query + "*");
             directoryEntries.AddRange(@out.Select(ToContainer));
 
             return directoryEntries;
