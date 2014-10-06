@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Browsing\GuidProviderTests.cs" />
     <Compile Include="Browsing\CompressedStringIdentityProviderTests.cs" />
+    <Compile Include="Browsing\GuidProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
