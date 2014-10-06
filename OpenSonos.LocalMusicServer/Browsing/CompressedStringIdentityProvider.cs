@@ -14,18 +14,18 @@ namespace OpenSonos.LocalMusicServer.Browsing
 
         public SonosIdentifier FromPath(string path)
         {
-            var s = new SonosIdentifier
-            {
-                Id = _identityCompressionStrategy.CompressString(path),
-                Path = path
-            };
+            var id = _identityCompressionStrategy.CompressString(path);
 
-            if (s.Id.Length > 128)
+            if (id.Length > 128)
             {
                 throw new Exception("Compressed path is too for Sonos systems.");
             }
 
-            return s;
+            return new SonosIdentifier
+            {
+                Id = id,
+                Path = path
+            };
         }
 
         public SonosIdentifier FromRequestId(string requestedId)
