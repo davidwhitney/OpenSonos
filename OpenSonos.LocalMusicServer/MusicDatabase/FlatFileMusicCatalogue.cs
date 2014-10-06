@@ -30,6 +30,11 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
             return directoryEntries;
         }
 
+        private Container ToContainer(DirectoryInfo subdir)
+        {
+            return ToContainer(subdir.FullName);
+        }
+
         private Container ToContainer(string subdir)
         {
             var p = subdir.Replace(_root, "");
@@ -52,13 +57,26 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
             }
 
             var directoryEntries = new List<IRepresentAResource>();
-            directoryEntries.AddRange(Directory.GetFiles(_root, "*" + query + "*", SearchOption.TopDirectoryOnly).Select(ToMusicFile));
+            var @out = SearchDirectories(new DirectoryInfo(_root), query + "*");
+            directoryEntries.AddRange(@out.Select(ToContainer));
+
             return directoryEntries;
         }
 
         public string BuildUriForId(SonosIdentifier identifier)
         {
             return "x-file-cifs:" + (_root + identifier.Path).Replace("\\", "/");
+        }
+
+        private static List<DirectoryInfo> SearchDirectories(DirectoryInfo root, string searchPattern)
+        {
+            var folders = new List<DirectoryInfo>();
+            foreach (var d in root.GetDirectories(searchPattern))
+            {
+                folders.Add(d);
+                SearchDirectories(d, searchPattern);
+            }
+            return folders;
         }
     }
 }
