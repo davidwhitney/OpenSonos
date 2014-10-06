@@ -7,11 +7,21 @@ namespace OpenSonos.LocalMusicServer.Browsing
 {
     public class GuidIdentityProvider : IIdentityProvider
     {
-        private readonly IDictionary<string, SonosIdentifier> _pathToGuid;
+        private readonly ConcurrentDictionary<string, SonosIdentifier> _pathToGuid;
 
-        public GuidIdentityProvider(IDictionary<string, SonosIdentifier> backingStore = null)
+        public GuidIdentityProvider(IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore = null)
         {
-            _pathToGuid = backingStore ?? new ConcurrentDictionary<string, SonosIdentifier>();
+            _pathToGuid = new ConcurrentDictionary<string, SonosIdentifier>();
+
+            if (backingStore == null)
+            {
+                return;
+            }
+
+            foreach (var item in backingStore)
+            {
+                _pathToGuid.TryAdd(item.Key, item.Value);
+            }
         }
 
         public SonosIdentifier FromPath(string path)
@@ -27,20 +37,14 @@ namespace OpenSonos.LocalMusicServer.Browsing
                 Path = path
             };
 
-            _pathToGuid.Add(path, identifier);
+            _pathToGuid.TryAdd(path, identifier);
             return identifier;
         }
 
         public SonosIdentifier FromRequestId(string requestedId)
         {
-            var reverseMatch = _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId);
-
-            if (reverseMatch.Value == null)
-            {
-                return new SonosIdentifier();
-            }
-
-            return reverseMatch.Value;
+            return _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value
+                   ?? new SonosIdentifier();
         }
     }
 }
