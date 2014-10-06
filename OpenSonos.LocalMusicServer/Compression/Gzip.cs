@@ -2,12 +2,13 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
+using OpenSonos.LocalMusicServer.Browsing;
 
 namespace OpenSonos.LocalMusicServer.Compression
 {
-    public static class Gzip
+    public class Gzip : IIdentityCompressionStrategy
     {
-        public static string CompressString(string text)
+        public string CompressString(string text)
         {
             var buffer = Encoding.UTF8.GetBytes(text);
             var memoryStream = new MemoryStream();
@@ -27,7 +28,7 @@ namespace OpenSonos.LocalMusicServer.Compression
             return Convert.ToBase64String(gZipBuffer);
         }
 
-        public static string DecompressString(string compressedText)
+        public string DecompressString(string compressedText)
         {
             byte[] gZipBuffer = Convert.FromBase64String(compressedText);
             using (var memoryStream = new MemoryStream())
@@ -47,7 +48,7 @@ namespace OpenSonos.LocalMusicServer.Compression
             }
         }
 
-        public static string TryDecompressString(string compressedText)
+        public string TryDecompressString(string compressedText)
         {
             try
             {

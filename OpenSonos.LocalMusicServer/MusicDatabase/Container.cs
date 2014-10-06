@@ -1,8 +1,10 @@
+using OpenSonos.LocalMusicServer.Browsing;
+
 namespace OpenSonos.LocalMusicServer.MusicDatabase
 {
     public class Container : PhysicalResource
     {        
-        public Container(string path) : base(path)
+        public Container(SonosIdentifier path) : base(path)
         {
         }
     }

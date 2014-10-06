@@ -1,6 +1,5 @@
 using System.Linq;
 using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.Compression;
 
 namespace OpenSonos.LocalMusicServer.MusicDatabase
 {
@@ -10,21 +9,16 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
         public string DisplayName { get { return Parts.Last(); } }
         public string[] Parts { get { return Identifier.Path.Split('\\'); } }
 
-        protected PhysicalResource(string path)
+        protected PhysicalResource(SonosIdentifier identifier)
         {
-            Identifier = new SonosIdentifier(path);
-        }
-
-        public static PhysicalResource FromId(string id)
-        {
-            return FromId(SonosIdentifier.FromRequestId(id));
+            Identifier = identifier;
         }
 
         public static PhysicalResource FromId(SonosIdentifier identifier)
         {
             return identifier.IsDirectory 
-                ? (PhysicalResource) new Container(identifier.Path) 
-                : new MusicFile(identifier.Path);
+                ? (PhysicalResource) new Container(identifier) 
+                : new MusicFile(identifier);
         }
     }
 }

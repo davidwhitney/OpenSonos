@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Configuration;
 using System.Threading.Tasks;
+using OpenSonos.LocalMusicServer.Browsing;
+using OpenSonos.LocalMusicServer.Compression;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 
 namespace OpenSonos.LocalMusicServer
@@ -12,7 +14,8 @@ namespace OpenSonos.LocalMusicServer
             var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
             var musicShare = ConfigurationManager.AppSettings["musicShare"];
 
-            var singleRepository = new FlatFileMusicCatalogue(musicShare);
+            var identityProvider = new IdentityProvider(new Gzip());
+            var singleRepository = new FlatFileMusicCatalogue(musicShare, identityProvider);
             SmbMusicServer.MusicRepository = () => singleRepository;
 
             Server.ImplementedBy<SmbMusicServer>()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using OpenSonos.LocalMusicServer.Browsing;
+using OpenSonos.LocalMusicServer.Compression;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.SonosServer;
 using OpenSonos.SonosServer.Metadata;
@@ -10,6 +11,12 @@ namespace OpenSonos.LocalMusicServer
     public class SmbMusicServer : ServerBase
     {
         public static Func<IMusicRepository> MusicRepository { get; set; }
+        private readonly IdentityProvider _identityProvider;
+
+        public SmbMusicServer()
+        {
+            _identityProvider = new IdentityProvider(new Gzip());
+        }
 
         public override Presentation GetPresentationMaps()
         {
@@ -29,7 +36,8 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMetadataResponse GetMetadata(getMetadataRequest request)
         {
-            var results = MusicRepository().GetResources(SonosIdentifier.FromRequestId(request.id));
+            var id = _identityProvider.FromRequestId(request.id);
+            var results = MusicRepository().GetResources(id);
 
             return new getMetadataResponse
             {
@@ -39,24 +47,26 @@ namespace OpenSonos.LocalMusicServer
 
         public override getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
         {
+            var id = _identityProvider.FromRequestId(request.id);
             return new getExtendedMetadataResponse
             {
                 getExtendedMetadataResult = new extendedMetadata
                 {
-                    Item = PhysicalResource.FromId(request.id).ToMediaMetadata()
+                    Item = PhysicalResource.FromId(id).ToMediaMetadata()
                 }
             };
         }
 
         public override getMediaMetadataResponse GetMediaMetadata(getMediaMetadataRequest request)
         {
+            var id = _identityProvider.FromRequestId(request.id);
             return new getMediaMetadataResponse
             {
                 getMediaMetadataResult = new getMediaMetadataResponseGetMediaMetadataResult
                 {
                     Items = new object[]
                     {
-                        PhysicalResource.FromId(request.id).ToMediaMetadata()
+                        PhysicalResource.FromId(id).ToMediaMetadata()
                     },
                     ItemsElementName = new []
                     {
@@ -68,9 +78,10 @@ namespace OpenSonos.LocalMusicServer
 
         public override getMediaURIResponse GetMediaUri(getMediaURIRequest request)
         {
+            var id = _identityProvider.FromRequestId(request.id);
             return new getMediaURIResponse
             {
-                getMediaURIResult = MusicRepository().BuildUriForId(SonosIdentifier.FromRequestId(request.id))
+                getMediaURIResult = MusicRepository().BuildUriForId(id)
             };
         }
 
