@@ -4,7 +4,7 @@ using OpenSonos.LocalMusicServer.Browsing;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.LocalMusicServer.Smapi;
 using OpenSonos.SonosServer;
-using Container = System.ComponentModel.Container;
+using Container = OpenSonos.LocalMusicServer.MusicDatabase.Container;
 
 namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
 {
@@ -18,7 +18,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         public void SetUp()
         {
             _fileEntries = new List<IRepresentAResource> { new MusicFile(new SonosIdentifier {Id = "1", Path = "\\\\some\\file.mp3"}) };
-            _directoryEntries = new List<IRepresentAResource> { new MusicDatabase.Container(new SonosIdentifier { Id = "1", Path = "\\\\some\\path" }) }; 
+            _directoryEntries = new List<IRepresentAResource> { new Container(new SonosIdentifier { Id = "1", Path = "\\\\some\\path" }) }; 
         }
 
         [Test]

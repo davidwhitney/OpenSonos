@@ -6,8 +6,7 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
     public abstract class PhysicalResource : IRepresentAResource
     {
         public SonosIdentifier Identifier { get; private set; }
-        public string DisplayName { get { return Parts.Last(); } }
-        public string[] Parts { get { return Identifier.Path.Split('\\'); } }
+        public string DisplayName { get { return Identifier.Path.Split('\\').Last(); } }
 
         protected PhysicalResource(SonosIdentifier identifier)
         {
