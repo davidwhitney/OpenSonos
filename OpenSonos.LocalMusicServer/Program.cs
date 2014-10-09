@@ -16,8 +16,8 @@ namespace OpenSonos.LocalMusicServer
                    new List<IWindowsService> { new SmbMusicService(), new SonosPlayerDiscoveryService() }.ToArray,
                    installationSettings: (serviceInstaller, serviceProcessInstaller) =>
                    {
-                       serviceInstaller.ServiceName = "SimpleServices.ExampleApplication";
-                       serviceInstaller.StartType = ServiceStartMode.Manual;
+                       serviceInstaller.ServiceName = "OpenSonos.LocalMusicServer.Service";
+                       serviceInstaller.StartType = ServiceStartMode.Automatic;
                        serviceProcessInstaller.Account = ServiceAccount.LocalService;
                    },
                    configureContext: x => { x.Log = Console.WriteLine; })
