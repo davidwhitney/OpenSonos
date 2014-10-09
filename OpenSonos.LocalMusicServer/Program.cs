@@ -1,31 +1,27 @@
 ﻿using System;
-using System.Configuration;
-using System.Threading.Tasks;
-using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.MusicDatabase;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ServiceProcess;
+using OpenSonos.LocalMusicServer.Bootstrapping;
+using SimpleServices;
 
 namespace OpenSonos.LocalMusicServer
 {
-    class Program
+    [RunInstaller(true)]
+    public class Program : SimpleServiceApplication
     {
         public static void Main(string[] args)
         {
-            var baseUrl = ConfigurationManager.AppSettings["baseUrl"];
-            var musicShare = ConfigurationManager.AppSettings["musicShare"];
-
-            var identityProvider = new GuidIdentityProvider();
-            var singleRepository = new FlatFileMusicCatalogue(musicShare, identityProvider);
-            
-            SmbMusicServer.MusicRepository = () => singleRepository;
-            SmbMusicServer.IdentityProvider = () => identityProvider;
-
-            Server.ImplementedBy<SmbMusicServer>()
-                  .HostedAt(new Uri(baseUrl))
-                  .Open();
-
-            Task.Run(() => { Players.Discover(); });
-            
-            Console.ReadLine();
+            new Service(args,
+                   new List<IWindowsService> { new SmbMusicService(), new SonosPlayerDiscoveryService() }.ToArray,
+                   installationSettings: (serviceInstaller, serviceProcessInstaller) =>
+                   {
+                       serviceInstaller.ServiceName = "SimpleServices.ExampleApplication";
+                       serviceInstaller.StartType = ServiceStartMode.Manual;
+                       serviceProcessInstaller.Account = ServiceAccount.LocalService;
+                   },
+                   configureContext: x => { x.Log = Console.WriteLine; })
+           .Host();
         }
     }
 }

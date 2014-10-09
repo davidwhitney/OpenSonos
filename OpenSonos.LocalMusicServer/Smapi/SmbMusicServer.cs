@@ -4,7 +4,7 @@ using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.SonosServer;
 using OpenSonos.SonosServer.Metadata;
 
-namespace OpenSonos.LocalMusicServer
+namespace OpenSonos.LocalMusicServer.Smapi
 {
     public class SmbMusicServer : ServerBase
     {

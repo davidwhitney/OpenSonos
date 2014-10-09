@@ -33,10 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SimpleServices">
+      <HintPath>..\packages\simpleservices.2.0.0\lib\Net45\SimpleServices.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,18 +53,23 @@
     <Compile Include="Browsing\IIdentityProvider.cs" />
     <Compile Include="MusicDatabase\Container.cs" />
     <Compile Include="MusicDatabase\FlatFileMusicCatalogue.cs" />
-    <Compile Include="SmbMusicServer.cs" />
+    <Compile Include="Smapi\SmbMusicServer.cs" />
     <Compile Include="MusicDatabase\IMusicRepository.cs" />
     <Compile Include="MusicDatabase\IRepresentAResource.cs" />
     <Compile Include="MusicDatabase\MusicFile.cs" />
     <Compile Include="MusicDatabase\PhysicalResource.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Program.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Browsing\SonosIdentifier.cs" />
-    <Compile Include="MappingExtensions.cs" />
+    <Compile Include="Smapi\MappingExtensions.cs" />
+    <Compile Include="Bootstrapping\SmbMusicService.cs" />
+    <Compile Include="Bootstrapping\SonosPlayerDiscoveryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenSonos\OpenSonos.csproj">
