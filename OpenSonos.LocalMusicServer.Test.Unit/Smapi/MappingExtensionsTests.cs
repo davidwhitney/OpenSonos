@@ -4,26 +4,27 @@ using OpenSonos.LocalMusicServer.Browsing;
 using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.LocalMusicServer.Smapi;
 using OpenSonos.SonosServer;
+using Container = System.ComponentModel.Container;
 
 namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
 {
     [TestFixture]
     public class MappingExtensionsTests
     {
-        private MusicFile _musicFile;
+        private List<IRepresentAResource> _fileEntries;
+        private List<IRepresentAResource> _directoryEntries;
 
         [SetUp]
         public void SetUp()
         {
-            _musicFile = new MusicFile(new SonosIdentifier {Id = "1", Path = "\\\\some\\file.mp3"});
+            _fileEntries = new List<IRepresentAResource> { new MusicFile(new SonosIdentifier {Id = "1", Path = "\\\\some\\file.mp3"}) };
+            _directoryEntries = new List<IRepresentAResource> { new MusicDatabase.Container(new SonosIdentifier { Id = "1", Path = "\\\\some\\path" }) }; 
         }
 
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_SingleEntryReturnedWithCorrectMetadata()
         {
-            var directoryEntries = new List<IRepresentAResource> { _musicFile }; 
-
-            var result = directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
 
             Assert.That(result.Items.Length, Is.EqualTo(1));
             Assert.That(result.count, Is.EqualTo(1));
@@ -34,9 +35,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_PropertiesMappedCorrectly()
         {
-            var directoryEntries = new List<IRepresentAResource> { _musicFile };
-
-            var result = directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
 
             Assert.That(result.Items[0].id, Is.EqualTo("1"));
             Assert.That(result.Items[0].title, Is.EqualTo("file.mp3"));
@@ -45,9 +44,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_ItemReturnedIsMediaMetadata()
         {
-            var directoryEntries = new List<IRepresentAResource> { _musicFile };
-
-            var result = directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
 
             Assert.That(result.Items[0], Is.TypeOf<mediaMetadata>());
         }
@@ -55,9 +52,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_MediaMetadataIsCorrect()
         {
-            var directoryEntries = new List<IRepresentAResource> { _musicFile };
-
-            var result = directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
 
             var mmd = (mediaMetadata) result.Items[0];
             var meta = (trackMetadata) mmd.Item;
@@ -68,6 +63,45 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
             Assert.That(meta.canPlay, Is.True);
             Assert.That(meta.canPlaySpecified, Is.True);
             Assert.That(meta.canSkipSpecified, Is.True);
+        }
+        
+        [Test]
+        public void DirectoryToSonosResponse_SingleResourceForADirectory_SingleEntryReturnedWithCorrectMetadata()
+        {
+            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+
+            Assert.That(result.Items.Length, Is.EqualTo(1));
+            Assert.That(result.count, Is.EqualTo(1));
+            Assert.That(result.index, Is.EqualTo(0));
+            Assert.That(result.total, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void DirectoryToSonosResponse_SingleResourceForADirectory_PropertiesMappedCorrectly()
+        {
+            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+
+            Assert.That(result.Items[0].id, Is.EqualTo("1"));
+            Assert.That(result.Items[0].title, Is.EqualTo("path"));
+        }
+
+        [Test]
+        public void DirectoryToSonosResponse_SingleResourceForADirectory_ItemReturnedIsAMediaCollection()
+        {
+            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+
+            Assert.That(result.Items[0], Is.TypeOf<mediaCollection>());
+        }
+
+        [Test]
+        public void DirectoryToSonosResponse_SingleResourceForADirectory_MediaCollectionIsCorrect()
+        {
+            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+
+            var mmd = (mediaCollection)result.Items[0];
+            Assert.That(mmd.canPlay, Is.True);
+            Assert.That(mmd.canEnumerate, Is.True);
+            Assert.That(mmd.itemType, Is.EqualTo(itemType.artistTrackList));
         }
     }
 }
