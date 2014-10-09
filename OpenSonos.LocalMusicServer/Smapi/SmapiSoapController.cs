@@ -1,12 +1,11 @@
 ﻿using System;
 using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.SonosServer;
 using OpenSonos.SonosServer.Metadata;
 
 namespace OpenSonos.LocalMusicServer.Smapi
 {
-    public class SmbMusicServer : ServerBase
+    public class SmapiSoapController : ServerBase
     {
         public static Func<IMusicRepository> MusicRepository { get; set; }
         public static Func<IIdentityProvider> IdentityProvider { get; set; }

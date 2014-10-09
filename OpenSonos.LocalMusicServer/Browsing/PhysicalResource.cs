@@ -1,7 +1,6 @@
 using System.Linq;
-using OpenSonos.LocalMusicServer.Browsing;
 
-namespace OpenSonos.LocalMusicServer.MusicDatabase
+namespace OpenSonos.LocalMusicServer.Browsing
 {
     public abstract class PhysicalResource : IRepresentAResource
     {

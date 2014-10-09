@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 
 namespace OpenSonos
 {
     public static class Players
     {
-        public static List<SonosPlayer> Discover()
+        public static List<SonosPlayer> Discover(IPAddress currentIp)
         {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            var serverIp = host.AddressList.First(x => x.AddressFamily == AddressFamily.InterNetwork);
-            var subnet = string.Join(".", serverIp.ToString().Split('.').Take(3));
+            var subnet = string.Join(".", currentIp.ToString().Split('.').Take(3));
 
             var sonosPlayers = new List<SonosPlayer>();
             var scaningTasks = new List<Task>();

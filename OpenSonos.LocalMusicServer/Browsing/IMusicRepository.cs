@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using OpenSonos.LocalMusicServer.Browsing;
 
-namespace OpenSonos.LocalMusicServer.MusicDatabase
+namespace OpenSonos.LocalMusicServer.Browsing
 {
     public interface IMusicRepository
     {

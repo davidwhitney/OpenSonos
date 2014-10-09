@@ -1,18 +1,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using OpenSonos.LocalMusicServer.Browsing;
+using OpenSonos.LocalMusicServer.Bootstrapping;
 
-namespace OpenSonos.LocalMusicServer.MusicDatabase
+namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 {
-    public class FlatFileMusicCatalogue : IMusicRepository
+    public class FlatFileMusicRepository : IMusicRepository
     {
-        private readonly string _root;
         private readonly IIdentityProvider _converter;
+        private readonly ServerConfiguration _config;
 
-        public FlatFileMusicCatalogue(string root, IIdentityProvider converter)
+        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter)
         {
-            _root = root;
+            _config = config;
             _converter = converter;
         }
 
@@ -24,7 +24,7 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
             }
 
             var directoryEntries = new List<IRepresentAResource>();
-            var path = _root + identifier.Path;
+            var path = _config.MusicShare + identifier.Path;
             directoryEntries.AddRange(Directory.GetDirectories(path).Select(ToContainer));
             directoryEntries.AddRange(Directory.GetFiles(path, "*.mp3", SearchOption.TopDirectoryOnly).Select(ToMusicFile));
             return directoryEntries;
@@ -32,14 +32,14 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
 
         private Container ToContainer(string subdir)
         {
-            var p = subdir.Replace(_root, "");
+            var p = subdir.Replace(_config.MusicShare, "");
             var id = _converter.FromPath(p);
             return new Container(id);
         }
 
         private MusicFile ToMusicFile(string subdir)
         {
-            var p = subdir.Replace(_root, "");
+            var p = subdir.Replace(_config.MusicShare, "");
             var id = _converter.FromPath(p);
             return new MusicFile(id);
         }
@@ -52,7 +52,7 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
             }
 
             var directoryEntries = new List<IRepresentAResource>();
-            var @out = Directory.GetDirectories(_root, query + "*");
+            var @out = Directory.GetDirectories(_config.MusicShare, query + "*");
             directoryEntries.AddRange(@out.Select(ToContainer));
 
             return directoryEntries;
@@ -60,7 +60,7 @@ namespace OpenSonos.LocalMusicServer.MusicDatabase
 
         public string BuildUriForId(SonosIdentifier identifier)
         {
-            return "x-file-cifs:" + (_root + identifier.Path).Replace("\\", "/");
+            return "x-file-cifs:" + (_config.MusicShare + identifier.Path).Replace("\\", "/");
         }
     }
 }

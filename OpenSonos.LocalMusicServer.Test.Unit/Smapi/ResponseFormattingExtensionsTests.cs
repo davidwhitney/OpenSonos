@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.MusicDatabase;
 using OpenSonos.LocalMusicServer.Smapi;
 using OpenSonos.SonosServer;
-using Container = OpenSonos.LocalMusicServer.MusicDatabase.Container;
+using Container = OpenSonos.LocalMusicServer.Browsing.Container;
 
 namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
 {
     [TestFixture]
-    public class MappingExtensionsTests
+    public class ResponseFormattingExtensionsTests
     {
         private List<IRepresentAResource> _fileEntries;
         private List<IRepresentAResource> _directoryEntries;

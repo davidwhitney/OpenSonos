@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.ServiceProcess;
+using Ninject;
 using OpenSonos.LocalMusicServer.Bootstrapping;
 using SimpleServices;
 
@@ -12,15 +13,18 @@ namespace OpenSonos.LocalMusicServer
     {
         public static void Main(string[] args)
         {
+            var kernel = new StandardKernel(new Bindings());
+
             new Service(args,
-                   new List<IWindowsService> { new SmbMusicService(), new SonosPlayerDiscoveryService() }.ToArray,
+                   ()=> kernel.GetAll<IWindowsService>().ToArray(),
                    installationSettings: (serviceInstaller, serviceProcessInstaller) =>
                    {
                        serviceInstaller.ServiceName = "OpenSonos.LocalMusicServer.Service";
                        serviceInstaller.StartType = ServiceStartMode.Automatic;
-                       serviceProcessInstaller.Account = ServiceAccount.LocalService;
+                       serviceProcessInstaller.Account = ServiceAccount.NetworkService;
                    },
-                   configureContext: x => { x.Log = Console.WriteLine; })
+                   configureContext: x => { x.Log = Console.WriteLine; },
+                   registerContainer: () => new SimpleServicesToNinject(kernel))
            .Host();
         }
     }

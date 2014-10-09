@@ -2,9 +2,9 @@
 {
     public static class Server
     {
-        public static ServerCreationStateWrapper ImplementedBy<TServerType>()
+        public static ServerBuilder ImplementedBy<TServerType>()
         {
-            return new ServerCreationStateWrapper(typeof(TServerType));
+            return new ServerBuilder(typeof(TServerType));
         }
     }
 }

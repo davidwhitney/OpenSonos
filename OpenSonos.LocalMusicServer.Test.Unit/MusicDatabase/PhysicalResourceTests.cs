@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenSonos.LocalMusicServer.Browsing;
-using OpenSonos.LocalMusicServer.MusicDatabase;
 
 namespace OpenSonos.LocalMusicServer.Test.Unit.MusicDatabase
 {

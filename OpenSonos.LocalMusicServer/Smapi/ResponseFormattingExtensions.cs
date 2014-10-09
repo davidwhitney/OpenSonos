@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using OpenSonos.LocalMusicServer.MusicDatabase;
+using OpenSonos.LocalMusicServer.Browsing;
 using OpenSonos.SonosServer;
 
 namespace OpenSonos.LocalMusicServer.Smapi
 {
-    public static class MappingExtensions
+    public static class ResponseFormattingExtensions
     {
         public static mediaMetadata ToMediaMetadata(this IRepresentAResource entry)
         {

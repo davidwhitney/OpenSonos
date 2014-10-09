@@ -6,11 +6,11 @@ using OpenSonos.SonosServer;
 
 namespace OpenSonos
 {
-    public class ServerCreationStateWrapper
+    public class ServerBuilder
     {
         private readonly Type _unconfiguredHostType;
 
-        public ServerCreationStateWrapper(Type unconfiguredHostType)
+        public ServerBuilder(Type unconfiguredHostType)
         {
             _unconfiguredHostType = unconfiguredHostType;
         }
