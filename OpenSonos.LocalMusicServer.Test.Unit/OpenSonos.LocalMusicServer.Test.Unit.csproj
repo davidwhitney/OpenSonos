@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Browsing\GuidProviderTests.cs" />
+    <Compile Include="Browsing\SonosIdentifierTests.cs" />
     <Compile Include="MusicDatabase\PhysicalResourceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Smapi\MappingExtensionsTests.cs" />
