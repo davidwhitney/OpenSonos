@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -17,7 +16,7 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
             _config = config;
         }
 
-        public async void RegisterServer(SonosPlayer player, IPAddress serverIp)
+        public async Task<bool> RegisterServer(SonosPlayer player, IPAddress serverIp)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, string.Format("http://{0}:1400/customsd", player.Address))
             {
@@ -41,8 +40,7 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
             };
 
             var response = await Process(request);
-
-            Console.WriteLine("Registering server returned " + response.StatusCode);
+            return response.StatusCode == HttpStatusCode.OK;
         }
 
         public async Task<HttpResponseMessage> Process(HttpRequestMessage request)

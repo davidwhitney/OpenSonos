@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,40 +8,39 @@ namespace OpenSonos
 {
     public static class Players
     {
-        public static List<SonosPlayer> Discover(IPAddress currentIp)
+        public static async void Discover(IPAddress currentIp, Action<SonosPlayer> andThen = null)
         {
-            var subnet = string.Join(".", currentIp.ToString().Split('.').Take(3));
+            andThen = andThen ?? (p => { });
 
-            var sonosPlayers = new List<SonosPlayer>();
-            var scaningTasks = new List<Task>();
+            var subnet = string.Join(".", currentIp.ToString().Split('.').Take(3));
             for (var ipPart = 1; ipPart < 256; ipPart++)
             {
                 var ip = subnet + "." + ipPart;
-                var task = new Task(() => ScanForSonos(ip, sonosPlayers));
-                scaningTasks.Add(task);
+                await SpawnAsyncTaskToScanForSonos(andThen, ip);
             }
-
-            foreach (var task in scaningTasks)
-            {
-                task.Start();
-            }
-
-            Task.WaitAll(scaningTasks.ToArray());
-
-            return sonosPlayers;
         }
 
-        private static async void ScanForSonos(string ip, ICollection<SonosPlayer> sonosPlayers)
+        private static async Task SpawnAsyncTaskToScanForSonos(Action<SonosPlayer> andThen, string ip)
         {
-            var request = new HttpRequestMessage(HttpMethod.Head,
-                string.Format("http://{0}:1400/xml/device_description.xml", ip));
-
-            var response = await TrySend(request);
-            if (response != null && response.StatusCode == HttpStatusCode.OK)
+            await Task.Run(() =>
             {
-                Console.WriteLine("Sonos found at " + ip);
-                sonosPlayers.Add(new SonosPlayer(ip));
-            }
+                ScanForSonos(ip).ContinueWith(t =>
+                {
+                    if (t.Result != SonosPlayer.None)
+                    {
+                        andThen(t.Result);
+                    }
+                }, TaskContinuationOptions.ExecuteSynchronously);
+            });
+        }
+
+        private static async Task<SonosPlayer> ScanForSonos(string ip)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Head, string.Format("http://{0}:1400/xml/device_description.xml", ip));
+            var response = await TrySend(request);
+            return response != null && response.StatusCode == HttpStatusCode.OK
+                ? new SonosPlayer(ip)
+                : SonosPlayer.None;
         }
 
         public static async Task<HttpResponseMessage> TrySend(HttpRequestMessage request)
