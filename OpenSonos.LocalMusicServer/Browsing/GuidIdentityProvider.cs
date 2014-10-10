@@ -9,7 +9,12 @@ namespace OpenSonos.LocalMusicServer.Browsing
     {
         private readonly ConcurrentDictionary<string, SonosIdentifier> _pathToGuid;
 
-        public GuidIdentityProvider(IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore = null)
+        public GuidIdentityProvider():this(null)
+        {
+            
+        }
+
+        public GuidIdentityProvider(IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)
         {
             _pathToGuid = new ConcurrentDictionary<string, SonosIdentifier>();
 
