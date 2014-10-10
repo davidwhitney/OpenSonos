@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapping\ServerConfigurationTests.cs" />
     <Compile Include="Browsing\GuidProviderTests.cs" />
     <Compile Include="Browsing\SonosIdentifierTests.cs" />
     <Compile Include="MusicDatabase\PhysicalResourceTests.cs" />

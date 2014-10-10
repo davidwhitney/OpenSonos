@@ -15,8 +15,7 @@ namespace OpenSonos
             var subnet = string.Join(".", currentIp.ToString().Split('.').Take(3));
             for (var ipPart = 1; ipPart < 256; ipPart++)
             {
-                var ip = subnet + "." + ipPart;
-                await SpawnAsyncTaskToScanForSonos(andThen, ip);
+                await SpawnAsyncTaskToScanForSonos(andThen, subnet + "." + ipPart);
             }
         }
 
@@ -51,7 +50,7 @@ namespace OpenSonos
             {
                 return await http.SendAsync(request);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
