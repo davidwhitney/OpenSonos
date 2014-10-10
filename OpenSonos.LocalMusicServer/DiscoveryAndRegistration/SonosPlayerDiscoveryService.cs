@@ -1,3 +1,4 @@
+using System;
 using OpenSonos.LocalMusicServer.Bootstrapping;
 using SimpleServices;
 
@@ -30,6 +31,7 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
                     }
 
                     registeredYet = _webInterface.RegisterServer(sonosPlayer, _config.ServerIp).Result;
+                    Console.WriteLine("Autoregistered server with player " + sonosPlayer.Address);
                 }
             });
         }
