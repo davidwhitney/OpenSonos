@@ -1,3 +1,4 @@
+using System;
 using OpenSonos.LocalMusicServer.Bootstrapping;
 using SimpleServices;
 
@@ -17,16 +18,20 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
 
         public void Start(string[] args)
         {
+            var sync = new object();
             var registeredYet = false;
 
             Players.Discover(_config.ServerIp, sonosPlayer =>
             {
-                if (registeredYet)
+                lock (sync)
                 {
-                    return;
-                }
+                    if (registeredYet)
+                    {
+                        return;
+                    }
 
-                registeredYet = _webInterface.RegisterServer(sonosPlayer, _config.ServerIp).Result;
+                    registeredYet = _webInterface.RegisterServer(sonosPlayer, _config.ServerIp).Result;
+                }
             });
         }
 
