@@ -18,8 +18,13 @@ namespace OpenSonos
             for (var ipPart = 1; ipPart < 256; ipPart++)
             {
                 var ip = subnet + "." + ipPart;
-                var task = Task.Run(() => ScanForSonos(ip, sonosPlayers));
+                var task = new Task(() => ScanForSonos(ip, sonosPlayers));
                 scaningTasks.Add(task);
+            }
+
+            foreach (var task in scaningTasks)
+            {
+                task.Start();
             }
 
             Task.WaitAll(scaningTasks.ToArray());

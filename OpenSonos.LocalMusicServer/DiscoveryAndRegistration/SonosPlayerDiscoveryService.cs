@@ -20,7 +20,7 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
         {
             var players = Players.Discover(_config.ServerIp);
 
-            if (!players.Any() || !string.Join(" ", args).Contains("-register"))
+            if (!players.Any())
             {
                 return;
             }
