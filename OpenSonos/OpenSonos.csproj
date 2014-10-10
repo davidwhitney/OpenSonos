@@ -69,7 +69,6 @@
     <Compile Include="SonosServer\SonosApiDtos.cs" />
     <Compile Include="SonosServer\ISonosApi.cs" />
     <Compile Include="SonosServer\ServerBase.cs" />
-    <Compile Include="Server.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

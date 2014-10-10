@@ -22,7 +22,7 @@ namespace OpenSonos.LocalMusicServer.Bootstrapping
             SmapiSoapController.MusicRepository = () => kernel.Get<IMusicRepository>();
             SmapiSoapController.IdentityProvider = () => kernel.Get<IIdentityProvider>();
 
-            kernel.Bind<ServerBuilder>().ToMethod(context => Server.ImplementedBy<SmapiSoapController>());
+            kernel.Bind<ServerBuilder>().ToMethod(context => new ServerBuilder(typeof(SmapiSoapController)));
         }
 
         public void OnUnload(IKernel kernel)
