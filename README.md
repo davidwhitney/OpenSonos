@@ -25,7 +25,8 @@ Those features can all be supported off this codebase. They're just currently no
 * Open app.config and edit the baseUrl, basePort and musicShare settings as you wish
 * Run OpenSonos.LocalMusicServer.exe
 
-Now add a new service to your Sonos network
+The service will then auto-register itself after scanning your network.
+Make sure your firewall allows traffic on your configured port (by default, 8080).
 
 * Then open your sonos controller, and "login" by going to your "Service Settings", click "Sonos Labs" and add "LANServer".
 * Just put anything in the username and password boxes
