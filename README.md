@@ -18,6 +18,10 @@ Provided is an API implementation, and a simplistic search implementation.
 
 Those features can all be supported off this codebase. They're just currently not implemented.
 
+# Pre-Requirements
+
+.NET 4.5.1
+
 # How do I use it?
 
 * Git pull
