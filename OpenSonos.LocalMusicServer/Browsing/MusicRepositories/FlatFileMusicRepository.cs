@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 using System.Linq;
 using OpenSonos.LocalMusicServer.Bootstrapping;
 
@@ -10,15 +11,17 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
     {
         private readonly IIdentityProvider _converter;
         private readonly ISearchProvider _searchProvider;
+        private readonly IFileSystem _fs;
         private readonly ServerConfiguration _config;
 
         public DateTime LastUpdate { get; set; }
 
-        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter, ISearchProvider searchProvider)
+        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter, ISearchProvider searchProvider, IFileSystem fs)
         {
             _config = config;
             _converter = converter;
             _searchProvider = searchProvider;
+            _fs = fs;
             ConfigureChangeMonitoring();
         }
 
@@ -31,8 +34,8 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 
             var directoryEntries = new List<IRepresentAResource>();
             var path = _config.MusicShare + identifier.Path;
-            directoryEntries.AddRange(Directory.GetDirectories(path).Select(ToContainer));
-            directoryEntries.AddRange(Directory.GetFiles(path, "*.mp3", SearchOption.TopDirectoryOnly).Select(ToMusicFile));
+            directoryEntries.AddRange(_fs.Directory.GetDirectories(path).Select(ToPhysicalResource<Container>));
+            directoryEntries.AddRange(_fs.Directory.GetFiles(path, "*.mp3", SearchOption.TopDirectoryOnly).Select(ToPhysicalResource<MusicFile>));
             return directoryEntries;
         }
 
@@ -40,7 +43,7 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
         {
             var directoryEntries = new List<IRepresentAResource>();
             var pathsFound = _searchProvider.Search(query);
-            directoryEntries.AddRange(pathsFound.Select(ToContainer));
+            directoryEntries.AddRange(pathsFound.Select(ToPhysicalResource<Container>));
             return directoryEntries;
         }
 
@@ -72,18 +75,10 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
             LastUpdate = DateTime.UtcNow;
         }
 
-        private Container ToContainer(string subdir)
+        private TResourceType ToPhysicalResource<TResourceType>(string subdir) where TResourceType: PhysicalResource, new()
         {
-            var p = subdir.Replace(_config.MusicShare, "");
-            var id = _converter.FromPath(p);
-            return new Container(id);
-        }
-
-        private MusicFile ToMusicFile(string subdir)
-        {
-            var p = subdir.Replace(_config.MusicShare, "");
-            var id = _converter.FromPath(p);
-            return new MusicFile(id);
+            var pathWithoutShareRoot = subdir.Replace(_config.MusicShare, "");
+            return new TResourceType {Identifier = _converter.FromPath(pathWithoutShareRoot)};
         }
     }
 }

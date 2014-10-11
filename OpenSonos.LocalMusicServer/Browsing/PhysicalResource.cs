@@ -4,8 +4,12 @@ namespace OpenSonos.LocalMusicServer.Browsing
 {
     public abstract class PhysicalResource : IRepresentAResource
     {
-        public SonosIdentifier Identifier { get; private set; }
+        public SonosIdentifier Identifier { get; set; }
         public string DisplayName { get { return Identifier.Path.Split('\\').Last(); } }
+
+        public PhysicalResource()
+        {
+        }
 
         protected PhysicalResource(SonosIdentifier identifier)
         {

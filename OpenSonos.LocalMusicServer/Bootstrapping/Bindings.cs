@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using System.IO.Abstractions;
+using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Modules;
 using OpenSonos.LocalMusicServer.Browsing;
@@ -16,6 +17,7 @@ namespace OpenSonos.LocalMusicServer.Bootstrapping
         {
             kernel.Bind(x => x.FromThisAssembly().SelectAllClasses().BindAllInterfaces());
             kernel.Bind(x => x.FromAssemblyContaining<SonosPlayer>().SelectAllClasses().BindAllInterfaces());
+            kernel.Bind(x => x.FromAssemblyContaining<IFileSystem>().SelectAllClasses().BindAllInterfaces());
             
             kernel.Rebind<IMusicRepository>().To<FlatFileMusicRepository>().InSingletonScope();
             kernel.Rebind<IIdentityProvider>().To<GuidIdentityProvider>().InSingletonScope();
