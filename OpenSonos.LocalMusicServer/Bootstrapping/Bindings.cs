@@ -19,6 +19,7 @@ namespace OpenSonos.LocalMusicServer.Bootstrapping
             
             kernel.Rebind<IMusicRepository>().To<FlatFileMusicRepository>().InSingletonScope();
             kernel.Rebind<IIdentityProvider>().To<GuidIdentityProvider>().InSingletonScope();
+            kernel.Rebind<ISearchProvider>().To<TopLevelDirectorySearchProvider>().InSingletonScope();
             kernel.Rebind<ServerConfiguration>().ToMethod(x => ServerConfigurationFactory.LoadConfiguration()).InSingletonScope();
 
             SmapiSoapController.MusicRepository = () => kernel.Get<IMusicRepository>();
