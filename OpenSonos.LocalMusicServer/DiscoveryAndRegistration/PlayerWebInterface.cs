@@ -11,6 +11,14 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
     {
         private readonly ServerConfiguration _config;
 
+        #if DEBUG
+        private const string ServerName = "LANServer_Dev";
+        private const string Sid = "254";
+        #else
+        private const string ServerName = "LANServer";
+        private const string Sid = "255";
+        #endif
+
         public PlayerWebInterface(ServerConfiguration config)
         {
             _config = config;
@@ -22,8 +30,8 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
             {
                 Content = new FormUrlEncodedContent(new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("sid", "255"),
-                    new KeyValuePair<string, string>("name", "LANServer"),
+                    new KeyValuePair<string, string>("sid", Sid),
+                    new KeyValuePair<string, string>("name", ServerName),
                     new KeyValuePair<string, string>("uri", _config.ServerRoot + "/sonos-api"),
                     new KeyValuePair<string, string>("secureUri", _config.ServerRoot + "/sonos-api"),
                     new KeyValuePair<string, string>("pollInterval", "900"),
