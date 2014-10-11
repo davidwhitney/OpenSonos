@@ -27,29 +27,31 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 
         public List<IRepresentAResource> GetResources(SonosIdentifier identifier)
         {
+            if (string.IsNullOrWhiteSpace(identifier.Path))
+            {
+                identifier.Path = _config.MusicShare;
+            }
+
             if (!identifier.IsDirectory)
             {
                 return new List<IRepresentAResource>();
             }
 
             var directoryEntries = new List<IRepresentAResource>();
-            var path = _config.MusicShare + identifier.Path;
-            directoryEntries.AddRange(_fs.Directory.GetDirectories(path).Select(ToPhysicalResource<Container>));
-            directoryEntries.AddRange(_fs.Directory.GetFiles(path, "*.mp3", SearchOption.TopDirectoryOnly).Select(ToPhysicalResource<MusicFile>));
+            directoryEntries.AddRange(_fs.Directory.GetDirectories(identifier.Path).Select(ToPhysicalResource<Container>));
+            directoryEntries.AddRange(_fs.Directory.GetFiles(identifier.Path, "*.mp3", SearchOption.TopDirectoryOnly).Select(ToPhysicalResource<MusicFile>));
             return directoryEntries;
         }
 
         public List<IRepresentAResource> Search(string query)
         {
-            var directoryEntries = new List<IRepresentAResource>();
             var pathsFound = _searchProvider.Search(query);
-            directoryEntries.AddRange(pathsFound.Select(ToPhysicalResource<Container>));
-            return directoryEntries;
+            return new List<IRepresentAResource>(pathsFound.Select(ToPhysicalResource<Container>));
         }
 
         public string BuildUriForId(SonosIdentifier identifier)
         {
-            return "x-file-cifs:" + (_config.MusicShare + identifier.Path).Replace("\\", "/");
+            return "x-file-cifs:" + identifier.Path.Replace("\\", "/");
         }
         
         private void ConfigureChangeMonitoring()
@@ -77,8 +79,7 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 
         private TResourceType ToPhysicalResource<TResourceType>(string subdir) where TResourceType: PhysicalResource, new()
         {
-            var pathWithoutShareRoot = subdir.Replace(_config.MusicShare, "");
-            return new TResourceType {Identifier = _converter.FromPath(pathWithoutShareRoot)};
+            return new TResourceType { Identifier = _converter.FromPath(subdir) };
         }
     }
 }
