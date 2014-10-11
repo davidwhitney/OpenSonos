@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,12 +9,40 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
     public class FlatFileMusicRepository : IMusicRepository
     {
         private readonly IIdentityProvider _converter;
+        private readonly ISearchProvider _searchProvider;
         private readonly ServerConfiguration _config;
 
-        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter)
+        public DateTime LastUpdate { get; set; }
+
+        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter, ISearchProvider searchProvider)
         {
             _config = config;
             _converter = converter;
+            _searchProvider = searchProvider;
+            ConfigureChangeMonitoring();
+        }
+
+        private void ConfigureChangeMonitoring()
+        {
+            LastUpdate = DateTime.UtcNow;
+
+            var changeMonitor = new FileSystemWatcher
+            {
+                IncludeSubdirectories = true,
+                InternalBufferSize = 65536,
+                Path = _config.MusicShare
+            };
+
+            changeMonitor.Changed += SourceModified;
+            changeMonitor.Created += SourceModified;
+            changeMonitor.Deleted += SourceModified;
+            changeMonitor.Renamed += SourceModified;
+            changeMonitor.EnableRaisingEvents = true;
+        }
+
+        private void SourceModified(object sender, FileSystemEventArgs fileSystemEventArgs)
+        {
+            LastUpdate = DateTime.UtcNow;
         }
 
         public List<IRepresentAResource> GetResources(SonosIdentifier identifier)
@@ -46,15 +75,9 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 
         public List<IRepresentAResource> Search(string query)
         {
-            if (string.IsNullOrWhiteSpace(query))
-            {
-                return new List<IRepresentAResource>();
-            }
-
             var directoryEntries = new List<IRepresentAResource>();
-            var @out = Directory.GetDirectories(_config.MusicShare, query + "*");
-            directoryEntries.AddRange(@out.Select(ToContainer));
-
+            var pathsFound = _searchProvider.Search(query);
+            directoryEntries.AddRange(pathsFound.Select(ToContainer));
             return directoryEntries;
         }
 

@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="Bootstrapping\Bindings.cs" />
     <Compile Include="Bootstrapping\ServerConfigurationFactory.cs" />
+    <Compile Include="Browsing\MusicRepositories\ISearchProvider.cs" />
+    <Compile Include="Browsing\MusicRepositories\TopLevelDirectorySearchProvider.cs" />
     <Compile Include="DiscoveryAndRegistration\PlayerWebInterface.cs" />
     <Compile Include="Browsing\GuidIdentityProvider.cs" />
     <Compile Include="Browsing\IIdentityProvider.cs" />

@@ -13,7 +13,7 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
 
         #if DEBUG
         private const string ServerName = "LANServer_Dev";
-        private const string Sid = "254";
+        private const string Sid = "253";
         #else
         private const string ServerName = "LANServer";
         private const string Sid = "255";

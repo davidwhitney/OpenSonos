@@ -3507,7 +3507,6 @@ namespace OpenSonos.SonosServer
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="getLastUpdateResponse", WrapperNamespace="http://www.sonos.com/Services/1.1", IsWrapped=true)]
@@ -3530,6 +3529,18 @@ namespace OpenSonos.SonosServer
                 getLastUpdateResult = new lastUpdate
                 {
                     catalog = DateTime.UtcNow.Ticks.ToString(),
+                    favorites = "1"
+                }
+            };
+        }
+
+        public static getLastUpdateResponse ChangedAt(DateTime time)
+        {
+            return new getLastUpdateResponse
+            {
+                getLastUpdateResult = new lastUpdate
+                {
+                    catalog = time.Ticks.ToString(),
                     favorites = "1"
                 }
             };

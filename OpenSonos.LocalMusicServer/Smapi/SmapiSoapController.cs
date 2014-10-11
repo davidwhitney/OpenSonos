@@ -47,7 +47,7 @@ namespace OpenSonos.LocalMusicServer.Smapi
 
         public override getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request)
         {
-            return getLastUpdateResponse.ChangedRightNow();
+            return getLastUpdateResponse.ChangedAt(MusicRepository().LastUpdate);
         }
 
         public override searchResponse Search(searchRequest request)
