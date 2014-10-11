@@ -16,13 +16,18 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 
         public DateTime LastUpdate { get; set; }
 
-        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter, ISearchProvider searchProvider, IFileSystem fs)
+        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter, ISearchProvider searchProvider, IFileSystem fs, IMonitorTheFileSystemForChanges changeMonitor)
         {
             _config = config;
             _converter = converter;
             _searchProvider = searchProvider;
             _fs = fs;
-            ConfigureChangeMonitoring();
+
+            LastUpdate = DateTime.UtcNow;
+            changeMonitor.StartMonitoring(config.MusicShare, () =>
+            {
+                LastUpdate = DateTime.UtcNow;
+            });
         }
 
         public List<IRepresentAResource> GetResources(SonosIdentifier identifier)
@@ -52,29 +57,6 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
         public string BuildUriForId(SonosIdentifier identifier)
         {
             return "x-file-cifs:" + identifier.Path.Replace("\\", "/");
-        }
-        
-        private void ConfigureChangeMonitoring()
-        {
-            LastUpdate = DateTime.UtcNow;
-
-            var changeMonitor = new FileSystemWatcher
-            {
-                IncludeSubdirectories = true,
-                InternalBufferSize = 65536,
-                Path = _config.MusicShare
-            };
-
-            changeMonitor.Changed += SourceModified;
-            changeMonitor.Created += SourceModified;
-            changeMonitor.Deleted += SourceModified;
-            changeMonitor.Renamed += SourceModified;
-            changeMonitor.EnableRaisingEvents = true;
-        }
-
-        private void SourceModified(object sender, FileSystemEventArgs fileSystemEventArgs)
-        {
-            LastUpdate = DateTime.UtcNow;
         }
 
         private TResourceType ToPhysicalResource<TResourceType>(string subdir) where TResourceType: PhysicalResource, new()

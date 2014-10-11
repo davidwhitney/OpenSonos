@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="Bootstrapping\Bindings.cs" />
     <Compile Include="Bootstrapping\ServerConfigurationFactory.cs" />
+    <Compile Include="Browsing\MusicRepositories\ChangeMonitor.cs" />
+    <Compile Include="Browsing\MusicRepositories\IMonitorTheFileSystemForChanges.cs" />
     <Compile Include="Browsing\MusicRepositories\ISearchProvider.cs" />
     <Compile Include="Browsing\MusicRepositories\TopLevelDirectorySearchProvider.cs" />
     <Compile Include="DiscoveryAndRegistration\PlayerWebInterface.cs" />
