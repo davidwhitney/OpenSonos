@@ -48,8 +48,12 @@ namespace OpenSonos.LocalMusicServer.Browsing
 
         public SonosIdentifier FromRequestId(string requestedId)
         {
-            return _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value
-                   ?? new SonosIdentifier();
+            if (_pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value != null)
+            {
+                return _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value;
+            }
+            
+            return new SonosIdentifier();
         }
     }
 }

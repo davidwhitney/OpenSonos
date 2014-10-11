@@ -84,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Browsing\SonosIdentifier.cs" />
     <Compile Include="Smapi\ResponseFormattingExtensions.cs" />
+    <Compile Include="Smapi\SmapiSoapControllerDependencies.cs" />
     <Compile Include="Smapi\SmapiSoapServiceBootstrapper.cs" />
     <Compile Include="DiscoveryAndRegistration\SonosPlayerDiscoveryService.cs" />
   </ItemGroup>

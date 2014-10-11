@@ -18,14 +18,13 @@ namespace OpenSonos.LocalMusicServer.Bootstrapping
             kernel.Bind(x => x.FromThisAssembly().SelectAllClasses().BindAllInterfaces());
             kernel.Bind(x => x.FromAssemblyContaining<SonosPlayer>().SelectAllClasses().BindAllInterfaces());
             kernel.Bind(x => x.FromAssemblyContaining<IFileSystem>().SelectAllClasses().BindAllInterfaces());
-            
-            kernel.Rebind<IMusicRepository>().To<FlatFileMusicRepository>().InSingletonScope();
-            kernel.Rebind<IIdentityProvider>().To<GuidIdentityProvider>().InSingletonScope();
-            kernel.Rebind<ISearchProvider>().To<TopLevelDirectorySearchProvider>().InSingletonScope();
-            kernel.Rebind<ServerConfiguration>().ToMethod(x => ServerConfigurationFactory.LoadConfiguration()).InSingletonScope();
 
-            SmapiSoapController.MusicRepository = () => kernel.Get<IMusicRepository>();
-            SmapiSoapController.IdentityProvider = () => kernel.Get<IIdentityProvider>();
+            kernel.Rebind<ServerConfiguration>().ToMethod(x => ServerConfigurationFactory.LoadConfiguration()).InSingletonScope();
+            kernel.Rebind<IIdentityProvider>().To<GuidIdentityProvider>().InSingletonScope();
+            kernel.Rebind<ISearchProvider>().To<TopLevelDirectorySearchProvider>().InSingletonScope(); 
+            kernel.Rebind<SmapiSoapControllerDependencies>().To<SmapiSoapControllerDependencies>().InSingletonScope();
+
+            SmapiSoapController.Dependencies = () => kernel.Get<SmapiSoapControllerDependencies>();
 
             kernel.Bind<ServerBuilder>().ToMethod(context => new ServerBuilder(typeof(SmapiSoapController)));
         }
