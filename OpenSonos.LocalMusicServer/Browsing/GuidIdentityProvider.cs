@@ -29,7 +29,7 @@ namespace OpenSonos.LocalMusicServer.Browsing
             }
         }
 
-        public SonosIdentifier FromPath(string path)
+        public SonosIdentifier IdFor(string path)
         {
             if (_pathToGuid.ContainsKey(path))
             {

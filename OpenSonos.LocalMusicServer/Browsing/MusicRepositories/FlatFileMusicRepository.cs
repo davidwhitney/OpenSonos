@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
@@ -9,17 +8,17 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 {
     public class FlatFileMusicRepository : IMusicRepository
     {
-        private readonly IIdentityProvider _converter;
+        private readonly IIdentityProvider _identityStore;
         private readonly ISearchProvider _searchProvider;
         private readonly IFileSystem _fs;
         private readonly ServerConfiguration _config;
 
         public DateTime LastUpdate { get; set; }
 
-        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider converter, ISearchProvider searchProvider, IFileSystem fs, IMonitorTheFileSystemForChanges changeMonitor)
+        public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider identityStore, ISearchProvider searchProvider, IFileSystem fs, IMonitorTheFileSystemForChanges changeMonitor)
         {
             _config = config;
-            _converter = converter;
+            _identityStore = identityStore;
             _searchProvider = searchProvider;
             _fs = fs;
 
@@ -30,7 +29,12 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
             });
         }
 
-        public List<IRepresentAResource> GetResources(SonosIdentifier identifier)
+		public ResourceCollection GetResources(string identifier)
+	    {
+		    return GetResources(_identityStore.FromRequestId(identifier));
+	    }
+
+		public ResourceCollection GetResources(SonosIdentifier identifier)
         {
             if (string.IsNullOrWhiteSpace(identifier.Path))
             {
@@ -39,29 +43,24 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 
             if (!identifier.IsDirectory)
             {
-                return new List<IRepresentAResource>();
+				return new ResourceCollection(identifier);
             }
 
-            var directoryEntries = new List<IRepresentAResource>();
+            var directoryEntries = new ResourceCollection(identifier);
             directoryEntries.AddRange(_fs.Directory.GetDirectories(identifier.Path).Select(ToPhysicalResource<Container>));
             directoryEntries.AddRange(_fs.Directory.GetFiles(identifier.Path, "*.mp3", SearchOption.TopDirectoryOnly).Select(ToPhysicalResource<MusicFile>));
             return directoryEntries;
         }
 
-        public List<IRepresentAResource> Search(string query)
+		public ResourceCollection Search(string query)
         {
             var pathsFound = _searchProvider.Search(query);
-            return new List<IRepresentAResource>(pathsFound.Select(ToPhysicalResource<Container>));
+			return new ResourceCollection(null, pathsFound.Select(ToPhysicalResource<Container>));
         }
-
-        public string BuildUriForId(SonosIdentifier identifier)
-        {
-            return "x-file-cifs:" + identifier.Path.Replace("\\", "/");
-        }
-
+		
         private TResourceType ToPhysicalResource<TResourceType>(string subdir) where TResourceType: PhysicalResource, new()
         {
-            return new TResourceType { Identifier = _converter.FromPath(subdir) };
+            return new TResourceType { Identifier = _identityStore.IdFor(subdir) };
         }
     }
 }

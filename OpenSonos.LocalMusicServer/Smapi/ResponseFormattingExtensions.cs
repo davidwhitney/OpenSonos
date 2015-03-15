@@ -22,12 +22,11 @@ namespace OpenSonos.LocalMusicServer.Smapi
                     canSkipSpecified = true,
                     canPlay = true,
                     canPlaySpecified = true,
-                    albumId = entry.Identifier.Id
                 }
             };
         }
 
-        public static mediaList DirectoryToSonosResponse(this List<IRepresentAResource> directoryEntries, int index, int count)
+        public static mediaList DirectoryToSonosResponse(this ResourceCollection directoryEntries, int index, int count)
         {
             var requestedPage = directoryEntries.Skip(index).Take(count).ToList();
 
@@ -38,7 +37,7 @@ namespace OpenSonos.LocalMusicServer.Smapi
                 {
                     id = subdirectory.Identifier.Id,
                     title = subdirectory.DisplayName,
-                    itemType = itemType.artistTrackList,
+                    itemType = itemType.collection,
                     canEnumerate = true,
                     canPlay = true
                 });
@@ -46,7 +45,14 @@ namespace OpenSonos.LocalMusicServer.Smapi
             
             foreach (var entry in requestedPage.Where(x => x is MusicFile))
             {
-                collections.Add(entry.ToMediaMetadata());
+				var meta = entry.ToMediaMetadata();
+
+				if (directoryEntries.Identifier != null)
+	            {
+		            ((trackMetadata) meta.Item).albumId = directoryEntries.Identifier.Id;
+	            }
+
+	            collections.Add(meta);
             }
 
             return new mediaList

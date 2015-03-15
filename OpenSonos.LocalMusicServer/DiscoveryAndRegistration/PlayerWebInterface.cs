@@ -12,14 +12,14 @@ namespace OpenSonos.LocalMusicServer.DiscoveryAndRegistration
         private readonly ServerConfiguration _config;
 
         #if DEBUG
-        private const string ServerName = "LANServer_Dev";
-        private const string Sid = "253";
+        private const string ServerName = "LANServer_Dev_vNext";
+        private const string Sid = "244";
         #else
-        private const string ServerName = "LANServer";
-        private const string Sid = "255";
-        #endif
+        private const string ServerName = "LANServer_vNext";
+        private const string Sid = "245";
+#endif
 
-        public PlayerWebInterface(ServerConfiguration config)
+		public PlayerWebInterface(ServerConfiguration config)
         {
             _config = config;
         }

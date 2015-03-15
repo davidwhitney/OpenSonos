@@ -68,6 +68,7 @@
     <Compile Include="Browsing\MusicRepositories\IMonitorTheFileSystemForChanges.cs" />
     <Compile Include="Browsing\MusicRepositories\ISearchProvider.cs" />
     <Compile Include="Browsing\MusicRepositories\TopLevelDirectorySearchProvider.cs" />
+    <Compile Include="Browsing\ResourceCollection.cs" />
     <Compile Include="DiscoveryAndRegistration\PlayerWebInterface.cs" />
     <Compile Include="Browsing\GuidIdentityProvider.cs" />
     <Compile Include="Browsing\IIdentityProvider.cs" />
@@ -87,8 +88,8 @@
     <Compile Include="Browsing\SonosIdentifier.cs" />
     <Compile Include="Smapi\ResponseFormattingExtensions.cs" />
     <Compile Include="Smapi\SmapiSoapControllerDependencies.cs" />
-    <Compile Include="Smapi\SmapiSoapServiceBootstrapper.cs" />
-    <Compile Include="DiscoveryAndRegistration\SonosPlayerDiscoveryService.cs" />
+    <Compile Include="SmapiService.cs" />
+    <Compile Include="ServerRegistrationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

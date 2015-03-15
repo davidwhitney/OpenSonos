@@ -26,7 +26,7 @@ namespace OpenSonos.LocalMusicServer.Bootstrapping
 
             SmapiSoapController.Dependencies = () => kernel.Get<SmapiSoapControllerDependencies>();
 
-            kernel.Bind<ServerBuilder>().ToMethod(context => new ServerBuilder(typeof(SmapiSoapController)));
+            kernel.Bind<LocalMusicServerFactory>().ToMethod(context => new LocalMusicServerFactory(typeof(SmapiSoapController)));
         }
 
         public void OnUnload(IKernel kernel)

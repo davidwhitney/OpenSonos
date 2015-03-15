@@ -29,7 +29,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         [Test]
         public void FromPath_WithPath_IdAndPathSetCorrectly()
         {
-            var identifier = _provider.FromPath(_uncompressedId);
+            var identifier = _provider.IdFor(_uncompressedId);
 
             Assert.That(identifier.Id, Is.EqualTo(_compressedId));
         }
@@ -37,7 +37,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         [Test]
         public void FromPath_WithMaxWindowsPathLength_CanCreateCompressedId()
         {
-            var identifier = _provider.FromPath("\\abcdefghjklmnopqrstuvwxyz\\ABCDEFGHIJKLMNOPQRSTUVWXYZ\\AbCdEfGhIjLlMnoPqRsTuVwZyZ\\the quick brown fox jumped ov\\er the lazy dog and this i\\s strin  a long string th\\at should be very hard toc\\ompress reliably for gzip \\compression to handle well and q");
+            var identifier = _provider.IdFor("\\abcdefghjklmnopqrstuvwxyz\\ABCDEFGHIJKLMNOPQRSTUVWXYZ\\AbCdEfGhIjLlMnoPqRsTuVwZyZ\\the quick brown fox jumped ov\\er the lazy dog and this i\\s strin  a long string th\\at should be very hard toc\\ompress reliably for gzip \\compression to handle well and q");
 
             Assert.That(identifier.Id, Is.Not.Null);
         }
@@ -45,7 +45,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         [Test]
         public void FromPath_WhenPathHasLotsOfEntropy_CanCreateCompressedId()
         {
-            var identifier = _provider.FromPath("Justin Timberlake - The 20-20 Experience (Deluxe Edition) 2013 Pop 320kbps CBR MP3 [VX]");
+            var identifier = _provider.IdFor("Justin Timberlake - The 20-20 Experience (Deluxe Edition) 2013 Pop 320kbps CBR MP3 [VX]");
 
             Assert.That(identifier.Id, Is.Not.Null);
         }
@@ -53,8 +53,8 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         [Test]
         public void FromPath_WhenPathIsProvidedTwice_SameIdReturned()
         {
-            var identifier1 = _provider.FromPath("\\something\\here");
-            var identifier2 = _provider.FromPath("\\something\\here");
+            var identifier1 = _provider.IdFor("\\something\\here");
+            var identifier2 = _provider.IdFor("\\something\\here");
 
             Assert.That(identifier1.Id, Is.EqualTo(identifier2.Id));
             Assert.That(identifier1.Path, Is.EqualTo(identifier2.Path));

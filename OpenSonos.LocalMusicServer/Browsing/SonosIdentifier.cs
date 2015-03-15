@@ -1,3 +1,5 @@
+using System;
+
 namespace OpenSonos.LocalMusicServer.Browsing
 {
     public class SonosIdentifier
@@ -18,5 +20,20 @@ namespace OpenSonos.LocalMusicServer.Browsing
             Id = string.Empty;
             Path = string.Empty;
         }
+
+		public string Uri
+		{
+			get { return "x-file-cifs:" + Path.Replace("\\", "/"); }
+		}
+
+	    public static SonosIdentifier Random()
+	    {
+		    var guid = Guid.NewGuid();
+		    return new SonosIdentifier
+		    {
+			    Id = guid.ToString(),
+			    Path = string.Empty
+		    };
+	    }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using OpenSonos.LocalMusicServer.Browsing;
 using OpenSonos.SonosServer;
 using OpenSonos.SonosServer.Metadata;
@@ -27,9 +28,14 @@ namespace OpenSonos.LocalMusicServer.Smapi
 
         public override getMetadataResponse GetMetadata(getMetadataRequest request)
         {
-            var id = _deps.IdentityProvider.FromRequestId(request.id);
-            var results = _deps.MusicRepository.GetResources(id);
-            return new getMetadataResponse(results.DirectoryToSonosResponse(request.index, request.count));
+	        var timer = Stopwatch.StartNew();
+
+			var results = _deps.MusicRepository.GetResources(request.id);
+	        var dto = new getMetadataResponse(results.DirectoryToSonosResponse(request.index, request.count));
+
+			timer.Stop();
+			Console.WriteLine(timer.Elapsed.TotalMilliseconds + "ms");
+	        return dto;
         }
 
         public override getExtendedMetadataResponse GetExtendedMetadata(getExtendedMetadataRequest request)
@@ -47,7 +53,7 @@ namespace OpenSonos.LocalMusicServer.Smapi
         public override getMediaURIResponse GetMediaUri(getMediaURIRequest request)
         {
             var id = _deps.IdentityProvider.FromRequestId(request.id);
-            return new getMediaURIResponse(_deps.MusicRepository.BuildUriForId(id));
+            return new getMediaURIResponse(id.Uri);
         }
 
         public override getLastUpdateResponse GetLastUpdate(getLastUpdateRequest request)

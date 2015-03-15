@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenSonos.LocalMusicServer.Browsing;
 using OpenSonos.LocalMusicServer.Smapi;
 using OpenSonos.SonosServer;
@@ -10,14 +9,14 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
     [TestFixture]
     public class ResponseFormattingExtensionsTests
     {
-        private List<IRepresentAResource> _fileEntries;
-        private List<IRepresentAResource> _directoryEntries;
+		private ResourceCollection _fileEntries;
+		private ResourceCollection _directoryEntries;
 
         [SetUp]
         public void SetUp()
         {
-            _fileEntries = new List<IRepresentAResource> { new MusicFile(new SonosIdentifier {Id = "1", Path = "\\\\some\\file.mp3"}) };
-            _directoryEntries = new List<IRepresentAResource> { new Container(new SonosIdentifier { Id = "1", Path = "\\\\some\\path" }) }; 
+            _fileEntries = new ResourceCollection { new MusicFile(new SonosIdentifier {Id = "1", Path = "\\\\some\\file.mp3"}) };
+			_directoryEntries = new ResourceCollection { new Container(new SonosIdentifier { Id = "1", Path = "\\\\some\\path" }) }; 
         }
 
         [Test]
@@ -100,7 +99,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
             var mmd = (mediaCollection)result.Items[0];
             Assert.That(mmd.canPlay, Is.True);
             Assert.That(mmd.canEnumerate, Is.True);
-            Assert.That(mmd.itemType, Is.EqualTo(itemType.artistTrackList));
+            Assert.That(mmd.itemType, Is.EqualTo(itemType.collection));
         }
     }
 }
