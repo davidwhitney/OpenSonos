@@ -7,18 +7,18 @@ using OpenSonos.LocalMusicServer.Browsing;
 namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
 {
     [TestFixture]
-    public class GuidIdentityProviderTests
+    public class IdentityProviderTests
     {
         private string _uncompressedId;
-        private string _compressedId;
         private IIdentityProvider _provider;
 	    private ServerConfiguration _config;
+        private string _compressedId;
 
-	    [SetUp]
+        [SetUp]
         public void SetUp()
         {
             _uncompressedId = "\\\\some\\smb\\path";
-            _compressedId = Guid.NewGuid().ToString();
+	        _compressedId = new Sha1ConvertPathsToIdentifiers().IdentifierFor(_uncompressedId);
 
             var backing = new Dictionary<string, SonosIdentifier>
             {
@@ -26,7 +26,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
             };
 
 	        _config = new ServerConfiguration {MusicShare = "\\\a\\\\b"};
-            _provider = new IdentityProvider(_config, new GuidIdentityBuilder(), backing);
+            _provider = new IdentityProvider(_config, backing);
         }
 
         [Test]

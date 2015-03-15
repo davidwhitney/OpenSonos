@@ -8,19 +8,19 @@ namespace OpenSonos.LocalMusicServer.Browsing
 {
     public class IdentityProvider : IIdentityProvider
     {
-        private readonly IIdentiyBuilder _hasher;
         private readonly ServerConfiguration _config;
-	    private readonly ConcurrentDictionary<string, SonosIdentifier> _pathToGuid;
+	    private readonly ConcurrentDictionary<string, SonosIdentifier> _hashCache;
+        private readonly Sha1ConvertPathsToIdentifiers _idGen;
 
-        public IdentityProvider(ServerConfiguration config, IIdentiyBuilder hasher)
+        public IdentityProvider(ServerConfiguration config)
         {
-			_pathToGuid = new ConcurrentDictionary<string, SonosIdentifier>();
+			_hashCache = new ConcurrentDictionary<string, SonosIdentifier>();
 	        _config = config;
-            _hasher = hasher;
+            _idGen = new Sha1ConvertPathsToIdentifiers();
         }
 
-	    public IdentityProvider(ServerConfiguration config, IIdentiyBuilder hasher, IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)
-			: this(config, hasher)
+	    public IdentityProvider(ServerConfiguration config, IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)
+			: this(config)
         {
 	        if (backingStore == null)
             {
@@ -29,24 +29,24 @@ namespace OpenSonos.LocalMusicServer.Browsing
 
             foreach (var item in backingStore)
             {
-                _pathToGuid.TryAdd(item.Key, item.Value);
+                _hashCache.TryAdd(item.Key, item.Value);
             }
         }
 
         public SonosIdentifier IdFor(string path)
         {
-            if (_pathToGuid.ContainsKey(path))
+            if (_hashCache.ContainsKey(path))
             {
-                return _pathToGuid[path];
+                return _hashCache[path];
             }
 
             var identifier = new SonosIdentifier
             {
-                Id = _hasher.HashPath(path),
+                Id = _idGen.IdentifierFor(path),
                 Path = path
             };
 
-            _pathToGuid.TryAdd(path, identifier);
+            _hashCache.TryAdd(path, identifier);
             return identifier;
         }
 
@@ -54,7 +54,7 @@ namespace OpenSonos.LocalMusicServer.Browsing
         {
             return requestedId == "root"
                 ? SonosIdentifier.Default(_config.MusicShare)
-                : _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value;
+                : _hashCache.SingleOrDefault(x => x.Value.Id == requestedId).Value;
         }
     }
 }
