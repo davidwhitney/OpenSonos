@@ -25,7 +25,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
                 {_uncompressedId, new SonosIdentifier {Id = _compressedId, Path = "\\\\some\\smb\\path"}}
             };
 
-	        _config = new ServerConfiguration {MusicShare = "\\\a\\\\b"};
+	        _config = new ServerConfiguration {MusicShare = "\\\\a\\\\b"};
             _provider = new IdentityProvider(_config, backing);
         }
 
@@ -92,7 +92,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         {
             var identifier = _provider.FromRequestId("root");
 			
-            Assert.That(identifier.Id, Is.EqualTo(Guid.Empty.ToString()));
+            Assert.That(identifier.Id, Is.Not.Null);
             Assert.That(identifier.Path, Is.EqualTo(_config.MusicShare));
             Assert.That(identifier.IsDirectory, Is.True);
         }
