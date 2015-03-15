@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
+using Ninject.Activation;
 using OpenSonos.LocalMusicServer.Bootstrapping;
 
 namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
@@ -30,17 +31,21 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
         }
 
 		public ResourceCollection GetResources(string identifier)
-	    {
-		    return GetResources(_identityStore.FromRequestId(identifier));
-	    }
+		{
+			var id = identifier == "root"
+				? SonosIdentifier.Default(_config.MusicShare)
+				: _identityStore.FromRequestId(identifier);
 
-		public ResourceCollection GetResources(SonosIdentifier identifier)
+			if (id == null)
+			{
+				throw new ArgumentException("Unrecognised identifier '{0}' requested. Sonos player has cached an expired key.");
+			}
+
+			return GetResources(id);
+		}
+
+	    private ResourceCollection GetResources(SonosIdentifier identifier)
         {
-            if (string.IsNullOrWhiteSpace(identifier.Path))
-            {
-                identifier.Path = _config.MusicShare;
-            }
-
             if (!identifier.IsDirectory)
             {
 				return new ResourceCollection(identifier);

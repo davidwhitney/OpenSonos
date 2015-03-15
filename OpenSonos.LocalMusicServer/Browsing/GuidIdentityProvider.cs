@@ -52,8 +52,8 @@ namespace OpenSonos.LocalMusicServer.Browsing
             {
                 return _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value;
             }
-            
-            return new SonosIdentifier();
+
+	        return null;
         }
     }
 }

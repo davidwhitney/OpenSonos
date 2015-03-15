@@ -7,7 +7,6 @@ namespace OpenSonos.LocalMusicServer.Browsing
         DateTime LastUpdate { get; }
 
 		ResourceCollection GetResources(string identifier);
-		ResourceCollection GetResources(SonosIdentifier identifier);
 		ResourceCollection Search(string query);
     }
 }

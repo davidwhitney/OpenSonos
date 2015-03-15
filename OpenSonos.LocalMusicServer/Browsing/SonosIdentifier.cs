@@ -9,31 +9,23 @@ namespace OpenSonos.LocalMusicServer.Browsing
 
         public bool IsDirectory
         {
-            get
-            {
-                return Path == null || !Path.EndsWith(".mp3");
-            }
+            get { return Path == null || !Path.EndsWith(".mp3"); }
         }
 
-        public SonosIdentifier()
+	    public string Uri
+	    {
+		    get { return "x-file-cifs:" + Path.Replace("\\", "/"); }
+	    }
+
+	    public SonosIdentifier()
         {
             Id = string.Empty;
             Path = string.Empty;
         }
 
-		public string Uri
-		{
-			get { return "x-file-cifs:" + Path.Replace("\\", "/"); }
-		}
-
-	    public static SonosIdentifier Random()
+	    public static SonosIdentifier Default(string rootPath)
 	    {
-		    var guid = Guid.NewGuid();
-		    return new SonosIdentifier
-		    {
-			    Id = guid.ToString(),
-			    Path = string.Empty
-		    };
+		    return new SonosIdentifier {Id = Guid.Empty.ToString(), Path = rootPath};
 	    }
     }
 }
