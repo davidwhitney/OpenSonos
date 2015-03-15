@@ -10,13 +10,13 @@ namespace OpenSonos.LocalMusicServer.Browsing
     {
         private readonly ServerConfiguration _config;
 	    private readonly ConcurrentDictionary<string, SonosIdentifier> _hashCache;
-        private readonly Sha1ConvertPathsToIdentifiers _idGen;
+        private readonly ConvertPathsToSha1 _idGen;
 
         public IdentityProvider(ServerConfiguration config)
         {
 			_hashCache = new ConcurrentDictionary<string, SonosIdentifier>();
 	        _config = config;
-            _idGen = new Sha1ConvertPathsToIdentifiers();
+            _idGen = new ConvertPathsToSha1();
         }
 
 	    public IdentityProvider(ServerConfiguration config, IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)

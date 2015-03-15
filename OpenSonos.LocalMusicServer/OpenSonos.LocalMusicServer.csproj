@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapping\Bindings.cs" />
     <Compile Include="Bootstrapping\ServerConfigurationFactory.cs" />
-    <Compile Include="Browsing\Sha1ConvertPathsToIdentifiers.cs" />
+    <Compile Include="Browsing\ConvertPathsToSha1.cs" />
     <Compile Include="Browsing\MusicRepositories\ChangeMonitor.cs" />
     <Compile Include="Browsing\MusicRepositories\IMonitorTheFileSystemForChanges.cs" />
     <Compile Include="Browsing\MusicRepositories\ISearchProvider.cs" />

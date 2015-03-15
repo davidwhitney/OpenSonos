@@ -18,7 +18,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         public void SetUp()
         {
             _uncompressedId = "\\\\some\\smb\\path";
-	        _compressedId = new Sha1ConvertPathsToIdentifiers().IdentifierFor(_uncompressedId);
+	        _compressedId = new ConvertPathsToSha1().IdentifierFor(_uncompressedId);
 
             var backing = new Dictionary<string, SonosIdentifier>
             {
