@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using Ninject.Activation;
 using OpenSonos.LocalMusicServer.Bootstrapping;
 
 namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
@@ -12,13 +11,11 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
         private readonly IIdentityProvider _identityStore;
         private readonly ISearchProvider _searchProvider;
         private readonly IFileSystem _fs;
-        private readonly ServerConfiguration _config;
 
         public DateTime LastUpdate { get; set; }
 
         public FlatFileMusicRepository(ServerConfiguration config, IIdentityProvider identityStore, ISearchProvider searchProvider, IFileSystem fs, IMonitorTheFileSystemForChanges changeMonitor)
         {
-            _config = config;
             _identityStore = identityStore;
             _searchProvider = searchProvider;
             _fs = fs;
@@ -32,9 +29,7 @@ namespace OpenSonos.LocalMusicServer.Browsing.MusicRepositories
 
 		public ResourceCollection GetResources(string identifier)
 		{
-			var id = identifier == "root"
-				? SonosIdentifier.Default(_config.MusicShare)
-				: _identityStore.FromRequestId(identifier);
+			var id = _identityStore.FromRequestId(identifier);
 
 			if (id == null)
 			{

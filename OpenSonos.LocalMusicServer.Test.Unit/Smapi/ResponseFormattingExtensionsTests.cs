@@ -22,7 +22,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_SingleEntryReturnedWithCorrectMetadata()
         {
-            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.ToMediaList(0, 1);
 
             Assert.That(result.Items.Length, Is.EqualTo(1));
             Assert.That(result.count, Is.EqualTo(1));
@@ -33,7 +33,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_PropertiesMappedCorrectly()
         {
-            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.ToMediaList(0, 1);
 
             Assert.That(result.Items[0].id, Is.EqualTo("1"));
             Assert.That(result.Items[0].title, Is.EqualTo("file.mp3"));
@@ -42,7 +42,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_ItemReturnedIsMediaMetadata()
         {
-            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.ToMediaList(0, 1);
 
             Assert.That(result.Items[0], Is.TypeOf<mediaMetadata>());
         }
@@ -50,7 +50,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForAFile_MediaMetadataIsCorrect()
         {
-            var result = _fileEntries.DirectoryToSonosResponse(0, 1);
+            var result = _fileEntries.ToMediaList(0, 1);
 
             var mmd = (mediaMetadata) result.Items[0];
             var meta = (trackMetadata) mmd.Item;
@@ -66,7 +66,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForADirectory_SingleEntryReturnedWithCorrectMetadata()
         {
-            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _directoryEntries.ToMediaList(0, 1);
 
             Assert.That(result.Items.Length, Is.EqualTo(1));
             Assert.That(result.count, Is.EqualTo(1));
@@ -77,7 +77,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForADirectory_PropertiesMappedCorrectly()
         {
-            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _directoryEntries.ToMediaList(0, 1);
 
             Assert.That(result.Items[0].id, Is.EqualTo("1"));
             Assert.That(result.Items[0].title, Is.EqualTo("path"));
@@ -86,7 +86,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForADirectory_ItemReturnedIsAMediaCollection()
         {
-            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _directoryEntries.ToMediaList(0, 1);
 
             Assert.That(result.Items[0], Is.TypeOf<mediaCollection>());
         }
@@ -94,7 +94,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Smapi
         [Test]
         public void DirectoryToSonosResponse_SingleResourceForADirectory_MediaCollectionIsCorrect()
         {
-            var result = _directoryEntries.DirectoryToSonosResponse(0, 1);
+            var result = _directoryEntries.ToMediaList(0, 1);
 
             var mmd = (mediaCollection)result.Items[0];
             Assert.That(mmd.canPlay, Is.True);

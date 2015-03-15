@@ -2,22 +2,24 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using OpenSonos.LocalMusicServer.Bootstrapping;
 
 namespace OpenSonos.LocalMusicServer.Browsing
 {
     public class GuidIdentityProvider : IIdentityProvider
     {
-        private readonly ConcurrentDictionary<string, SonosIdentifier> _pathToGuid;
+	    private readonly ServerConfiguration _config;
+	    private readonly ConcurrentDictionary<string, SonosIdentifier> _pathToGuid;
 
-        public GuidIdentityProvider():this(null)
+        public GuidIdentityProvider(ServerConfiguration config)
         {
-            
+			_pathToGuid = new ConcurrentDictionary<string, SonosIdentifier>();
+	        _config = config;
         }
 
-        public GuidIdentityProvider(IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)
+	    public GuidIdentityProvider(ServerConfiguration config, IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)
+			: this(config)
         {
-            _pathToGuid = new ConcurrentDictionary<string, SonosIdentifier>();
-
             if (backingStore == null)
             {
                 return;
@@ -48,12 +50,9 @@ namespace OpenSonos.LocalMusicServer.Browsing
 
         public SonosIdentifier FromRequestId(string requestedId)
         {
-            if (_pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value != null)
-            {
-                return _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value;
-            }
-
-	        return null;
+            return requestedId == "root"
+                ? SonosIdentifier.Default(_config.MusicShare)
+                : _pathToGuid.SingleOrDefault(x => x.Value.Id == requestedId).Value;
         }
     }
 }

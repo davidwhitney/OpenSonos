@@ -26,7 +26,7 @@ namespace OpenSonos.LocalMusicServer.Smapi
             };
         }
 
-        public static mediaList DirectoryToSonosResponse(this ResourceCollection directoryEntries, int index, int count)
+        public static mediaList ToMediaList(this ResourceCollection directoryEntries, int index, int count)
         {
             var requestedPage = directoryEntries.Skip(index).Take(count).ToList();
 
@@ -47,10 +47,9 @@ namespace OpenSonos.LocalMusicServer.Smapi
             {
 				var meta = entry.ToMediaMetadata();
 
-				if (directoryEntries.Identifier != null)
-	            {
-		            ((trackMetadata) meta.Item).albumId = directoryEntries.Identifier.Id;
-	            }
+                ((trackMetadata) meta.Item).albumId = null != directoryEntries.Identifier
+                    ? directoryEntries.Identifier.Id
+                    : null;
 
 	            collections.Add(meta);
             }

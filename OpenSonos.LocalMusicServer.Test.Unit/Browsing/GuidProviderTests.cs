@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using OpenSonos.LocalMusicServer.Bootstrapping;
 using OpenSonos.LocalMusicServer.Browsing;
 
 namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
@@ -11,8 +12,9 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         private string _uncompressedId;
         private string _compressedId;
         private IIdentityProvider _provider;
+	    private ServerConfiguration _config;
 
-        [SetUp]
+	    [SetUp]
         public void SetUp()
         {
             _uncompressedId = "\\\\some\\smb\\path";
@@ -23,7 +25,8 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
                 {_uncompressedId, new SonosIdentifier {Id = _compressedId, Path = "\\\\some\\smb\\path"}}
             };
 
-            _provider = new GuidIdentityProvider(backing);
+	        _config = new ServerConfiguration {MusicShare = "\\\a\\\\b"};
+            _provider = new GuidIdentityProvider(_config, backing);
         }
 
         [Test]
@@ -69,21 +72,29 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
         }
 
         [Test]
-        public void FromRequestId_WithNullEmptyId_PathAndIdAreEmpty()
+        public void FromRequestId_WithNullEmptyId_ReturnsNull()
         {
             var identifier = _provider.FromRequestId("");
 
-            Assert.That(identifier.Path, Is.EqualTo(""));
-            Assert.That(identifier.Id, Is.EqualTo(""));
+            Assert.That(identifier, Is.Null);
         }
 
         [Test]
-        public void FromRequestId_WithRootSonosValueProvided_PathAndIdAreEmpty()
+        public void FromRequestId_WithUnrecognisedPath_ReturnsNull()
+        {
+            var identifier = _provider.FromRequestId("random-thing-here");
+
+            Assert.That(identifier, Is.Null);
+        }
+
+        [Test]
+        public void FromRequestId_WithRootPath_ReturnsRootId()
         {
             var identifier = _provider.FromRequestId("root");
-
-            Assert.That(identifier.Path, Is.EqualTo(""));
-            Assert.That(identifier.Id, Is.EqualTo(""));
+			
+            Assert.That(identifier.Id, Is.EqualTo(Guid.Empty.ToString()));
+            Assert.That(identifier.Path, Is.EqualTo(_config.MusicShare));
+            Assert.That(identifier.IsDirectory, Is.True);
         }
 
         [Test]
