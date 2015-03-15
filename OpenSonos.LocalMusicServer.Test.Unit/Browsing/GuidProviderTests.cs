@@ -26,7 +26,7 @@ namespace OpenSonos.LocalMusicServer.Test.Unit.Browsing
             };
 
 	        _config = new ServerConfiguration {MusicShare = "\\\a\\\\b"};
-            _provider = new GuidIdentityProvider(_config, backing);
+            _provider = new IdentityProvider(_config, new GuidIdentityBuilder(), backing);
         }
 
         [Test]

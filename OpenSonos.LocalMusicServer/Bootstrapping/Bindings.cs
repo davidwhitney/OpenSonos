@@ -20,7 +20,7 @@ namespace OpenSonos.LocalMusicServer.Bootstrapping
             kernel.Bind(x => x.FromAssemblyContaining<IFileSystem>().SelectAllClasses().BindAllInterfaces());
 
             kernel.Rebind<ServerConfiguration>().ToMethod(x => ServerConfigurationFactory.LoadConfiguration()).InSingletonScope();
-            kernel.Rebind<IIdentityProvider>().To<GuidIdentityProvider>().InSingletonScope();
+            kernel.Rebind<IIdentityProvider>().To<IdentityProvider>().InSingletonScope();
             kernel.Rebind<ISearchProvider>().To<TopLevelDirectorySearchProvider>().InSingletonScope(); 
             kernel.Rebind<SmapiSoapControllerDependencies>().To<SmapiSoapControllerDependencies>().InSingletonScope();
 

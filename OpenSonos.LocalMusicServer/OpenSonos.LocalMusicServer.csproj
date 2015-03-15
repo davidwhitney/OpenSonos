@@ -64,13 +64,15 @@
   <ItemGroup>
     <Compile Include="Bootstrapping\Bindings.cs" />
     <Compile Include="Bootstrapping\ServerConfigurationFactory.cs" />
+    <Compile Include="Browsing\GuidIdentityBuilder.cs" />
+    <Compile Include="Browsing\IIdentiyBuilder.cs" />
     <Compile Include="Browsing\MusicRepositories\ChangeMonitor.cs" />
     <Compile Include="Browsing\MusicRepositories\IMonitorTheFileSystemForChanges.cs" />
     <Compile Include="Browsing\MusicRepositories\ISearchProvider.cs" />
     <Compile Include="Browsing\MusicRepositories\TopLevelDirectorySearchProvider.cs" />
     <Compile Include="Browsing\ResourceCollection.cs" />
     <Compile Include="DiscoveryAndRegistration\PlayerWebInterface.cs" />
-    <Compile Include="Browsing\GuidIdentityProvider.cs" />
+    <Compile Include="Browsing\IdentityProvider.cs" />
     <Compile Include="Browsing\IIdentityProvider.cs" />
     <Compile Include="Browsing\Container.cs" />
     <Compile Include="Browsing\MusicRepositories\FlatFileMusicRepository.cs" />

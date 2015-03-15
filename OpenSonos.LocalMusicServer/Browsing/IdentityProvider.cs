@@ -6,21 +6,23 @@ using OpenSonos.LocalMusicServer.Bootstrapping;
 
 namespace OpenSonos.LocalMusicServer.Browsing
 {
-    public class GuidIdentityProvider : IIdentityProvider
+    public class IdentityProvider : IIdentityProvider
     {
-	    private readonly ServerConfiguration _config;
+        private readonly IIdentiyBuilder _hasher;
+        private readonly ServerConfiguration _config;
 	    private readonly ConcurrentDictionary<string, SonosIdentifier> _pathToGuid;
 
-        public GuidIdentityProvider(ServerConfiguration config)
+        public IdentityProvider(ServerConfiguration config, IIdentiyBuilder hasher)
         {
 			_pathToGuid = new ConcurrentDictionary<string, SonosIdentifier>();
 	        _config = config;
+            _hasher = hasher;
         }
 
-	    public GuidIdentityProvider(ServerConfiguration config, IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)
-			: this(config)
+	    public IdentityProvider(ServerConfiguration config, IIdentiyBuilder hasher, IEnumerable<KeyValuePair<string, SonosIdentifier>> backingStore)
+			: this(config, hasher)
         {
-            if (backingStore == null)
+	        if (backingStore == null)
             {
                 return;
             }
@@ -40,7 +42,7 @@ namespace OpenSonos.LocalMusicServer.Browsing
 
             var identifier = new SonosIdentifier
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = _hasher.HashPath(path),
                 Path = path
             };
 
